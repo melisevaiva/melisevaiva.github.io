@@ -337,23 +337,28 @@
     margin-top: var(--space-md); max-width: 56ch; line-height: 1.6;
   }
   .takeaway-note::before { content: '// '; color: var(--red-silk) }
-  .takeaway-how { margin-top: var(--space-lg); max-width: 60ch }
+  .takeaway-how { margin-top: var(--space-lg) }
   .takeaway-how-lead {
     font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-lg);
     text-transform: uppercase; letter-spacing: -0.01em; color: var(--concrete);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-md); max-width: 40ch;
   }
-  .takeaway-how ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm) }
-  .takeaway-how li {
-    display: flex; gap: 0.75rem; font-family: 'Outfit', sans-serif; font-weight: 300;
-    font-size: var(--text-base); line-height: 1.6; color: var(--concrete);
+  .how-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md) }
+  .how-card {
+    background: #fffdf8; border: 1px solid rgba(26,26,26,0.1); border-top: 3px solid var(--red-silk);
+    padding: var(--space-md); display: flex; flex-direction: column; gap: 0.75rem;
   }
-  .takeaway-how li::before {
-    content: '→'; color: var(--red-silk); font-family: 'Anybody', sans-serif; font-weight: 900;
-    flex-shrink: 0;
+  .how-num {
+    font-family: 'Anybody', sans-serif; font-weight: 900; font-size: var(--text-2xl);
+    color: var(--red-silk); line-height: 1; font-variation-settings: 'wdth' 120;
   }
-  .takeaway-how li b { font-weight: 500 }
-  .takeaway-how .accent { color: var(--red-silk); font-weight: 500 }
+  .how-card p {
+    font-family: 'Outfit', sans-serif; font-weight: 300; font-size: var(--text-base);
+    line-height: 1.6; color: var(--concrete); margin: 0;
+  }
+  .how-card b { font-weight: 500 }
+  .how-card .accent { color: var(--red-silk); font-weight: 500 }
+  @media (max-width: 760px) { .how-cards { grid-template-columns: 1fr } }
 
   /* ─── CTA ─── */
   .cta { text-align: left }
@@ -684,16 +689,25 @@
   <div class="container">
     <div class="red-line reveal"></div>
     <span class="section-label reveal">мой принцип</span>
-    <blockquote class="reveal">Не&nbsp;работайте по&nbsp;общим шаблонам запусков. <span class="accent">Работают приёмы, по&nbsp;которым живёт телевидение</span></blockquote>
-    <p class="takeaway-note reveal">эти приёмы оттачивались десятилетиями в&nbsp;борьбе за&nbsp;внимание миллионов зрителей. В&nbsp;инфобизнесе про&nbsp;них почти никто не&nbsp;знает&nbsp;— а&nbsp;значит, у&nbsp;вас есть преимущество.</p>
+    <blockquote class="reveal">Я&nbsp;не&nbsp;верю в&nbsp;шаблонные запуски. <span class="accent">Строю маркетинг на&nbsp;приёмах, на&nbsp;которых держится телевидение</span></blockquote>
+    <p class="takeaway-note reveal">Девять лет я&nbsp;удерживала внимание миллионов, чтобы они не&nbsp;переключили канал. Эти приёмы перенесла в&nbsp;маркетинг&nbsp;— в&nbsp;инфобизнесе их&nbsp;почти никто не&nbsp;использует. Поэтому у&nbsp;моих проектов фора.</p>
 
     <div class="takeaway-how reveal">
       <p class="takeaway-how-lead">Поэтому я&nbsp;не&nbsp;продаю готовые шаблоны. Вот как я&nbsp;работаю:</p>
-      <ul>
-        <li>Смотрю на&nbsp;маркетинг <b>целиком</b>: бренд, продукт, контент, продажи. Чинить отдельными кусками бесполезно, если конструкция кривая.</li>
-        <li>Каждый ход проверяю одним вопросом: <span class="accent">это красиво в&nbsp;кейсе&nbsp;— или это приносит деньги?</span></li>
-        <li>Собираю систему руками, рядом с&nbsp;экспертом&nbsp;— и&nbsp;говорю честно, даже когда правда неудобная.</li>
-      </ul>
+      <div class="how-cards">
+        <div class="how-card">
+          <span class="how-num">01</span>
+          <p>Смотрю на&nbsp;маркетинг <b>целиком</b>: бренд, продукт, контент, продажи. Чинить отдельными кусками бесполезно, если конструкция кривая.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-num">02</span>
+          <p>Каждый ход проверяю одним вопросом: <span class="accent">это красиво в&nbsp;кейсе&nbsp;— или это приносит деньги?</span></p>
+        </div>
+        <div class="how-card">
+          <span class="how-num">03</span>
+          <p>Собираю систему руками, рядом с&nbsp;экспертом&nbsp;— и&nbsp;говорю честно, даже когда правда неудобная.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
