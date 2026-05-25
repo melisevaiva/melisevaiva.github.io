@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Юлиана Логинова — маркетинговый стратег для экспертов</title>
+<meta name="description" content="Разбираюсь, почему у эксперта с аудиторией не растёт доход, и собираю маркетинг в работающую конструкцию.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Fragment+Mono&family=Anybody:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Fragment+Mono&family=Anybody:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="image" href="/photos/optimized/street-lean-640.webp" type="image/webp" fetchpriority="high" imagesrcset="/photos/optimized/street-lean-360.webp 360w, /photos/optimized/street-lean-480.webp 480w, /photos/optimized/street-lean-640.webp 640w" imagesizes="(max-width: 767px) 320px, 50vw">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root {
+    --red-silk: #c83232;
+    --red-silk-hover: #a82828;
+    --concrete: #1a1a1a;
+    --cream: #f5f0e6;
+    --ysl-gold: #d4a574;
+    --studio-grey: #4a4a52;
+    --studio-grey-light: #6a6a72;
+
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+    --text-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+    --text-lg: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+    --text-xl: clamp(1.4rem, 1.1rem + 0.9vw, 1.85rem);
+    --text-2xl: clamp(1.8rem, 1.3rem + 1.8vw, 2.8rem);
+    --text-hero: clamp(2.2rem, 1.6rem + 2.8vw, 4rem);
+    --text-number: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+
+    --space-xs: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
+    --space-sm: clamp(0.75rem, 0.6rem + 0.5vw, 1rem);
+    --space-md: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    --space-lg: clamp(3rem, 2rem + 3vw, 5rem);
+    --space-xl: clamp(5rem, 3rem + 5vw, 8rem);
+
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --clip-cut: polygon(0 0, 100% 0, 100% 82%, 94% 100%, 0 100%);
+  }
+
+  html { scroll-behavior: smooth }
+
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--concrete);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  picture { display: block }
+
+  /* ─── Utility ─── */
+  .container {
+    width: min(90%, 72rem);
+    margin-inline: auto;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.7s var(--ease-out-quart), transform 0.7s var(--ease-out-quart);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Dark / Light sections ─── */
+  .section-dark {
+    background: var(--concrete);
+    color: var(--cream);
+  }
+  .section-dark .section-label { color: var(--red-silk) }
+  .section-dark .section-heading { color: var(--cream) }
+  .section-dark .code-comment { color: var(--studio-grey-light) }
+
+  .section-cream {
+    background: var(--cream);
+    color: var(--concrete);
+  }
+
+  /* ─── Typography ─── */
+  .heading {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .heading-xl {
+    font-size: var(--text-hero);
+    font-weight: 900;
+  }
+
+  .code-comment {
+    font-family: 'Fragment Mono', monospace;
+    font-weight: 400;
+    color: var(--studio-grey);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  .code-comment::before {
+    content: '// ';
+    color: var(--red-silk);
+  }
+
+  .number {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 900;
+    font-size: var(--text-number);
+    color: var(--red-silk);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  /* ─── Clip-path cut ─── */
+  .clip-cut {
+    clip-path: var(--clip-cut);
+  }
+
+  /* ─── Red line accent ─── */
+  .red-line {
+    width: 4rem;
+    height: 4px;
+    background: var(--red-silk);
+    margin-bottom: var(--space-sm);
+  }
+
+  /* ─── Section Shared ─── */
+  section { padding: var(--space-xl) 0 }
+
+  .section-label {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--red-silk);
+    margin-bottom: var(--space-xs);
+  }
+  .section-label::before {
+    content: '// ';
+  }
+
+  .section-heading {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: var(--space-md);
+  }
+
+  /* ─── Navigation ─── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: var(--space-sm) 0;
+    transition: background 0.3s, backdrop-filter 0.3s;
+  }
+  .nav.scrolled {
+    background: rgba(245, 240, 230, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: var(--text-lg);
+    color: var(--cream);
+    background: var(--red-silk);
+    padding: 0.3em 0.5em 0.25em;
+    clip-path: var(--clip-cut);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Fragment Mono', monospace;
+    color: var(--studio-grey);
+    text-decoration: none;
+    font-size: var(--text-xs);
+    transition: color 0.2s;
+    text-transform: lowercase;
+  }
+  .nav-links a:hover, .nav-links a[aria-current] { color: var(--red-silk) }
+
+  .burger {
+    display: none; background: none; border: none; cursor: pointer;
+    padding: 4px; width: 36px; height: 36px; position: relative; z-index: 110;
+  }
+  .burger span {
+    display: block; width: 24px; height: 2px; background: var(--concrete);
+    margin: 5px auto; transition: transform 0.3s, opacity 0.3s;
+  }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
+  .burger.open span:nth-child(2) { opacity: 0 }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26, 26, 26, 0.97); backdrop-filter: blur(12px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: var(--space-md); z-index: 105;
+    }
+    .nav-links.open { display: flex }
+    .nav-links a { font-size: var(--text-lg); color: var(--cream) }
+    .burger { display: block }
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    position: relative;
+    background: var(--cream);
+  }
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .hero-split { grid-template-columns: 1fr 1fr }
+  }
+  .hero h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-hero);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--concrete);
+    max-width: 16ch;
+    margin-bottom: var(--space-sm);
+  }
+  .hero h1 .accent {
+    color: var(--red-silk);
+  }
+  .hero-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: var(--text-lg);
+    color: var(--studio-grey);
+    max-width: 52ch;
+    margin-bottom: var(--space-xs);
+    line-height: 1.55;
+  }
+  .hero-code {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-sm);
+    color: var(--studio-grey);
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+  .hero-code span { display: block }
+  .hero-code span::before {
+    content: '// ';
+    color: var(--red-silk);
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  .hero-photo {
+    position: relative;
+    overflow: hidden;
+    clip-path: var(--clip-cut);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(15%);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .hero-photo {
+      max-width: 320px;
+      margin-inline: auto;
+    }
+  }
+  @media (max-width: 640px) {
+    .hero {
+      min-height: auto;
+      padding-top: 5.5rem;
+    }
+    .hero h1 {
+      font-size: 1.55rem;
+      line-height: 1.16;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+    .hero-code {
+      font-size: 0.78rem;
+    }
+    .hero-cta-row {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .hero-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-photo {
+      max-width: 280px;
+    }
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--studio-grey);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    animation: float 2.5s ease-in-out infinite;
+  }
+  .hero-scroll-hint svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--studio-grey);
+  }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0) }
+    50% { transform: translateX(-50%) translateY(6px) }
+  }
+
+  /* ─── CTA Buttons ─── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85em 1.8em;
+    background: var(--red-silk);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: var(--clip-cut);
+  }
+  .btn:hover {
+    background: var(--red-silk-hover);
+    transform: translateY(-1px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--red-silk);
+    border: 2px solid var(--red-silk);
+    clip-path: none;
+  }
+  .btn-outline:hover {
+    background: var(--red-silk);
+    color: var(--cream);
+  }
+  .btn-dark {
+    background: var(--cream);
+    color: var(--concrete);
+  }
+  .btn-dark:hover {
+    background: #fff;
+  }
+
+  /* ─── Struggles ─── */
+  .struggles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    /* Асимметрия: первая боль — широкий акцентный баннер, остальные 3 в ряд */
+    .struggles-grid { grid-template-columns: repeat(3, 1fr) }
+    .struggle-item:first-child { grid-column: 1 / -1; align-items: center }
+  }
+  .struggle-item {
+    padding: var(--space-md);
+    background: #222228;
+    border-left: 4px solid var(--red-silk);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  /* Акцентная первая карточка */
+  .struggle-item:first-child {
+    background: var(--red-silk);
+    border-left: none;
+    clip-path: var(--clip-cut);
+  }
+  .struggle-item:first-child .struggle-num { color: var(--cream) }
+  .struggle-item:first-child .struggle-text {
+    color: var(--cream);
+    font-size: var(--text-lg);
+    font-weight: 500;
+  }
+  .struggle-num {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 900;
+    font-size: var(--text-2xl);
+    color: var(--red-silk);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .struggle-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: var(--text-base);
+    line-height: 1.55;
+    color: rgba(245, 240, 230, 0.85);
+  }
+
+  /* ─── Quote ─── */
+  .pull-quote {
+    padding: var(--space-lg) 0;
+    text-align: center;
+    background: var(--cream);
+  }
+  .pull-quote blockquote {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--concrete);
+    max-width: 36ch;
+    margin: 0 auto;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .pull-quote blockquote .accent { color: var(--red-silk) }
+
+  /* ─── Jobs ─── */
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .jobs-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  .job-card {
+    position: relative;
+    padding: var(--space-md);
+    padding-left: calc(var(--space-md) + 0.5rem);
+    border-left: 4px solid var(--red-silk);
+  }
+  .job-statement {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.01em;
+    color: var(--concrete);
+  }
+  .job-desc {
+    color: var(--studio-grey);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* ─── Products ─── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr) }
+  }
+  .product {
+    padding: var(--space-md);
+    background: #222228;
+    clip-path: var(--clip-cut);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s var(--ease-out-quart);
+  }
+  .product:hover {
+    transform: translateY(-4px);
+  }
+  .product-job {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    color: var(--red-silk);
+    margin-bottom: var(--space-xs);
+  }
+  .product-job::before {
+    content: '// ';
+  }
+  .product-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .product-situation {
+    font-family: 'Fragment Mono', monospace;
+    font-style: normal;
+    color: var(--ysl-gold);
+    font-size: var(--text-xs);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--studio-grey);
+  }
+  .product-desc {
+    color: rgba(245, 240, 230, 0.75);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    flex: 1;
+    font-weight: 300;
+  }
+  .product-outcome {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--studio-grey);
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    color: var(--cream);
+  }
+  .product-outcome::before {
+    content: '> ';
+    color: var(--red-silk);
+  }
+
+  /* Акцентная карточка формата (§10.1 Pricing Tier) */
+  .product-featured { background: var(--red-silk); position: relative; overflow: visible }
+  .product-featured .product-job { color: rgba(245,240,230,0.92) }
+  .product-featured .product-name { color: var(--cream) }
+  .product-featured .product-situation { color: rgba(245,240,230,0.92); border-bottom-color: rgba(245,240,230,0.3) }
+  .product-featured .product-desc { color: rgba(245,240,230,0.95) }
+  .product-featured .product-outcome { color: var(--cream); border-top-color: rgba(245,240,230,0.35) }
+  .product-featured .product-outcome::before { color: var(--cream) }
+
+  /* Цена формата */
+  .product-price { font-family: 'Anybody', sans-serif; font-weight: 900; font-size: var(--text-xl); color: var(--cream); line-height: 1; letter-spacing: -0.02em; margin-bottom: var(--space-sm) }
+  .product-price .cur { color: var(--red-silk) }
+  .product-price em { font-family: 'Fragment Mono', monospace; font-style: normal; font-weight: 400; font-size: var(--text-xs); color: var(--studio-grey-light); letter-spacing: 0 }
+  .product-price--talk { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-base); text-transform: uppercase; color: var(--cream); letter-spacing: -0.01em }
+  .product-featured .product-price, .product-featured .product-price .cur { color: var(--cream) }
+  .product-featured .product-price em { color: rgba(245,240,230,0.8) }
+
+  /* Кнопка-ссылка в карточке формата */
+  .product-cta { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-sm);
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.02em; color: var(--red-silk); text-decoration: none;
+    transition: gap 0.2s, color 0.2s }
+  .product-cta:hover { gap: 0.75rem }
+  .product-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none }
+  .product-badge {
+    display: inline-block; align-self: flex-start;
+    background: var(--cream); color: var(--red-silk);
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.02em; padding: 0.4em 0.85em;
+    clip-path: var(--clip-cut); margin-bottom: var(--space-sm);
+  }
+
+  /* ─── Switch ─── */
+  .switch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .switch-grid { grid-template-columns: 1fr 1fr }
+  }
+  .switch-col h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--concrete);
+  }
+  .switch-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .switch-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--studio-grey);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .switch-list li::before {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    font-weight: 700;
+  }
+  .switch-push li::before {
+    content: '\00D7';
+    color: var(--studio-grey-light);
+    font-size: 1.1em;
+  }
+  .switch-pull li::before {
+    content: '//';
+    color: var(--red-silk);
+    font-family: 'Fragment Mono', monospace;
+    font-size: 0.8em;
+  }
+
+  /* ─── Proof ─── */
+  .proof-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .proof-wrapper { grid-template-columns: 1fr 1fr }
+  }
+  .proof-photo {
+    position: relative;
+    overflow: hidden;
+    clip-path: var(--clip-cut);
+  }
+  .proof-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.05);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .proof-photo {
+      max-width: 300px;
+      margin-inline: auto;
+    }
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .proof-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  .proof-item {
+    position: relative;
+    padding: var(--space-md) 0;
+  }
+  .proof-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 4px;
+    background: var(--red-silk);
+  }
+  .proof-number {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 900;
+    font-size: var(--text-number);
+    color: var(--red-silk);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .proof-context {
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    color: rgba(245, 240, 230, 0.65);
+    line-height: 1.6;
+  }
+
+  /* ─── Channel ─── */
+  .channel-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .channel-inner { grid-template-columns: 1fr 1fr }
+  }
+  .channel-text {
+    max-width: 48ch;
+  }
+  .channel-tagline {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--concrete);
+    line-height: 1.15;
+    margin-bottom: var(--space-sm);
+  }
+  .channel-desc {
+    color: var(--studio-grey);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+  }
+  .channel-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .channel-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--studio-grey);
+    font-weight: 400;
+  }
+  .channel-features li::before {
+    content: '//';
+    color: var(--red-silk);
+    font-family: 'Fragment Mono', monospace;
+    font-size: 0.8em;
+    margin-top: 0.25em;
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+  .channel-photo {
+    overflow: hidden;
+    clip-path: var(--clip-cut);
+  }
+  .channel-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(15%);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .channel-photo {
+      max-width: 300px;
+      margin-inline: auto;
+    }
+  }
+
+  /* ─── Contact ─── */
+  .contact { text-align: left }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr 1fr }
+  }
+  .contact-message {
+    font-family: 'Unbounded', sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    max-width: 20ch;
+    color: var(--cream);
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-sm);
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--red-silk) }
+  .contact-link svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke: var(--red-silk);
+    fill: none;
+  }
+  .contact-photo {
+    overflow: hidden;
+    clip-path: var(--clip-cut);
+  }
+  .contact-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.05);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .contact-photo {
+      max-width: 280px;
+    }
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--studio-grey);
+    text-align: center;
+    font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs);
+    color: var(--studio-grey);
+    background: var(--concrete);
+  }
+
+  /* ─── Stagger ─── */
+  .stagger > .reveal:nth-child(1) { transition-delay: 0s }
+  .stagger > .reveal:nth-child(2) { transition-delay: 0.1s }
+  .stagger > .reveal:nth-child(3) { transition-delay: 0.15s }
+  .stagger > .reveal:nth-child(4) { transition-delay: 0.2s }
+
+  /* ─── Separator line ─── */
+  .section-border-top { border-top: 1px solid rgba(245,240,230,0.12) }
+  .section-border-bottom { border-bottom: 1px solid rgba(245,240,230,0.12) }
+
+  /* ─── About teaser stats ─── */
+  .teaser-stats {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md); margin-top: var(--space-md);
+  }
+  @media (min-width: 768px) { .teaser-stats { grid-template-columns: repeat(4, 1fr) } }
+  .teaser-stat { position: relative; padding-top: var(--space-sm) }
+  .teaser-stat::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3rem; height: 4px; background: var(--red-silk);
+  }
+  .teaser-num {
+    font-family: 'Anybody', sans-serif; font-weight: 900;
+    font-size: var(--text-number); color: var(--red-silk);
+    line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.4rem;
+  }
+  .teaser-num span { font-size: 0.4em; margin-left: 0.15em; letter-spacing: 0 }
+  .teaser-stat:nth-child(1) .teaser-num { font-stretch: 130% }
+  .teaser-stat:nth-child(3) .teaser-num { font-stretch: 110% }
+  .teaser-label {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: rgba(245, 240, 230, 0.8); line-height: 1.5;
+  }
+  /* «Посмелее»: золотой акцент на единицах + ghost-цифра */
+  .teaser-num span { color: var(--ysl-gold) }
+  #about-teaser { position: relative; overflow: hidden }
+  #about-teaser .container { position: relative; z-index: 1 }
+  .teaser-ghost {
+    position: absolute; right: -2%; top: 50%; transform: translateY(-50%);
+    z-index: 0; pointer-events: none; user-select: none;
+    font-family: 'Anybody', sans-serif; font-weight: 900; font-stretch: 130%;
+    font-size: clamp(10rem, 30vw, 30rem); line-height: 0.75; letter-spacing: -0.05em;
+    color: transparent; -webkit-text-stroke: 2px rgba(245, 240, 230, 0.06); text-stroke: 2px rgba(245, 240, 230, 0.06);
+  }
+  @media (max-width: 760px) { .teaser-ghost { display: none } }
+
+  /* ─── Контактная форма ─── */
+  .contact-form { display: flex; flex-direction: column; gap: var(--space-sm) }
+  .field { display: flex; flex-direction: column; gap: 0.3rem }
+  .field > label { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: rgba(245,240,230,0.7) }
+  .field input, .field textarea {
+    font-family: 'Outfit', sans-serif; font-weight: 300; font-size: var(--text-base);
+    color: var(--cream); background: #222228; border: 1px solid var(--studio-grey);
+    padding: 0.7em 0.9em; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--studio-grey-light) }
+  .field input:focus, .field textarea:focus { border-color: var(--red-silk) }
+  .field.invalid input, .field.invalid textarea { border-color: var(--red-silk); background: rgba(200,50,50,0.08) }
+  .field-err { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--red-silk); min-height: 1.1em }
+  .cf-note { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--studio-grey-light) }
+  .cf-note::before { content: '// '; color: var(--red-silk) }
+  .btn[disabled] { opacity: 0.6; cursor: default; transform: none }
+  .contact-success { display: flex; flex-direction: column; align-items: flex-start }
+  .cs-mark {
+    width: 3rem; height: 3rem; background: var(--red-silk); color: var(--cream);
+    display: grid; place-items: center; font-size: 1.6rem; font-weight: 700;
+    clip-path: var(--clip-cut); margin-bottom: var(--space-sm);
+  }
+  .cs-title { font-family: 'Unbounded', sans-serif; font-weight: 700; text-transform: uppercase; color: var(--cream); font-size: var(--text-lg); margin-bottom: var(--space-xs); letter-spacing: -0.01em }
+  .cs-text { color: rgba(245,240,230,0.8); margin-bottom: var(--space-md); max-width: 42ch; line-height: 1.6 }
+
+  /* ─── Прогресс скролла + кнопка наверх ─── */
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red-silk); z-index: 200; transition: width 0.1s linear }
+  .to-top {
+    position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 150;
+    width: 3rem; height: 3rem; border: none; cursor: pointer; background: var(--concrete); color: var(--cream);
+    font-size: 1.2rem; line-height: 1; clip-path: var(--clip-cut);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+  }
+  .to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto }
+  .to-top:hover { background: var(--red-silk) }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none }
+    .hero-scroll-hint { animation: none }
+    .product { transition: none }
+    .to-top { transition: none }
+  }
+
+  /* Доступность: видимый фокус для клавиатуры */
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--red-silk);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Footer mini-nav */
+  .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-sm) }
+  .footer-nav a { color: var(--studio-grey); text-decoration: none; transition: color 0.2s }
+  .footer-nav a:hover { color: var(--red-silk) }
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="progress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">ЮЛ</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html" aria-current="page">главная</a></li>
+      <li><a href="about.html">обо мне</a></li>
+      <li><a href="cases.html">кейсы: контент</a></li>
+      <li><a href="case-careerum.html">кейс</a></li>
+      <li><a href="#contact">написать</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero — Cream, split layout: text left, photo right -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-split">
+      <div>
+        <h1 class="reveal">ВЫ&nbsp;ЗНАЕТЕ СВОЁ ДЕЛО ЛУЧШЕ ВСЕХ. А&nbsp;ДЕНЬГИ ПОЧЕМУ-ТО <span class="accent">У&nbsp;КОНКУРЕНТОВ</span></h1>
+        <p class="hero-subtitle reveal">Знакомо: вы&nbsp;пишете посты, запускаете продукты, вкладываете время. Результат скачет. В&nbsp;одном месяце густо, в&nbsp;другом пусто. Я&nbsp;разбираюсь, где&nbsp;ломается, и&nbsp;пересобираю маркетинг так, чтобы он&nbsp;работал без&nbsp;вашего ежедневного героизма.</p>
+        <div class="hero-code reveal">
+          <span>ex-продюсер ТНТ (Comedy Club, Stand Up, Танцы)</span>
+          <span>CMO: 8K → 200K подписчиков, 15М+ выручки/мес</span>
+          <span>~100 запусков за карьеру</span>
+        </div>
+        <div class="hero-cta-row reveal">
+          <a href="#products" class="btn">
+            Выбрать формат
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#struggles" class="btn btn-outline">Узнали себя?</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <picture>
+          <source type="image/webp" srcset="/photos/optimized/street-lean-360.webp 360w, /photos/optimized/street-lean-480.webp 480w, /photos/optimized/street-lean-640.webp 640w" sizes="(max-width: 767px) 320px, 50vw">
+          <img src="/photos/optimized/street-lean-360.jpg" srcset="/photos/optimized/street-lean-360.jpg 360w, /photos/optimized/street-lean-480.jpg 480w, /photos/optimized/street-lean-640.jpg 640w" sizes="(max-width: 767px) 320px, 50vw" alt="Юлиана Логинова, маркетинговый стратег" width="600" height="800" loading="eager" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</header>
+
+<!-- Struggles — Dark -->
+<section class="section-dark" id="struggles">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">знакомо?</span>
+    <h2 class="section-heading reveal">ЧЕТЫРЕ СИТУАЦИИ, ПОСЛЕ КОТОРЫХ ОБЫЧНО ПИШУТ МНЕ</h2>
+    <div class="struggles-grid stagger">
+
+      <div class="struggle-item reveal">
+        <div class="struggle-num">1</div>
+        <p class="struggle-text">Посты выходят регулярно. Лайки есть. Заявок нет. Непонятно, где&nbsp;теряются люди между &laquo;какой полезный пост&raquo; и&nbsp;&laquo;хочу купить&raquo;.</p>
+      </div>
+
+      <div class="struggle-item reveal">
+        <div class="struggle-num">2</div>
+        <p class="struggle-text">Каждый запуск как в&nbsp;первый раз. В&nbsp;прошлом месяце заработали 800К, в&nbsp;этом 120К. Между запусками тишина и&nbsp;тревога.</p>
+      </div>
+
+      <div class="struggle-item reveal">
+        <div class="struggle-num">3</div>
+        <p class="struggle-text">Коллега с&nbsp;более слабой экспертизой стабильно зарабатывает в&nbsp;два-три раза больше. И&nbsp;вы&nbsp;точно знаете, что&nbsp;дело не&nbsp;в&nbsp;продукте.</p>
+      </div>
+
+      <div class="struggle-item reveal">
+        <div class="struggle-num">4</div>
+        <p class="struggle-text">Нанимали SMM-щика, таргетолога, продюсера. Потратили деньги. Лучше не&nbsp;стало. Теперь маркетинг снова на&nbsp;вас, и&nbsp;вы&nbsp;уже не&nbsp;очень понимаете, кого искать.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Quiz CTA — Cream -->
+<section class="section-cream" id="quiz">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">быстрый тест · 3 минуты</span>
+    <h2 class="section-heading reveal">НЕ&nbsp;УВЕРЕНЫ, ЧТО&nbsp;ИМЕННО ЛОМАЕТ ВАШ МАРКЕТИНГ?</h2>
+    <p class="reveal" style="max-width: 58ch; color: var(--studio-grey); line-height: 1.7; margin-bottom: var(--space-md)">Пройдите короткий тест — за&nbsp;3&nbsp;минуты бот покажет, что&nbsp;именно «убивает» ваш маркетинг, и&nbsp;даст конкретные рекомендации. Без&nbsp;регистрации, прямо в&nbsp;Telegram.</p>
+    <a href="https://t.me/marketing_check_up_quiz_bot" target="_blank" rel="noopener" class="btn reveal">
+      Пройти тест в&nbsp;Telegram
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Quote — Cream -->
+<div class="pull-quote reveal">
+  <div class="container">
+    <blockquote>ОБЫЧНО ДЕЛО НЕ&nbsp;В&nbsp;КОНТЕНТЕ И&nbsp;НЕ&nbsp;В&nbsp;ВОРОНКЕ. ДЕЛО В&nbsp;ТОМ, ЧТО&nbsp;ЭТИ КУСКИ <span class="accent">НЕ&nbsp;СВЯЗАНЫ ДРУГ С&nbsp;ДРУГОМ</span></blockquote>
+  </div>
+</div>
+
+<!-- Products — Dark -->
+<section class="section-dark section-border-top" id="products">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">форматы</span>
+    <h2 class="section-heading reveal">ТРИ ВХОДА, В&nbsp;ЗАВИСИМОСТИ ОТ&nbsp;ТОГО, ЧТО&nbsp;СЕЙЧАС НУЖНЕЕ</h2>
+    <div class="products-grid stagger">
+
+      <div class="product reveal">
+        <span class="product-job">нужна ясность</span>
+        <h3 class="product-name">MARKETING CHECK-UP</h3>
+        <p class="product-price">25 000<span class="cur">&nbsp;₽</span> <em>· час-полтора</em></p>
+        <p class="product-situation">&laquo;Я&nbsp;делаю кучу всего, по&nbsp;ощущениям бегу быстро. Результата нет. Хочу понять, за&nbsp;что хвататься&raquo;</p>
+        <p class="product-desc">Раскладываем ваш маркетинг на&nbsp;части: бренд, продуктовая линейка, контент, продажи. Нахожу, где именно проваливается. Уходите с&nbsp;конкретным планом на&nbsp;4-6&nbsp;недель.</p>
+        <p class="product-outcome">Ясность, с&nbsp;чего начать. Первые результаты через месяц-два</p>
+        <a href="https://forms.gle/sp3LSF6z8H7tF7KBA" target="_blank" rel="noopener" class="product-cta">
+          Заполнить анкету на разбор
+          <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="product product-featured reveal">
+        <span class="product-badge">чаще всего берут</span>
+        <span class="product-job">нужна сборка</span>
+        <h3 class="product-name">BRAND SYSTEM</h3>
+        <p class="product-price">300 000<span class="cur">&nbsp;₽</span> <em>· 3 месяца</em></p>
+        <p class="product-situation">&laquo;Я&nbsp;понимаю, что&nbsp;нужно менять, но&nbsp;одна не&nbsp;вывезу. Нужен человек, который пройдёт это со&nbsp;мной&raquo;</p>
+        <p class="product-desc">Собираем целостную конструкцию: бренд, линейка продуктов, контент, продажи. Я&nbsp;рядом на&nbsp;каждом шаге. Делаю вместе с&nbsp;вами.</p>
+        <p class="product-outcome">Собранный бренд и&nbsp;продуктовая линейка. Доход стабилизируется</p>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-job">нужен директор</span>
+        <h3 class="product-name">PRIVATE CMO</h3>
+        <p class="product-price product-price--talk">Цена обсуждается</p>
+        <p class="product-situation">&laquo;Маркетинг съедает всё время. Мне&nbsp;нужен человек, который это заберёт&raquo;</p>
+        <p class="product-desc">Постоянная работа. Становлюсь вашим внешним директором по&nbsp;маркетингу. Стратегия, каналы, подрядчики, аналитика. Вы&nbsp;занимаетесь продуктом и&nbsp;клиентами, маркетинг на&nbsp;мне.</p>
+        <p class="product-outcome">Маркетинг работает. Вы&nbsp;занимаетесь тем, что&nbsp;умеете лучше всего</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Switch — Cream -->
+<section class="section-cream">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">почему именно так</span>
+    <h2 class="section-heading reveal">ЧТО&nbsp;ОБЫЧНО УЖЕ ПОПРОБОВАЛИ. И&nbsp;ЧТО&nbsp;МЕНЯЕТСЯ</h2>
+    <div class="switch-grid">
+
+      <div class="switch-col reveal">
+        <h3>УЖЕ ПРОБОВАЛИ</h3>
+        <ul class="switch-list switch-push">
+          <li>Наняли SMM-щика. Красивые сторис есть, заявок по-прежнему нет</li>
+          <li>Купили курс по&nbsp;запускам. Запустились один раз. Второй раз не&nbsp;вывезли</li>
+          <li>Отдали рекламу таргетологу. Слили бюджет, получили подписчиков-ботов</li>
+          <li>Начитались советов из&nbsp;телеграм-каналов. Делаете 15&nbsp;вещей одновременно, ни&nbsp;одна не&nbsp;доведена до&nbsp;конца</li>
+        </ul>
+      </div>
+
+      <div class="switch-col reveal">
+        <h3>ЧТО&nbsp;Я&nbsp;ДЕЛАЮ ИНАЧЕ</h3>
+        <ul class="switch-list switch-pull">
+          <li>Смотрю на&nbsp;весь маркетинг целиком: бренд, продукт, контент, продажи. Отдельные кусочки починить невозможно, если конструкция кривая</li>
+          <li>15&nbsp;лет в&nbsp;маркетинге. Продюсер Comedy Club Production (ТНТ), CMO с&nbsp;ростом до&nbsp;200K подписчиков и&nbsp;15М+ выручки в&nbsp;месяц, около сотни запусков</li>
+          <li>Собираю конструкцию и&nbsp;помогаю её&nbsp;запустить. Руками, вместе с&nbsp;вами</li>
+          <li>Говорю честно, если что-то не&nbsp;работает. Даже если вы&nbsp;вложили в&nbsp;это полгода</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Proof — Dark -->
+<section class="section-dark section-border-top" id="about-teaser">
+  <div class="teaser-ghost" aria-hidden="true">350</div>
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">коротко обо мне</span>
+    <h2 class="section-heading reveal">ОТКУДА Я&nbsp;ЭТО ЗНАЮ</h2>
+    <p class="reveal" style="max-width: 60ch; color: rgba(245,240,230,0.8); line-height: 1.7; margin-bottom: var(--space-md)">9&nbsp;лет была продюсером на&nbsp;ТНТ (Comedy&nbsp;Club, Stand&nbsp;Up, «Танцы»), потом перенесла приёмы ТВ в&nbsp;онлайн&nbsp;— и&nbsp;собрала маркетинг, который приносит клиентам деньги, а&nbsp;не&nbsp;красивые отчёты.</p>
+
+    <div class="teaser-stats stagger">
+      <div class="teaser-stat reveal">
+        <div class="teaser-num">9<span>лет</span></div>
+        <p class="teaser-label">продюсером на&nbsp;ТНТ</p>
+      </div>
+      <div class="teaser-stat reveal">
+        <div class="teaser-num">350<span>млн&nbsp;₽</span></div>
+        <p class="teaser-label">для&nbsp;Careerum за&nbsp;27&nbsp;запусков</p>
+      </div>
+      <div class="teaser-stat reveal">
+        <div class="teaser-num">&gt;500<span>млн&nbsp;₽</span></div>
+        <p class="teaser-label">всем клиентам с&nbsp;2018</p>
+      </div>
+      <div class="teaser-stat reveal">
+        <div class="teaser-num">~100</div>
+        <p class="teaser-label">запусков за&nbsp;карьеру</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-md); display: flex; gap: var(--space-sm); flex-wrap: wrap">
+      <a href="about.html" class="btn btn-dark">
+        Подробнее обо мне
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="case-careerum.html" class="btn btn-outline" style="color: var(--cream); border-color: var(--cream)">Кейс Careerum: 350 млн</a>
+    </div>
+  </div>
+</section>
+
+<!-- Channel — Cream -->
+<section class="section-cream" id="channel">
+  <div class="container">
+    <div class="channel-inner">
+      <div class="channel-text reveal">
+        <div class="red-line"></div>
+        <span class="section-label">пока присматриваетесь</span>
+        <h2 class="channel-tagline">МАРКЕТИНГ БЕЗ КОМАНДЫ</h2>
+        <p class="channel-desc">Telegram-канал для&nbsp;тех, кто&nbsp;работает без&nbsp;команды и&nbsp;хочет, чтобы маркетинг работал на&nbsp;уровне агентства. Без&nbsp;курсов за&nbsp;300К и&nbsp;обещаний миллиона за&nbsp;первый месяц.</p>
+        <a href="https://t.me/marketing_solo" target="_blank" rel="noopener" class="btn">
+          Подписаться
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="reveal">
+        <div class="channel-photo" style="margin-bottom: var(--space-md)">
+          <picture>
+            <source type="image/webp" srcset="/photos/optimized/street-2-360.webp 360w, /photos/optimized/street-2-480.webp 480w, /photos/optimized/street-2-640.webp 640w" sizes="(max-width: 767px) 90vw, 42vw">
+            <img src="/photos/optimized/street-2-360.jpg" srcset="/photos/optimized/street-2-360.jpg 360w, /photos/optimized/street-2-480.jpg 480w, /photos/optimized/street-2-640.jpg 640w" sizes="(max-width: 767px) 90vw, 42vw" alt="Юлиана Логинова, маркетинговый стратег" width="600" height="750" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <ul class="channel-features">
+          <li>AI-инструменты для маркетинга, которые реально экономят время (проверено на&nbsp;себе)</li>
+          <li>Как выстроить процессы, чтобы не&nbsp;тонуть в&nbsp;рутине</li>
+          <li>Контент и&nbsp;личный бренд без&nbsp;воды и&nbsp;без&nbsp;&laquo;просто будь собой&raquo;</li>
+          <li>Конкретные каналы привлечения клиентов с&nbsp;разбором, что&nbsp;сработало</li>
+          <li>Как продавать без&nbsp;ощущения, что&nbsp;ты&nbsp;впариваешь</li>
+          <li>Еженедельные дайджесты трендов</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact — Dark -->
+<section class="contact section-dark" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="red-line"></div>
+        <span class="section-label">написать</span>
+        <p class="contact-message">СИТУАЦИЯ ПОХОЖА НА&nbsp;ВАШУ? НАПИШИТЕ</p>
+        <p class="code-comment" style="margin-top: var(--space-sm)">разберёмся, какой формат подойдёт и&nbsp;подойдёт&nbsp;ли вообще</p>
+        <div class="contact-links" style="margin-top: var(--space-md)">
+          <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L9 13"/><path d="M21 3L14 21 9 13 1 9z"/></svg>
+            Или сразу в&nbsp;Telegram: @melisevaiva
+          </a>
+          <a href="https://t.me/marketing_solo" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            Канал @marketing_solo
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <p hidden><label>Не заполняйте: <input name="bot-field"></label></p>
+          <div class="field">
+            <label for="cf-name">Как вас зовут</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+            <span class="field-err" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="cf-contact">Telegram или email для&nbsp;ответа</label>
+            <input id="cf-contact" name="contact" type="text" placeholder="@username или you@mail.com" required>
+            <span class="field-err" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="cf-msg">Коротко о&nbsp;ситуации</label>
+            <textarea id="cf-msg" name="message" rows="4" placeholder="Что сейчас происходит с маркетингом" required></textarea>
+            <span class="field-err" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="btn" id="cf-submit">
+            Отправить
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="cf-note">отвечу лично, обычно в&nbsp;течение рабочего дня</p>
+        </form>
+        <div class="contact-success" id="contactSuccess" hidden>
+          <div class="cs-mark" aria-hidden="true">✓</div>
+          <p class="cs-title">Спасибо! Сообщение ушло</p>
+          <p class="cs-text">Отвечу вам лично — обычно в&nbsp;течение рабочего дня. А&nbsp;пока можно заглянуть в&nbsp;канал.</p>
+          <a href="https://t.me/marketing_solo" target="_blank" rel="noopener" class="btn btn-outline" style="color: var(--cream); border-color: var(--cream)">Канал @marketing_solo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <nav class="footer-nav" aria-label="Подвал">
+      <a href="index.html">главная</a>
+      <a href="about.html">обо мне</a>
+      <a href="cases.html">кейсы: контент</a>
+      <a href="case-careerum.html">кейс</a>
+      <a href="https://t.me/marketing_solo" target="_blank" rel="noopener">канал</a>
+    </nav>
+    <p>// &copy; Юлиана Логинова, 2026</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Burger menu
+const burger = document.getElementById('burger');
+const menu = document.getElementById('nav-menu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  menu.classList.toggle('open');
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  menu.classList.remove('open');
+}));
+
+// Прогресс скролла + кнопка «наверх»
+const progress = document.getElementById('progress');
+const toTop = document.getElementById('toTop');
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  if (progress) progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  if (toTop) toTop.classList.toggle('show', h.scrollTop > 600);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Контактная форма: валидация + AJAX-отправка (Netlify Forms)
+const cform = document.getElementById('contactForm');
+if (cform) {
+  const reqs = [...cform.querySelectorAll('input[required], textarea[required]')];
+  const validate = (el) => {
+    const wrap = el.closest('.field');
+    const err = wrap.querySelector('.field-err');
+    let msg = '';
+    if (!el.value.trim()) msg = 'Заполните это поле';
+    else if (el.id === 'cf-contact' && !/[@.]/.test(el.value)) msg = 'Укажите Telegram или email';
+    wrap.classList.toggle('invalid', !!msg);
+    if (err) err.textContent = msg;
+    return !msg;
+  };
+  reqs.forEach(el => el.addEventListener('blur', () => validate(el)));
+  reqs.forEach(el => el.addEventListener('input', () => { if (el.closest('.field').classList.contains('invalid')) validate(el); }));
+  cform.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const ok = reqs.map(validate).every(Boolean);
+    if (!ok) { cform.querySelector('.field.invalid input, .field.invalid textarea')?.focus(); return; }
+    const btn = document.getElementById('cf-submit');
+    btn.disabled = true; btn.textContent = 'Отправляю…';
+    try {
+      const body = new URLSearchParams(new FormData(cform)).toString();
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+      cform.hidden = true;
+      const ok2 = document.getElementById('contactSuccess');
+      ok2.hidden = false;
+      ok2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      btn.disabled = false; btn.textContent = 'Отправить';
+      const note = cform.querySelector('.cf-note');
+      if (note) note.textContent = 'Не удалось отправить — напишите в Telegram @melisevaiva';
+    }
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Эсманов × Логинова — как собрать бизнес из вашего имени</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;900&family=Fragment+Mono&family=Anybody:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red-silk:#c83232; --red-hover:#a82828;
+  --concrete:#1a1a1a; --cream:#f5f0e6;
+  --gold:#d4a574; --grey:#4a4a52; --grey-light:#6a6a72;
+  --text-xs:clamp(.7rem,.65rem + .25vw,.8rem);
+  --text-sm:clamp(.8rem,.75rem + .3vw,.9rem);
+  --text-base:clamp(.98rem,.92rem + .3vw,1.08rem);
+  --text-lg:clamp(1.1rem,1rem + .5vw,1.35rem);
+  --text-xl:clamp(1.5rem,1.1rem + 1.2vw,2.1rem);
+  --text-2xl:clamp(2rem,1.4rem + 2.2vw,3.2rem);
+  --text-hero:clamp(2.4rem,1.4rem + 4.5vw,5.5rem);
+  --text-number:clamp(2.6rem,1.6rem + 4vw,5rem);
+  --space-md:clamp(1.5rem,1rem + 1.5vw,2.5rem);
+  --space-lg:clamp(3rem,2rem + 3vw,5rem);
+  --space-xl:clamp(5rem,3rem + 5vw,8.5rem);
+  --ease:cubic-bezier(.25,1,.5,1);
+  --clip-sharp:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',system-ui,sans-serif;font-weight:300;
+  font-size:var(--text-base);line-height:1.65;
+  color:var(--concrete);background:var(--cream);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--space-md)}
+section{padding:var(--space-xl) 0}
+
+/* ---- typography helpers ---- */
+.label{font-family:'Fragment Mono',monospace;font-weight:400;font-size:var(--text-sm);
+  color:var(--red-silk);letter-spacing:.02em;margin-bottom:var(--space-md);display:block}
+.h2{font-family:'Unbounded',sans-serif;font-weight:900;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:var(--text-2xl);line-height:1.05}
+.h3{font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:var(--text-lg);line-height:1.15}
+.lead{font-size:var(--text-lg);font-weight:300;max-width:46ch;margin-top:var(--space-md)}
+.mono{font-family:'Fragment Mono',monospace;font-size:var(--text-sm);color:var(--grey)}
+.num{font-family:'Anybody',sans-serif;font-weight:900;color:var(--red-silk);
+  font-size:var(--text-number);line-height:.9;font-variation-settings:'wdth' 125}
+
+/* ---- dark / light sections ---- */
+.dark{background:var(--concrete);color:var(--cream)}
+.dark .h2,.dark .h3{color:var(--cream)}
+.dark .mono{color:var(--grey-light)}
+.dark .label{color:var(--red-silk)}
+
+/* ---- header ---- */
+header{position:sticky;top:0;z-index:50;background:rgba(26,26,26,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid rgba(245,240,230,.1)}
+.bar{display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem var(--space-md);max-width:1080px;margin:0 auto}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;text-transform:uppercase;
+  font-size:1rem;letter-spacing:.02em;color:var(--cream);text-decoration:none}
+.logo b{color:var(--red-silk)}
+.bar .mono{color:var(--grey-light);font-size:var(--text-xs)}
+@media(max-width:620px){.bar .mono{display:none}}
+
+/* ---- hero ---- */
+.hero{background:var(--concrete);color:var(--cream);min-height:92vh;display:flex;
+  align-items:center;position:relative}
+.hero h1{font-family:'Unbounded',sans-serif;font-weight:900;text-transform:uppercase;
+  letter-spacing:-.02em;font-size:var(--text-hero);line-height:.98}
+.hero h1 .r{color:var(--red-silk)}
+.hero .sub{margin-top:var(--space-md);max-width:44ch;font-size:var(--text-lg);color:#d8d2c6}
+.hero .tag{margin-top:var(--space-lg)}
+.scrollcue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:'Fragment Mono',monospace;font-size:var(--text-xs);color:var(--grey-light);
+  animation:bob 2.4s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---- diagnostics ---- */
+.diag{display:grid;gap:var(--space-md);margin-top:var(--space-lg)}
+.diag-row{display:grid;grid-template-columns:auto 1fr;gap:var(--space-md);
+  align-items:start;padding-bottom:var(--space-md);border-bottom:1px solid rgba(26,26,26,.12)}
+.diag-row .n{font-family:'Anybody',sans-serif;font-weight:900;font-size:var(--text-xl);
+  color:var(--red-silk);font-variation-settings:'wdth' 110;line-height:1}
+.diag-row p{margin-top:.4rem;max-width:62ch}
+
+/* ---- steps ---- */
+.steps{display:grid;gap:0;margin-top:var(--space-lg)}
+.step{display:grid;grid-template-columns:auto 1fr;gap:var(--space-md);
+  padding:var(--space-md) 0;border-bottom:1px solid rgba(245,240,230,.14)}
+.step:last-child{border-bottom:none}
+.step .sn{font-family:'Anybody',sans-serif;font-weight:900;font-size:var(--text-xl);
+  color:var(--red-silk);font-variation-settings:'wdth' 100}
+.step p{margin-top:.35rem;color:#cfc9bd;max-width:60ch}
+.artifact{margin-top:var(--space-lg);padding:var(--space-md);
+  border:1px solid var(--red-silk);background:rgba(200,50,50,.07)}
+.artifact .mono{color:var(--gold)}
+
+/* ---- matrix table ---- */
+.tablewrap{margin-top:var(--space-lg);overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:var(--text-sm)}
+th,td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid rgba(26,26,26,.12)}
+thead th{font-family:'Fragment Mono',monospace;font-weight:400;color:var(--grey);
+  text-transform:none;font-size:var(--text-xs);border-bottom:2px solid var(--concrete)}
+tbody th{font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--text-xs);letter-spacing:-.01em;color:var(--concrete);white-space:nowrap}
+td{text-align:center;font-size:var(--text-base)}
+td .cap{display:block;font-family:'Fragment Mono',monospace;font-size:.62rem;
+  color:var(--grey-light);margin-top:.2rem}
+.dot-hot{color:var(--red-silk);font-weight:600}
+.matrix-note{margin-top:var(--space-md);display:grid;gap:.5rem}
+.matrix-note li{list-style:none;font-family:'Fragment Mono',monospace;font-size:var(--text-sm)}
+.matrix-note b{color:var(--red-silk)}
+
+/* ---- products ---- */
+.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--space-md);margin-top:var(--space-lg)}
+.pcard{padding:var(--space-md);background:rgba(245,240,230,.05);
+  border:1px solid rgba(245,240,230,.14)}
+.pcard .ptag{font-family:'Fragment Mono',monospace;font-size:var(--text-xs);color:var(--gold);display:block;margin-bottom:.5rem}
+.pcard .h3{margin-bottom:.6rem}
+.pcard p{color:#cfc9bd;font-size:var(--text-sm)}
+
+/* ---- bubble matrix ---- */
+.matrix2{position:relative;height:clamp(360px,58vw,500px);margin-top:3rem;
+  border-left:1px solid rgba(245,240,230,.22);border-bottom:1px solid rgba(245,240,230,.22)}
+.m-yhi{position:absolute;top:-.1rem;left:.6rem;font-family:'Fragment Mono',monospace;
+  font-size:var(--text-xs);color:var(--grey-light)}
+.m-ylo{position:absolute;bottom:.4rem;left:.6rem;font-family:'Fragment Mono',monospace;
+  font-size:var(--text-xs);color:var(--grey-light)}
+.m-xlab{position:absolute;bottom:-1.9rem;left:0;width:100%;display:flex;
+  justify-content:space-between;font-family:'Fragment Mono',monospace;
+  font-size:var(--text-xs);color:var(--grey-light)}
+.m-line{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.bub{position:absolute;border-radius:50%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;transform:translate(-50%,-50%);z-index:2;padding:.35rem;
+  font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.02em;
+  line-height:1.02;font-size:clamp(.6rem,1.5vw,.82rem);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.bub small{font-family:'Fragment Mono',monospace;font-weight:400;text-transform:none;
+  letter-spacing:0;font-size:clamp(.5rem,1.1vw,.6rem);margin-top:.22rem;opacity:.92;line-height:1.1}
+.bub.red{background:var(--red-silk);color:var(--cream)}
+.bub.scale{background:var(--cream);color:var(--concrete)}
+.bub.star{box-shadow:0 0 0 3px var(--gold),0 6px 22px rgba(0,0,0,.4)}
+.b-big{width:clamp(98px,21vw,142px);height:clamp(98px,21vw,142px)}
+.b-med{width:clamp(82px,16vw,114px);height:clamp(82px,16vw,114px)}
+.b-sm{width:clamp(70px,13vw,96px);height:clamp(70px,13vw,96px)}
+.badge{position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;
+  background:var(--gold);color:var(--concrete);font-family:'Anybody',sans-serif;font-weight:900;
+  font-size:.82rem;display:flex;align-items:center;justify-content:center}
+.m-legend{margin-top:3rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;
+  font-family:'Fragment Mono',monospace;font-size:var(--text-xs);color:var(--grey-light)}
+.m-legend i{display:inline-block;width:11px;height:11px;border-radius:50%;
+  margin-right:.4rem;vertical-align:middle}
+.m-legend i.red{background:var(--red-silk)}
+.m-legend i.scale{background:var(--cream)}
+.m-legend i.star{background:transparent;box-shadow:0 0 0 2px var(--gold)}
+.m-takeaway{margin-top:var(--space-md);font-size:var(--text-lg);color:var(--cream);max-width:54ch}
+.m-takeaway b{color:var(--red-silk)}
+
+/* ---- phases ---- */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:var(--space-md);margin-top:var(--space-lg)}
+.phase{padding:var(--space-md);border:1px solid rgba(26,26,26,.14);background:#fff}
+.phase.p1{border-top:4px solid var(--red-silk)}
+.phase.p2{border-top:4px solid var(--gold)}
+.phase.p3{border-top:4px solid var(--grey)}
+.phase .ph{font-family:'Anybody',sans-serif;font-weight:900;font-size:var(--text-2xl);
+  font-variation-settings:'wdth' 130;line-height:.9}
+.phase.p1 .ph{color:var(--red-silk)}
+.phase.p2 .ph{color:var(--gold)}
+.phase.p3 .ph{color:var(--grey)}
+.phase .pt{font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--text-sm);margin:.5rem 0;letter-spacing:-.01em}
+.phase p{font-size:var(--text-sm);color:var(--grey)}
+.phase .res{margin-top:.8rem;font-family:'Fragment Mono',monospace;font-size:var(--text-xs);
+  color:var(--concrete);opacity:.7}
+
+/* ---- stats ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:var(--space-lg);margin-top:var(--space-lg)}
+.stat .num{display:block}
+.stat .cap{font-family:'Fragment Mono',monospace;font-size:var(--text-sm);
+  color:var(--grey-light);margin-top:.5rem}
+.whoami{margin-top:var(--space-lg);max-width:60ch;color:#cfc9bd}
+.biglink{display:inline-flex;align-items:center;gap:.5rem;margin-top:var(--space-md);
+  font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--text-sm);letter-spacing:-.01em;color:var(--cream);text-decoration:none;
+  border-bottom:2px solid var(--red-silk);padding-bottom:.3rem;transition:gap .3s var(--ease)}
+.biglink:hover{gap:.95rem}
+.biglink b{color:var(--red-silk)}
+
+/* ---- cta ---- */
+.cta{background:var(--red-silk);color:var(--cream);clip-path:var(--clip-sharp);
+  padding:var(--space-xl) var(--space-md);text-align:center}
+.cta .h2{color:var(--cream)}
+.cta p{max-width:48ch;margin:var(--space-md) auto 0;font-size:var(--text-lg)}
+.btn{display:inline-block;margin-top:var(--space-lg);background:var(--concrete);
+  color:var(--cream);font-family:'Unbounded',sans-serif;font-weight:700;
+  text-transform:uppercase;font-size:var(--text-sm);letter-spacing:-.01em;
+  padding:1rem 2.2rem;text-decoration:none;clip-path:var(--clip-sharp);
+  transition:transform .3s var(--ease)}
+.btn:hover{transform:translateY(-3px)}
+.cta .mono{color:rgba(245,240,230,.8);margin-top:var(--space-md)}
+
+footer{background:var(--concrete);color:var(--grey-light);
+  padding:var(--space-lg) var(--space-md);text-align:center}
+footer .logo{display:inline-block;margin-bottom:.6rem}
+footer .mono{color:var(--grey-light);font-size:var(--text-xs)}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(24px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.scrollcue{animation:none}}
+
+/* ---- входной гейт ---- */
+body.locked{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:1000;background:var(--concrete);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;padding:var(--space-md);
+  transition:opacity .6s var(--ease),visibility .6s}
+.gate.hidden{opacity:0;visibility:hidden}
+.gate-inner{max-width:580px;width:100%}
+.gate .label{color:var(--red-silk)}
+.gate h2{font-family:'Unbounded',sans-serif;font-weight:900;text-transform:uppercase;
+  font-size:var(--text-2xl);line-height:1.04;letter-spacing:-.01em;margin-top:.4rem}
+.gate h2 .r{color:var(--red-silk)}
+.gate .q{margin-top:var(--space-md);font-size:var(--text-lg);color:#d8d2c6;max-width:42ch}
+.gate form{margin-top:var(--space-md);display:flex;gap:.6rem;flex-wrap:wrap}
+.gate input{flex:1;min-width:220px;font-family:'Outfit',sans-serif;font-size:var(--text-base);
+  color:var(--cream);background:#222228;border:1px solid var(--grey);padding:.85em 1em;outline:none;
+  transition:border-color .2s}
+.gate input:focus{border-color:var(--red-silk)}
+.gate button{font-family:'Unbounded',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--text-sm);letter-spacing:-.01em;background:var(--red-silk);color:var(--cream);
+  border:none;padding:.85em 1.8em;cursor:pointer;clip-path:var(--clip-sharp);transition:background .2s}
+.gate button:hover{background:var(--red-hover)}
+.gate .hint{margin-top:.9rem;font-family:'Fragment Mono',monospace;font-size:var(--text-xs);
+  color:var(--grey-light);min-height:1.2em}
+.gate.shake .gate-inner{animation:shake .42s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}
+  40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+@media(prefers-reduced-motion:reduce){.gate.shake .gate-inner{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ВХОДНОЙ ГЕЙТ -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-inner">
+    <span class="label">// сайт собран для одного человека</span>
+    <h2 id="gate-title">Это сайт для<br><span class="r">Василия Эсманова</span></h2>
+    <p class="q" id="gate-q">Он не в общем доступе. Вопрос для входа: как фамилия человека, который основал Telegraphen-Union?</p>
+    <form id="gate-form" autocomplete="off">
+      <input id="gate-input" type="text" placeholder="Одно слово — фамилия" aria-label="Ответ" autocomplete="off">
+      <button type="submit">Войти</button>
+    </form>
+    <p class="hint" id="gate-hint">// вы точно знаете ответ</p>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <a href="#top" class="logo"><b>Ю</b> Логинова</a>
+    <span class="mono">// продюсирование экспертов</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="label">// для Василия Эсманова</span>
+    <h1>У вас уже<br>есть то, что<br>другие строят<br><span class="r">годами.</span></h1>
+    <p class="sub">Имя, репутация, аудитория, которая вас любит, клиенты сами приходят. Большинству такие активы нужно собирать годами. Осталось превратить это в систему, которая зарабатывает без того, чтобы вы бесконечно продавали своё время, и масштабируется в продукты, которые могут принести пользу большому количеству людей.</p>
+    <p class="tag mono">// от эксперта с именем — к бизнесу с именем</p>
+  </div>
+  <span class="scrollcue">scroll ↓</span>
+</section>
+
+<!-- DIAGNOSTICS -->
+<section>
+  <div class="wrap reveal">
+    <span class="label">// что я вижу</span>
+    <h2 class="h2">Что я увидела<br>за полчаса</h2>
+    <div class="diag">
+      <div class="diag-row"><span class="n">01</span>
+        <div><h3 class="h3">Потолок уже виден</h3>
+        <p>Вы продаёте часы пакетами. Это честно и работает. Но в сутках их всего 24, и выше головы тут не прыгнуть.</p></div>
+      </div>
+      <div class="diag-row"><span class="n">02</span>
+        <div><h3 class="h3">Аудитория богаче, чем кошелёк проекта</h3>
+        <p>Вокруг вас собрались умные деятельные люди. Часть уже платит. Часть хочет делать свой контент и пока просто лайкает. Спрос есть, продавать ему нечего.</p></div>
+      </div>
+      <div class="diag-row"><span class="n">03</span>
+        <div><h3 class="h3">Идей хватит на годы вперёд</h3>
+        <p>Клуб, подкаст, салон, шоу, книга, английская версия. Идеи сильные, и их много. Без приоритета легко начать всё сразу и ничего не довести. Здесь и нужен продюсер: помочь выбрать порядок и довести до результата.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="dark">
+  <div class="wrap reveal">
+    <span class="label">// фаза 0 — встроена в первый месяц</span>
+    <h2 class="h2">Сначала факты,<br>потом действия</h2>
+    <p class="lead" style="color:#cfc9bd">Никаких продуктов наугад. Сначала выясняем, кто и за что реально готов платить, а уже потом собираем продуктовую линейку на основе этих данных.</p>
+    <div class="steps">
+      <div class="step"><span class="sn">01</span>
+        <div><h3 class="h3">CustDev платящих</h3>
+        <p>Поговорю с теми, кто уже платит. Как нашли, за что отдают деньги, что зацепило, за что доплатили бы. Отсюда — портрет того, кто на самом деле покупает.</p></div>
+      </div>
+      <div class="step"><span class="sn">02</span>
+        <div><h3 class="h3">CustDev «хочу свой контент»</h3>
+        <p>Спрошу аудиторию напрямую: пошли бы в групповой формат, за сколько, что мешает делать контент самим. Проверяем спрос на клуб до того, как его строить, а не после.</p></div>
+      </div>
+      <div class="step"><span class="sn">03</span>
+        <div><h3 class="h3">Аудит аудитории</h3>
+        <p>Разложу подписчиков по полочкам: кто они, сколько среди них платёжеспособных, откуда приходят клиенты — с контента или по сарафану. Сейчас ответ «скорее да». Сделаем «точно».</p></div>
+      </div>
+      <div class="step"><span class="sn">04</span>
+        <div><h3 class="h3">Контент-аудит</h3>
+        <p>Посмотрю, какие темы и форматы поднимают охваты и приводят клиентов, — чтобы усиливать то, что работает, и строить продукты вокруг этого. Цену при этом ставим по вашей ценности и имени, а не по рынку: на вас идут именно за вами, сравнивать не с кем.</p></div>
+      </div>
+    </div>
+    <div class="artifact">
+      <span class="mono">// что получите на выходе</span>
+      <p style="margin-top:.5rem">Портрет покупателя по сегментам и карту спроса. Это самостоятельный актив, который окупается, даже если взять паузу: из него растёт вообще всё дальнейшее.</p>
+      <p style="margin-top:.7rem;font-family:'Fragment Mono',monospace;font-size:var(--text-sm);line-height:1.9">
+        →&nbsp; темы контента, который приводит платящих<br>
+        →&nbsp; продуктовая линейка под реальный спрос<br>
+        →&nbsp; лендинги и продающие тексты на языке клиента<br>
+        →&nbsp; цена и позиционирование по делу
+      </p>
+      <p style="margin-top:.7rem">Без этой карты остальное собирается наугад. С ней — по фактам.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX -->
+<section>
+  <div class="wrap reveal">
+    <span class="label">// карта потенциала</span>
+    <h2 class="h2">Кто за что<br>готов платить</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr>
+          <th>сегмент аудитории</th><th>консалтинг</th><th>клуб</th><th>книга</th><th>подкаст</th><th>выступления</th>
+        </tr></thead>
+        <tbody>
+          <tr><th>Прикладной бизнес</th>
+            <td class="dot-hot">●<span class="cap">ядро дохода</span></td>
+            <td>◐<span class="cap">группой</span></td>
+            <td>◐<span class="cap">доп</span></td>
+            <td>·<span class="cap">охват</span></td>
+            <td>◐<span class="cap">корпоратив</span></td></tr>
+          <tr><th>Хотят свой контент</th>
+            <td>◐<span class="cap">редко</span></td>
+            <td class="dot-hot">●●<span class="cap">главный рост</span></td>
+            <td class="dot-hot">●<span class="cap">купят</span></td>
+            <td>·<span class="cap">охват</span></td>
+            <td>◐<span class="cap">лекции</span></td></tr>
+          <tr><th>Развлекательные</th>
+            <td>—</td><td>—</td>
+            <td>◐<span class="cap">импульс</span></td>
+            <td class="dot-hot">●<span class="cap">слушают</span></td>
+            <td class="dot-hot">●<span class="cap">билеты</span></td></tr>
+          <tr><th>Институции / бренды</th>
+            <td class="dot-hot">●<span class="cap">высокий чек</span></td>
+            <td>—</td>
+            <td class="dot-hot">●<span class="cap">Альпина уже тут</span></td>
+            <td>◐<span class="cap">спонсор</span></td>
+            <td class="dot-hot">●<span class="cap">корпоративы</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="matrix-note">
+      <li>// <b>деньги уже сегодня</b> — прикладной бизнес и консалтинг</li>
+      <li>// <b>спящий рост</b> — те, кто хочет свой контент, через клуб</li>
+      <li>// <b>охват и имя</b> — подкаст на широкую</li>
+      <li>// <b>авторитет и воронка</b> — книга, бьёт по всем сразу</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="dark">
+  <div class="wrap reveal">
+    <span class="label">// что дорабатываем</span>
+    <h2 class="h2">Продукты<br>на одной карте</h2>
+    <p class="lead" style="color:#cfc9bd">Две оси решают всё: сколько продукт ест вашего времени и насколько он масштабируется. Размер круга — как быстро приходят деньги. Красные — то, чем вам в кайф заниматься лично.</p>
+
+    <div class="matrix2">
+      <span class="m-yhi">▲ масштаб дохода</span>
+      <span class="m-ylo">точечно</span>
+      <span class="m-xlab"><span>◀ много вашего времени</span><span>мало времени ▶</span></span>
+      <svg class="m-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line x1="26" y1="62" x2="78" y2="25" stroke="#c83232" stroke-width="1.5"
+              stroke-dasharray="3 3" vector-effect="non-scaling-stroke" opacity=".85"/>
+      </svg>
+      <div class="bub red b-big" style="left:26%;top:62%">Консалтинг<small>деньги сегодня</small><span class="badge">1</span></div>
+      <div class="bub red b-med" style="left:42%;top:84%">Выступления<small>чек + имя</small></div>
+      <div class="bub scale b-sm" style="left:28%;top:24%">Подкаст<small>деньги позже</small></div>
+      <div class="bub scale b-med" style="left:50%;top:50%">Книга<small>репутация</small></div>
+      <div class="bub scale star b-big" style="left:78%;top:25%">Клуб<small>recurring</small><span class="badge">2</span></div>
+    </div>
+
+    <div class="m-legend">
+      <span><i class="red"></i> вам в кайф / лично</span>
+      <span><i class="scale"></i> масштабируемое</span>
+      <span><i class="star"></i> звезда роста</span>
+      <span>размер круга = скорость денег</span>
+      <span>① старт сейчас → ② главный рост</span>
+    </div>
+
+    <p class="m-takeaway">Начинаем с <b>консалтинга</b> — деньги уже сегодня, и это то, что вы любите. Растём в <b>клуб</b> — масштаб без потолка часов. Книга требует времени, зато собирается из ваших выступлений и материалов (часть на AI) и годами работает на репутацию. Подкаст и выступления подключаются по пути.</p>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section>
+  <div class="wrap reveal">
+    <span class="label">// дорожная карта</span>
+    <h2 class="h2">Три фазы</h2>
+    <div class="phases">
+      <div class="phase p1"><span class="ph">01</span>
+        <div class="pt">Фундамент · месяц 1–2</div>
+        <p>Исследование, упаковка консалтинга и предсказуемые пять клиентов в месяц без надежды на удачу.</p>
+        <div class="res">// стабильный доход и понятный покупатель</div>
+      </div>
+      <div class="phase p2"><span class="ph">02</span>
+        <div class="pt">Масштаб · месяц 2–4</div>
+        <p>Запускаем клуб для тех, кто хочет свой контент. Салон обкатываем как пилот.</p>
+        <div class="res">// recurring-доход, потолок часов снят</div>
+      </div>
+      <div class="phase p3"><span class="ph">03</span>
+        <div class="pt">Охват · месяц 4+</div>
+        <p>Подкаст, книга, английская версия. Шоу — когда будет команда и силы.</p>
+        <div class="res">// медийный актив и новый рынок</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS / WHO -->
+<section class="dark">
+  <div class="wrap reveal">
+    <span class="label">// кто это собирает</span>
+    <h2 class="h2">Я уже делала<br>это руками</h2>
+    <div class="stats">
+      <div class="stat"><span class="num" style="font-variation-settings:'wdth' 130">9</span><div class="cap">// лет продюсером ТНТ<br>Comedy Club, Stand Up</div></div>
+      <div class="stat"><span class="num">350М</span><div class="cap">// выручка, кейс Careerum<br>с 8К аудитории</div></div>
+      <div class="stat"><span class="num" style="font-variation-settings:'wdth' 100">~100</span><div class="cap">// запусков<br>за карьеру</div></div>
+      <div class="stat"><span class="num" style="font-variation-settings:'wdth' 115">2 мес</span><div class="cap">// из кассового разрыва в плюс<br>Школа психологии</div></div>
+    </div>
+    <p class="whoami">Беру эксперта и выращиваю вокруг него бизнес: продуктовая линейка, запуски, экономика, контент, подрядчики. От Школы стиля до карьерного стартапа с нуля. Плюс живу в AI: вайб-кодинг, агенты, автоматизация. Для проекта это сразу скорость и меньше счетов от подрядчиков.</p>
+    <a href="/about.html" target="_blank" rel="noopener" class="biglink"><b>→</b>&nbsp; Подробнее обо мне</a>
+  </div>
+</section>
+
+<!-- HOW TO READ -->
+<section>
+  <div class="wrap reveal">
+    <span class="label">// как читать этот план</span>
+    <h2 class="h2">Это набросок<br>для разговора</h2>
+    <p class="lead">Так я вижу картину с ходу — по горячим следам нашего получаса. Это не высеченный в камне маршрут, а отправная точка. На встрече разложу, почему выбрала именно такой порядок, а вы расскажете, чего хотите вы: наверняка всплывут детали и желания, под которые приоритеты легко перетасовать. Поэтому дальше — не «утвердить план», а сесть и обсудить.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta reveal">
+  <h2 class="h2">Давайте<br>встретимся</h2>
+  <p>Покажу логику вживую, отвечу на вопросы и подстроим всё под ваши цели — хотите так или хотите иначе. А дальше первый шаг: две недели исследования и упаковка консалтинга, через два месяца смотрим на цифры.</p>
+  <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn">Назначить встречу</a>
+  <p class="mono">// один человек собирает вам полноценный бизнес</p>
+</div>
+
+<footer>
+  <a href="#top" class="logo"><b>Ю</b> Юлиана Логинова</a>
+  <p class="mono">// маркетинговый стратег · продюсирование экспертов · @marketing_solo</p>
+</footer>
+
+<script>
+// Входной гейт
+(function(){
+  const gate=document.getElementById('gate');
+  if(!gate){return;}
+  document.body.classList.add('locked');
+  const form=document.getElementById('gate-form');
+  const input=document.getElementById('gate-input');
+  const hint=document.getElementById('gate-hint');
+  // допустимые ответы (можно расширить/заменить)
+  const answers=['хугенберг','гугенберг','альфред хугенберг','альфред гугенберг','hugenberg','alfred hugenberg'];
+  const norm=s=>s.trim().toLowerCase().replace(/ё/g,'е');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(answers.indexOf(norm(input.value))>-1){
+      gate.classList.add('hidden');
+      document.body.classList.remove('locked');
+      setTimeout(()=>{gate.parentNode&&gate.parentNode.removeChild(gate);},650);
+    }else{
+      gate.classList.add('shake');
+      hint.textContent='// не то — попробуйте ещё раз';
+      setTimeout(()=>gate.classList.remove('shake'),460);
+      input.select();
+    }
+  });
+  setTimeout(()=>input.focus(),100);
+})();
+
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

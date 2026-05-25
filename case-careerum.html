@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс Careerum: 350 млн ₽ за 27 запусков — Юлиана Логинова</title>
+<meta name="description" content="Как принципы ТВ-продюсера ТНТ дали Careerum 27 запусков за 3,5 года на 350 млн ₽: реалити-формат клуба, «библия героев», чат-бот на 66К, мемный таргет с ROMI 3000%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Fragment+Mono&family=Anybody:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Fragment+Mono&family=Anybody:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root {
+    --red-silk: #c83232;
+    --red-silk-hover: #a82828;
+    --concrete: #1a1a1a;
+    --cream: #f5f0e6;
+    --ysl-gold: #d4a574;
+    --studio-grey: #4a4a52;
+    --studio-grey-light: #6a6a72;
+
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+    --text-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+    --text-lg: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+    --text-xl: clamp(1.4rem, 1.1rem + 0.9vw, 1.85rem);
+    --text-2xl: clamp(1.8rem, 1.3rem + 1.8vw, 2.8rem);
+    --text-hero: clamp(2.2rem, 1.6rem + 2.8vw, 4rem);
+    --text-number: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+
+    --space-xs: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
+    --space-sm: clamp(0.75rem, 0.6rem + 0.5vw, 1rem);
+    --space-md: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    --space-lg: clamp(3rem, 2rem + 3vw, 5rem);
+    --space-xl: clamp(5rem, 3rem + 5vw, 8rem);
+
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --clip-cut: polygon(0 0, 100% 0, 100% 82%, 88% 100%, 0 100%);
+  }
+
+  html { scroll-behavior: smooth }
+
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--concrete);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  picture { display: block }
+
+  .container { width: min(92%, 68rem); margin-inline: auto }
+
+  .reveal {
+    opacity: 0; transform: translateY(2rem);
+    transition: opacity 0.7s var(--ease-out-quart), transform 0.7s var(--ease-out-quart);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0) }
+
+  .section-dark { background: var(--concrete); color: var(--cream) }
+  .section-cream { background: var(--cream); color: var(--concrete) }
+
+  section { padding: var(--space-xl) 0 }
+
+  .red-line { width: 4rem; height: 4px; background: var(--red-silk); margin-bottom: var(--space-sm) }
+
+  .section-label {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.15em; color: var(--red-silk);
+    margin-bottom: var(--space-xs);
+  }
+  .section-label::before { content: '// ' }
+
+  .section-heading {
+    font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: var(--text-2xl);
+    text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.15;
+    margin-bottom: var(--space-md); max-width: 24ch;
+  }
+  .section-cream .section-label { color: var(--red-silk) }
+
+  /* ─── Navigation ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: var(--space-sm) 0; transition: background 0.3s, backdrop-filter 0.3s;
+  }
+  .nav.scrolled {
+    background: rgba(245, 240, 230, 0.9); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center }
+  .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none }
+  .nav-logo-mark {
+    font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: var(--text-lg);
+    color: var(--cream); background: var(--red-silk); padding: 0.3em 0.5em 0.25em;
+    clip-path: var(--clip-cut); line-height: 1; text-transform: uppercase; letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: var(--space-md); list-style: none }
+  .nav-links a {
+    font-family: 'Fragment Mono', monospace; color: var(--studio-grey);
+    text-decoration: none; font-size: var(--text-xs); transition: color 0.2s; text-transform: lowercase;
+  }
+  .nav-links a:hover, .nav-links a[aria-current] { color: var(--red-silk) }
+
+  .burger {
+    display: none; background: none; border: none; cursor: pointer;
+    padding: 4px; width: 36px; height: 36px; position: relative; z-index: 110;
+  }
+  .burger span {
+    display: block; width: 24px; height: 2px; background: var(--concrete);
+    margin: 5px auto; transition: transform 0.3s, opacity 0.3s;
+  }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
+  .burger.open span:nth-child(2) { opacity: 0 }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      display: none; position: fixed; inset: 0; background: rgba(26, 26, 26, 0.97);
+      backdrop-filter: blur(12px); flex-direction: column; align-items: center;
+      justify-content: center; gap: var(--space-md); z-index: 105;
+    }
+    .nav-links.open { display: flex }
+    .nav-links a { font-size: var(--text-lg); color: var(--cream) }
+    .burger { display: block }
+  }
+
+  /* ─── Buttons ─── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85em 1.8em;
+    background: var(--red-silk); color: var(--cream); text-decoration: none;
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.02em; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s; clip-path: var(--clip-cut);
+  }
+  .btn:hover { background: var(--red-silk-hover); transform: translateY(-1px) }
+  .btn-outline { background: transparent; color: var(--red-silk); border: 2px solid var(--red-silk); clip-path: none }
+  .btn-outline:hover { background: var(--red-silk); color: var(--cream) }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: var(--studio-grey); transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--red-silk) }
+  .back-link svg { width: 14px; height: 14px; stroke: currentColor }
+
+  /* ─── Hero: big-number (§9.4) ─── */
+  .hero {
+    min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: calc(var(--space-xl) + 2rem); padding-bottom: var(--space-lg);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -20%; right: -15%; width: 70%; height: 140%;
+    background: radial-gradient(ellipse at center, rgba(200,50,50,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-sm); color: var(--studio-grey);
+    margin-bottom: var(--space-sm);
+  }
+  .hero-eyebrow::before { content: '// '; color: var(--red-silk) }
+  .hero-number {
+    font-family: 'Anybody', sans-serif; font-weight: 900;
+    font-size: clamp(4rem, 2rem + 14vw, 13rem); color: var(--red-silk);
+    line-height: 0.82; letter-spacing: -0.04em; font-stretch: 130%;
+    margin-bottom: var(--space-sm);
+  }
+  .hero-number .cur { font-size: 0.45em; vertical-align: 0.35em; color: var(--ysl-gold) }
+  .hero h1 {
+    font-family: 'Unbounded', sans-serif; font-size: var(--text-xl); font-weight: 700;
+    text-transform: uppercase; line-height: 1.2; letter-spacing: -0.01em;
+    color: var(--concrete); max-width: 26ch; margin-bottom: var(--space-md);
+  }
+  .hero h1 .accent { color: var(--red-silk) }
+  .hero-meta {
+    display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-bottom: var(--space-md);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 0.2rem }
+  .hero-meta-num {
+    font-family: 'Anybody', sans-serif; font-weight: 900; font-size: var(--text-xl);
+    color: var(--concrete); line-height: 1; letter-spacing: -0.02em;
+  }
+  .hero-meta-label { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--studio-grey) }
+
+  /* ─── Before / After (§10.6) ─── */
+  .ba-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-md) }
+  @media (min-width: 768px) { .ba-grid { grid-template-columns: 1fr 1fr } }
+  .ba-col { padding: var(--space-md) }
+  .ba-before { background: #ece4d2; border-left: 4px solid var(--studio-grey) }
+  .ba-after { background: var(--red-silk); clip-path: var(--clip-cut) }
+  .ba-tag {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-sm); display: block;
+  }
+  .ba-before .ba-tag { color: var(--studio-grey) }
+  .ba-before .ba-tag::before { content: '✕ ' }
+  .ba-after .ba-tag { color: rgba(245,240,230,0.85) }
+  .ba-after .ba-tag::before { content: '// ' }
+  .ba-col h3 {
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-lg);
+    text-transform: uppercase; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: var(--space-sm);
+  }
+  .ba-before h3 { color: var(--concrete) }
+  .ba-after h3 { color: var(--cream) }
+  .ba-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-xs) }
+  .ba-list li { font-size: var(--text-sm); line-height: 1.55; display: flex; gap: 0.6rem; align-items: flex-start }
+  .ba-list li::before { flex-shrink: 0; margin-top: 0.15em; font-family: 'Fragment Mono', monospace; font-size: 0.85em }
+  .ba-before .ba-list li { color: var(--studio-grey) }
+  .ba-before .ba-list li::before { content: '—'; color: var(--studio-grey) }
+  .ba-after .ba-list li { color: var(--cream) }
+  .ba-after .ba-list li::before { content: '→'; color: var(--cream) }
+
+  /* ─── Схемы «ТВ → онлайн» ─── */
+  .schemes { display: flex; flex-direction: column; gap: var(--space-lg); margin-top: var(--space-md) }
+  .scheme {
+    position: relative; overflow: hidden;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    background: #fffdf8; border: 1px solid rgba(26,26,26,0.08);
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 97% 100%, 0 100%);
+  }
+  .scheme-num {
+    position: absolute; top: var(--space-md); right: var(--space-md); z-index: 1;
+    pointer-events: none; user-select: none;
+    font-family: 'Anybody', sans-serif; font-weight: 900; font-stretch: 115%;
+    font-size: var(--text-2xl); line-height: 1; letter-spacing: -0.03em;
+    color: rgba(200, 50, 50, 0.22);
+  }
+  .scheme-title {
+    position: relative; z-index: 1;
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-lg);
+    text-transform: uppercase; line-height: 1.2; letter-spacing: -0.01em; color: var(--concrete);
+    margin-bottom: var(--space-md); max-width: 30ch;
+  }
+  .scheme-flow {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-md); align-items: stretch;
+  }
+  .scheme-side { padding: var(--space-sm) var(--space-md) }
+  .scheme-side.tv { border-left: 3px solid var(--ysl-gold); background: rgba(212,165,116,0.10) }
+  .scheme-side.online { border-left: 3px solid var(--red-silk); background: rgba(200,50,50,0.06) }
+  .scheme-tag {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); text-transform: uppercase;
+    letter-spacing: 0.1em; display: block; margin-bottom: 0.45rem;
+  }
+  .scheme-side.tv .scheme-tag { color: #a9772f }
+  .scheme-side.online .scheme-tag { color: var(--red-silk) }
+  .scheme-side p { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: var(--text-sm); line-height: 1.6; color: var(--concrete) }
+  .scheme-side .accent { color: var(--red-silk); font-weight: 500 }
+  .scheme-arrow {
+    align-self: center; font-family: 'Anybody', sans-serif; font-weight: 900;
+    font-size: var(--text-2xl); color: var(--red-silk); line-height: 1;
+  }
+  .scheme-stat {
+    position: relative; z-index: 1; display: inline-flex; align-items: baseline; gap: 0.5rem;
+    margin-top: var(--space-md); padding: var(--space-xs) var(--space-md);
+    background: var(--concrete); clip-path: var(--clip-cut);
+  }
+  .scheme-stat .n { font-family: 'Anybody', sans-serif; font-weight: 900; font-size: var(--text-lg); color: var(--ysl-gold); line-height: 1; letter-spacing: -0.02em }
+  .scheme-stat .t { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: rgba(245,240,230,0.85) }
+  @media (max-width: 860px) {
+    .scheme-flow { grid-template-columns: 1fr; gap: var(--space-sm) }
+    .scheme-arrow { transform: rotate(90deg); justify-self: start; margin: 0.1rem 0 }
+  }
+
+  /* ─── Пруф-скрины (реальные выгрузки) ─── */
+  .proof-shot {
+    background: #fff; padding: var(--space-sm);
+    border: 1px solid rgba(26,26,26,0.08);
+    clip-path: polygon(0 0, 100% 0, 100% 94%, 97% 100%, 0 100%);
+    margin-top: var(--space-md);
+  }
+  .proof-shot img { width: 100%; height: auto; display: block }
+  .proof-shot.wide { overflow-x: auto; -webkit-overflow-scrolling: touch }
+  .proof-shot.wide img { min-width: 640px }
+  .proof-cap {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: var(--studio-grey); margin-top: 0.6rem; line-height: 1.5;
+  }
+  .proof-cap::before { content: '// '; color: var(--red-silk) }
+
+  /* ─── Визуальный До → После ─── */
+  .ba-pair {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-md); align-items: center; margin-top: var(--space-lg);
+  }
+  .ba-half { display: flex; flex-direction: column }
+  .ba-half-tag {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem;
+  }
+  .ba-half-tag.before { color: var(--studio-grey) }
+  .ba-half-tag.before::before { content: '✕ ' }
+  .ba-half-tag.after { color: var(--red-silk) }
+  .ba-half-tag.after::before { content: '→ ' }
+  .ba-half-cap {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: var(--studio-grey); margin-top: 0.6rem; line-height: 1.4;
+  }
+  .ba-half-cap b { color: var(--concrete); font-weight: 400 }
+  .ba-arrow {
+    font-family: 'Anybody', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 1rem + 4vw, 3.5rem); color: var(--red-silk);
+    line-height: 1; text-align: center;
+  }
+  .shot-tall { max-height: 520px; overflow: hidden }
+  .shot-tall img { object-fit: cover; object-position: top center; max-height: 520px }
+  @media (max-width: 700px) {
+    .ba-pair { grid-template-columns: 1fr; gap: var(--space-sm) }
+    .ba-arrow { transform: rotate(90deg); margin: 0.2rem 0 }
+  }
+
+  /* Галерея пруфов */
+  .gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-md) }
+  @media (min-width: 700px) { .gallery { grid-template-columns: 1fr 1fr } }
+  .gallery-cap {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: var(--studio-grey); margin-top: 0.6rem;
+  }
+  .gallery-cap::before { content: '// '; color: var(--red-silk) }
+
+  /* ─── Резюме / выноска ─── */
+  .takeaway { background: var(--cream); color: var(--concrete) }
+  .takeaway blockquote {
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-xl);
+    text-transform: uppercase; line-height: 1.25; letter-spacing: -0.01em;
+    color: var(--concrete); max-width: 30ch;
+  }
+  .takeaway blockquote .accent { color: var(--red-silk) }
+  .takeaway-note {
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-sm); color: var(--studio-grey);
+    margin-top: var(--space-md); max-width: 56ch; line-height: 1.6;
+  }
+  .takeaway-note::before { content: '// '; color: var(--red-silk) }
+  .takeaway-how { margin-top: var(--space-lg); max-width: 60ch }
+  .takeaway-how-lead {
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-lg);
+    text-transform: uppercase; letter-spacing: -0.01em; color: var(--concrete);
+    margin-bottom: var(--space-md);
+  }
+  .takeaway-how ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm) }
+  .takeaway-how li {
+    display: flex; gap: 0.75rem; font-family: 'Outfit', sans-serif; font-weight: 300;
+    font-size: var(--text-base); line-height: 1.6; color: var(--concrete);
+  }
+  .takeaway-how li::before {
+    content: '→'; color: var(--red-silk); font-family: 'Anybody', sans-serif; font-weight: 900;
+    flex-shrink: 0;
+  }
+  .takeaway-how li b { font-weight: 500 }
+  .takeaway-how .accent { color: var(--red-silk); font-weight: 500 }
+
+  /* ─── CTA ─── */
+  .cta { text-align: left }
+  .cta-title {
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-xl);
+    text-transform: uppercase; line-height: 1.2; letter-spacing: -0.01em;
+    color: var(--concrete); max-width: 24ch; margin-bottom: var(--space-md);
+  }
+  .cta-row { display: flex; gap: var(--space-sm); flex-wrap: wrap }
+
+  .footer {
+    padding: var(--space-md) 0; border-top: 1px solid var(--studio-grey);
+    text-align: center; font-family: 'Fragment Mono', monospace; font-size: var(--text-xs);
+    color: var(--studio-grey); background: var(--concrete);
+  }
+
+  /* ─── Прогресс скролла + кнопка наверх ─── */
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red-silk); z-index: 200; transition: width 0.1s linear }
+  .to-top {
+    position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 150;
+    width: 3rem; height: 3rem; border: none; cursor: pointer; background: var(--concrete); color: var(--cream);
+    font-size: 1.2rem; line-height: 1; clip-path: var(--clip-cut);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+  }
+  .to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto }
+  .to-top:hover { background: var(--red-silk) }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none }
+    .to-top { transition: none }
+  }
+
+  /* Доступность: видимый фокус для клавиатуры */
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--red-silk);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Footer mini-nav */
+  .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-sm) }
+  .footer-nav a { color: var(--studio-grey); text-decoration: none; transition: color 0.2s }
+  .footer-nav a:hover { color: var(--red-silk) }
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="progress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-mark">ЮЛ</span></a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html">главная</a></li>
+      <li><a href="about.html">обо мне</a></li>
+      <li><a href="cases.html">кейсы: контент</a></li>
+      <li><a href="case-careerum.html" aria-current="page">кейс</a></li>
+      <li><a href="index.html#contact">написать</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero — big-number -->
+<header class="hero section-cream">
+  <div class="container">
+    <a href="cases.html" class="back-link reveal" style="margin-bottom: var(--space-md)">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      ко всем кейсам
+    </a>
+    <p class="hero-eyebrow reveal">Careerum · 27 запусков · 3,5 года</p>
+    <div class="hero-number reveal">350<span class="cur">&nbsp;млн&nbsp;₽</span></div>
+    <h1 class="reveal">Заработано для&nbsp;карьерного стартапа. <span class="accent">И&nbsp;при&nbsp;чём тут продюсер ТНТ</span></h1>
+    <div class="hero-meta reveal">
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">27</span>
+        <span class="hero-meta-label">успешных запусков</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">15к → 200к+</span>
+        <span class="hero-meta-label">рост аудитории</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">3,5</span>
+        <span class="hero-meta-label">года работы</span>
+      </div>
+    </div>
+    <p style="max-width: 58ch; color: var(--studio-grey); line-height: 1.6" class="reveal">В&nbsp;2018&nbsp;году я&nbsp;ушла с&nbsp;ТНТ и&nbsp;задала себе вопрос: что&nbsp;будет, если приёмы ТВ-продюсера перенести в&nbsp;онлайн-образование? Careerum&nbsp;— ответ на&nbsp;этот вопрос.</p>
+  </div>
+</header>
+
+<!-- Точка А → Точка Б -->
+<section class="section-cream">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">точка А → точка Б</span>
+    <h2 class="section-heading reveal" style="color: var(--concrete)">С&nbsp;ЧЕГО НАЧАЛИ И&nbsp;К&nbsp;ЧЕМУ ПРИШЛИ</h2>
+    <div class="ba-grid">
+      <div class="ba-col ba-before reveal">
+        <span class="ba-tag">точка А</span>
+        <h3>Эксперт без&nbsp;личного бренда</h3>
+        <ul class="ba-list">
+          <li>аудитория в&nbsp;Instagram&nbsp;— 15 тысяч подписчиков</li>
+          <li>продажи трёх отдельных вебинаров на&nbsp;300–700 тысяч</li>
+          <li>нет продукта, нет системы, нет узнаваемости</li>
+        </ul>
+      </div>
+      <div class="ba-col ba-after reveal">
+        <span class="ba-tag">точка Б</span>
+        <h3>Крупнейший EdTech в&nbsp;СНГ</h3>
+        <ul class="ba-list">
+          <li>личный бренд эксперта + книга в&nbsp;издательстве МИФ</li>
+          <li>Instagram 200к, Telegram 25к, YouTube и&nbsp;подкаст</li>
+          <li>база лидов &gt;200к подписчиков</li>
+          <li>продажи на&nbsp;350&nbsp;000&nbsp;000&nbsp;₽</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="proof-shot reveal">
+      <img src="/proof/careerum-revenue.png" alt="Выгрузка из системы: 76 446 платных заказов, оплачено 357 991 608 ₽" width="732" height="150" loading="lazy">
+    </div>
+    <p class="proof-cap reveal">реальная выгрузка: 76&nbsp;446 платных заказов на&nbsp;561&nbsp;931&nbsp;383&nbsp;₽, оплачено 71% &mdash; 357&nbsp;991&nbsp;608&nbsp;₽</p>
+  </div>
+</section>
+
+<!-- До → После в картинках -->
+<section class="section-cream" style="border-top: 1px solid rgba(26,26,26,0.1)">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">до → после в картинках</span>
+    <h2 class="section-heading reveal" style="color: var(--concrete)">КАК ЭТО ВЫГЛЯДЕЛО В&nbsp;НАЧАЛЕ И&nbsp;ЧЕМ СТАЛО</h2>
+
+    <!-- Пара: сайт -->
+    <div class="ba-pair reveal">
+      <div class="ba-half">
+        <span class="ba-half-tag before">было</span>
+        <div class="proof-shot"><img src="/proof/careerum-site-before.jpg" alt="Сайт Careerum в начале" width="1600" height="836" loading="lazy"></div>
+        <p class="ba-half-cap">старый лендинг эксперта</p>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-half">
+        <span class="ba-half-tag after">стало</span>
+        <div class="proof-shot"><img src="/proof/careerum-site-after.jpg" alt="Платформа карьерного развития Careerum" width="1600" height="836" loading="lazy"></div>
+        <p class="ba-half-cap"><b>платформа карьерного развития</b></p>
+      </div>
+    </div>
+
+    <!-- Пара: Instagram -->
+    <div class="ba-pair reveal">
+      <div class="ba-half">
+        <span class="ba-half-tag before">было</span>
+        <div class="proof-shot shot-tall"><img src="/proof/careerum-insta-before.jpg" alt="Instagram эксперта в начале работы" width="900" height="1601" loading="lazy"></div>
+        <p class="ba-half-cap">Instagram, <b>~16,6к</b> подписчиков</p>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-half">
+        <span class="ba-half-tag after">стало</span>
+        <div class="proof-shot shot-tall"><img src="/proof/careerum-insta-after.jpg" alt="Instagram @lermontova.career, 208к подписчиков" width="900" height="1947" loading="lazy"></div>
+        <p class="ba-half-cap">@lermontova.career, <b>208к</b> &mdash; «помогла 90&nbsp;000 человек в&nbsp;28 странах»</p>
+      </div>
+    </div>
+
+    <!-- Галерея: телеграм + книга -->
+    <h3 class="reveal" style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:var(--text-lg);text-transform:uppercase;letter-spacing:-0.01em;color:var(--concrete);margin-top:var(--space-xl)">И&nbsp;ЭКОСИСТЕМА ВОКРУГ</h3>
+    <div class="gallery">
+      <div class="reveal">
+        <div class="proof-shot"><img src="/proof/careerum-telegram.jpg" alt="Telegram-канал Careerum" width="1100" height="1021" loading="lazy"></div>
+        <p class="gallery-cap">Telegram-канал в&nbsp;связке с&nbsp;Instagram и&nbsp;YouTube</p>
+      </div>
+      <div class="reveal">
+        <div class="proof-shot"><img src="/proof/careerum-book.jpg" alt="Книга «Работа по любви» в издательстве МИФ" width="1100" height="639" loading="lazy"></div>
+        <p class="gallery-cap">Книга «Работа по&nbsp;любви» в&nbsp;издательстве МИФ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 принципов -->
+<section class="section-cream" style="border-top: 1px solid rgba(26,26,26,0.1)">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">метод</span>
+    <h2 class="section-heading reveal" style="color: var(--concrete)">8 ПРИНЦИПОВ ТВ-ПРОДЮСЕРА, ПЕРЕНЕСЁННЫХ В&nbsp;ОНЛАЙН</h2>
+
+    <div class="schemes">
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">1</span>
+        <h3 class="scheme-title">Формат продукта — клуб, а не курс</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Реалити подсаживает: зритель привыкает к героям и не может оторваться.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Клуб = постоянный поток платежей. <span class="accent">Выбирай то, что вызывает привыкание</span> — и делай продукт таким же.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">2</span>
+        <h3 class="scheme-title">Образ эксперта — по законам кастинга</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Кастинг реалити берёт героев по «библии типажей», а не по штампу «из грязи в князи» (ему уже 75 лет — со времён Кэмпбелла).</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Собрали образ по типажам: сильная и структурная — плюс человечность, забота, юмор.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">3</span>
+        <h3 class="scheme-title">Рассылка как сериал с драматургией</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Серия — со своей историей, но сквозная линия держит зрителя до финала сезона.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Каждое письмо — отдельная серия. Не банальный сторителлинг, а настоящая драматургия и эмоции.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">4</span>
+        <h3 class="scheme-title">Чат-бот с характером, которому признаются в любви</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Зритель влюбляется в телеведущего-персонажа и ждёт встречи с ним.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Бот-приятель с личностью, которую я написала руками. Женщины писали ему «Райан, я тебя люблю».</p>
+          </div>
+        </div>
+        <div class="scheme-stat"><span class="n">66 000</span><span class="t">пользователей · 1–2 место по продажам</span></div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">5</span>
+        <h3 class="scheme-title">Реклама, которую люди пересылают сами</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Юмор = высокие рейтинги. «Камеди» смотрят 15 лет.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Мемы про карьеру в таргете, которые люди репостят друг другу бесплатно. Юмору научила всю команду.</p>
+          </div>
+        </div>
+        <div class="scheme-stat"><span class="n">3823%</span><span class="t">ROI лучшей автоворонки на мемах</span></div>
+        <div class="proof-shot wide reveal" style="margin-top: var(--space-md)">
+          <img src="/proof/careerum-funnels.png" alt="Таблица воронок Careerum: ROI до 3823,81%, продажи до 67 млн ₽ на воронку" width="1588" height="580" loading="lazy">
+        </div>
+        <p class="proof-cap reveal">сводка по&nbsp;воронкам: ROI от&nbsp;971% до&nbsp;3823%, продажи до&nbsp;67&nbsp;млн&nbsp;₽ на&nbsp;одну воронку</p>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">6</span>
+        <h3 class="scheme-title">Запуск, который поднимает охваты, а не роняет</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>За реалити следят не отрываясь — внимание только растёт к финалу.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Сам запуск построен как реалити — за ним интересно следить. Результат: <span class="accent">не падение, а рост охватов</span> в продажи.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">7</span>
+        <h3 class="scheme-title">Продуктовая линейка — как сезоны сериала</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Новый сезон — и снова невозможно оторваться: впереди самое интересное.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Линейка продуктов: собеседование → оффер → первые 3 месяца → повышение → и дальше.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="scheme reveal">
+        <span class="scheme-num" aria-hidden="true">8</span>
+        <h3 class="scheme-title">Сеть каналов вместо одного эфира</h3>
+        <div class="scheme-flow">
+          <div class="scheme-side tv">
+            <span class="scheme-tag">📺 на телевидении</span>
+            <p>Шоу промотируют в десятках каналов — газеты, радио, билборды, блогеры, — чтобы о премьере узнали все.</p>
+          </div>
+          <span class="scheme-arrow" aria-hidden="true">→</span>
+          <div class="scheme-side online">
+            <span class="scheme-tag">в онлайне</span>
+            <p>Аккаунты во всех каналах, непрерывный перелив аудитории. <span class="accent">После февраля 2022 — рекорды, а не падение</span>, как у тех, кто сидел только в Instagram.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Резюме -->
+<section class="takeaway">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">мой принцип</span>
+    <blockquote class="reveal">Не&nbsp;работайте по&nbsp;общим шаблонам запусков. <span class="accent">Работают приёмы, по&nbsp;которым живёт телевидение</span></blockquote>
+    <p class="takeaway-note reveal">эти приёмы оттачивались десятилетиями в&nbsp;борьбе за&nbsp;внимание миллионов зрителей. В&nbsp;инфобизнесе про&nbsp;них почти никто не&nbsp;знает&nbsp;— а&nbsp;значит, у&nbsp;вас есть преимущество.</p>
+
+    <div class="takeaway-how reveal">
+      <p class="takeaway-how-lead">Поэтому я&nbsp;не&nbsp;продаю готовые шаблоны. Вот как я&nbsp;работаю:</p>
+      <ul>
+        <li>Смотрю на&nbsp;маркетинг <b>целиком</b>: бренд, продукт, контент, продажи. Чинить отдельными кусками бесполезно, если конструкция кривая.</li>
+        <li>Каждый ход проверяю одним вопросом: <span class="accent">это красиво в&nbsp;кейсе&nbsp;— или это приносит деньги?</span></li>
+        <li>Собираю систему руками, рядом с&nbsp;экспертом&nbsp;— и&nbsp;говорю честно, даже когда правда неудобная.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta section-cream" style="border-top: 1px solid rgba(26,26,26,0.1)">
+  <div class="container">
+    <div class="red-line reveal"></div>
+    <span class="section-label reveal">дальше</span>
+    <p class="cta-title reveal">ХОТИТЕ ТАКОЙ&nbsp;ЖЕ ПОДХОД В&nbsp;СВОЁМ ПРОЕКТЕ?</p>
+    <div class="cta-row reveal">
+      <a href="index.html#products" class="btn">
+        Посмотреть форматы работы
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn btn-outline">Написать в Telegram</a>
+      <a href="cases.html" class="btn btn-outline">Другие кейсы</a>
+    </div>
+  </div>
+</section>
+
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <nav class="footer-nav" aria-label="Подвал">
+      <a href="index.html">главная</a>
+      <a href="about.html">обо мне</a>
+      <a href="cases.html">кейсы: контент</a>
+      <a href="case-careerum.html">кейс</a>
+      <a href="https://t.me/marketing_solo" target="_blank" rel="noopener">канал</a>
+    </nav>
+    <p>// &copy; Юлиана Логинова, 2026</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const burger = document.getElementById('burger');
+const menu = document.getElementById('nav-menu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  menu.classList.toggle('open');
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  menu.classList.remove('open');
+}));
+
+// Прогресс скролла + кнопка «наверх»
+const progress = document.getElementById('progress');
+const toTop = document.getElementById('toTop');
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  if (progress) progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  if (toTop) toTop.classList.toggle('show', h.scrollTop > 600);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
