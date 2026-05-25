@@ -264,6 +264,10 @@
     width: 100%; height: auto; display: block;
     filter: grayscale(12%); aspect-ratio: 4/5; object-fit: cover; object-position: top center;
   }
+  .tl-photo.is-vertical img {
+    aspect-ratio: 2/3;
+    object-position: center center;
+  }
   .tl-cap { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--studio-grey); margin-top: 0.5rem }
   .tl-cap::before { content: '// '; color: var(--red-silk) }
 
@@ -447,10 +451,10 @@
         <p class="tl-eyebrow">первый запуск</p>
         <h2 class="tl-title">По наитию — и сразу на 3+ млн</h2>
         <p>Первый запуск карьерного стартапа я сделала по наитию, на основе всех прошлых знаний. Результат превзошёл ожидания — и стало ясно, что ТВ-механики в онлайне работают даже лучше.</p>
-        <div class="tl-photo">
+        <div class="tl-photo is-vertical">
           <picture>
             <source type="image/webp" srcset="/photos/optimized/cafe-table-360.webp 360w, /photos/optimized/cafe-table-480.webp 480w, /photos/optimized/cafe-table-640.webp 640w" sizes="(max-width: 767px) 90vw, 38vw">
-            <img src="/photos/optimized/cafe-table-360.jpg" srcset="/photos/optimized/cafe-table-360.jpg 360w, /photos/optimized/cafe-table-480.jpg 480w, /photos/optimized/cafe-table-640.jpg 640w" sizes="(max-width: 767px) 90vw, 38vw" alt="Юлиана Логинова в кафе" width="600" height="750" loading="lazy" decoding="async">
+            <img src="/photos/optimized/cafe-table-360.jpg" srcset="/photos/optimized/cafe-table-360.jpg 360w, /photos/optimized/cafe-table-480.jpg 480w, /photos/optimized/cafe-table-640.jpg 640w" sizes="(max-width: 767px) 90vw, 38vw" alt="Юлиана Логинова в кафе" width="640" height="960" loading="lazy" decoding="async">
           </picture>
         </div>
         <p class="tl-cap">из продюсера ТНТ — в маркетингового стратега</p>
