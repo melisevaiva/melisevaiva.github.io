@@ -919,30 +919,44 @@
   }
   @media (max-width: 760px) { .teaser-ghost { display: none } }
 
-  /* ─── Контактная форма ─── */
-  .contact-form { display: flex; flex-direction: column; gap: var(--space-sm) }
-  .field { display: flex; flex-direction: column; gap: 0.3rem }
-  .field > label { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: rgba(245,240,230,0.7) }
-  .field input, .field textarea {
-    font-family: 'Outfit', sans-serif; font-weight: 300; font-size: var(--text-base);
-    color: var(--cream); background: #222228; border: 1px solid var(--studio-grey);
-    padding: 0.7em 0.9em; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical;
+  /* ─── Telegram lead intake ─── */
+  .lead-panel {
+    background: #222228; border: 1px solid rgba(245,240,230,0.14);
+    padding: clamp(1rem, 3vw, 1.5rem); clip-path: var(--clip-cut);
   }
-  .field input::placeholder, .field textarea::placeholder { color: var(--studio-grey-light) }
-  .field input:focus, .field textarea:focus { border-color: var(--red-silk) }
-  .field.invalid input, .field.invalid textarea { border-color: var(--red-silk); background: rgba(200,50,50,0.08) }
-  .field-err { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--red-silk); min-height: 1.1em }
-  .cf-note { font-family: 'Fragment Mono', monospace; font-size: var(--text-xs); color: var(--studio-grey-light) }
-  .cf-note::before { content: '// '; color: var(--red-silk) }
-  .btn[disabled] { opacity: 0.6; cursor: default; transform: none }
-  .contact-success { display: flex; flex-direction: column; align-items: flex-start }
-  .cs-mark {
-    width: 3rem; height: 3rem; background: var(--red-silk); color: var(--cream);
-    display: grid; place-items: center; font-size: 1.6rem; font-weight: 700;
-    clip-path: var(--clip-cut); margin-bottom: var(--space-sm);
+  .lead-panel-title {
+    font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-lg);
+    line-height: 1.2; text-transform: uppercase; color: var(--cream); margin-bottom: var(--space-sm);
   }
-  .cs-title { font-family: 'Unbounded', sans-serif; font-weight: 700; text-transform: uppercase; color: var(--cream); font-size: var(--text-lg); margin-bottom: var(--space-xs); letter-spacing: -0.01em }
-  .cs-text { color: rgba(245,240,230,0.8); margin-bottom: var(--space-md); max-width: 42ch; line-height: 1.6 }
+  .lead-options { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-bottom: var(--space-md) }
+  @media (min-width: 560px) { .lead-options { grid-template-columns: 1fr 1fr } }
+  .lead-option {
+    text-align: left; border: 1px solid rgba(245,240,230,0.16); background: rgba(245,240,230,0.03);
+    color: var(--cream); padding: 0.8rem; cursor: pointer; clip-path: var(--clip-cut);
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+  .lead-option:hover, .lead-option.is-active {
+    border-color: var(--red-silk); background: rgba(200,50,50,0.14); transform: translateY(-1px);
+  }
+  .lead-option-title {
+    display: block; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: var(--text-sm);
+    text-transform: uppercase; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 0.3rem;
+  }
+  .lead-option-text {
+    display: block; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: var(--text-sm);
+    color: rgba(245,240,230,0.72); line-height: 1.45;
+  }
+  .lead-message {
+    margin: 0 0 var(--space-sm); padding: 1rem; background: rgba(245,240,230,0.06);
+    border-left: 4px solid var(--red-silk); color: rgba(245,240,230,0.9);
+    font-family: 'Fragment Mono', monospace; font-size: var(--text-sm); line-height: 1.65;
+  }
+  .lead-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; align-items: center }
+  .lead-status {
+    min-height: 1.2em; margin-top: 0.75rem; font-family: 'Fragment Mono', monospace;
+    font-size: var(--text-xs); color: var(--studio-grey-light);
+  }
+  .lead-status::before { content: '// '; color: var(--red-silk) }
 
   /* ─── Прогресс скролла + кнопка наверх ─── */
   .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--red-silk); z-index: 200; transition: width 0.1s linear }
@@ -1250,35 +1264,37 @@
         </div>
       </div>
       <div class="reveal">
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm" novalidate>
-          <input type="hidden" name="form-name" value="contact">
-          <p hidden><label>Не заполняйте: <input name="bot-field"></label></p>
-          <div class="field">
-            <label for="cf-name">Как вас зовут</label>
-            <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
-            <span class="field-err" aria-live="polite"></span>
+        <div class="lead-panel" id="leadPanel">
+          <p class="lead-panel-title">С чем помочь?</p>
+          <div class="lead-options" role="group" aria-label="Выбор темы сообщения">
+            <button type="button" class="lead-option is-active" data-lead-option="audit">
+              <span class="lead-option-title">Разобрать маркетинг</span>
+              <span class="lead-option-text">когда делаете много, а заявок мало</span>
+            </button>
+            <button type="button" class="lead-option" data-lead-option="content">
+              <span class="lead-option-title">Собрать контент-систему</span>
+              <span class="lead-option-text">чтобы контент вёл к покупке, а не просто выходил</span>
+            </button>
+            <button type="button" class="lead-option" data-lead-option="launch">
+              <span class="lead-option-title">Подготовить запуск</span>
+              <span class="lead-option-text">если нужен план, воронка и понятные шаги</span>
+            </button>
+            <button type="button" class="lead-option" data-lead-option="stuck">
+              <span class="lead-option-title">Понять, что не работает</span>
+              <span class="lead-option-text">когда всё вроде есть, но система не сходится</span>
+            </button>
           </div>
-          <div class="field">
-            <label for="cf-contact">Telegram или email для&nbsp;ответа</label>
-            <input id="cf-contact" name="contact" type="text" placeholder="@username или you@mail.com" required>
-            <span class="field-err" aria-live="polite"></span>
+          <p class="lead-message" id="leadMessage">Юлиана, хочу разобрать маркетинг. Сейчас у меня: [коротко про проект]. Главная проблема: [что не работает].</p>
+          <div class="lead-actions">
+            <button type="button" class="btn" id="copyLeadMessage">
+              Скопировать текст
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 8h10v12H8z"/><path d="M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn btn-outline" style="color: var(--cream); border-color: var(--cream)">
+              Открыть Telegram
+            </a>
           </div>
-          <div class="field">
-            <label for="cf-msg">Коротко о&nbsp;ситуации</label>
-            <textarea id="cf-msg" name="message" rows="4" placeholder="Что сейчас происходит с маркетингом" required></textarea>
-            <span class="field-err" aria-live="polite"></span>
-          </div>
-          <button type="submit" class="btn" id="cf-submit">
-            Отправить
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-          <p class="cf-note">отвечу лично, обычно в&nbsp;течение рабочего дня</p>
-        </form>
-        <div class="contact-success" id="contactSuccess" hidden>
-          <div class="cs-mark" aria-hidden="true">✓</div>
-          <p class="cs-title">Спасибо! Сообщение ушло</p>
-          <p class="cs-text">Отвечу вам лично — обычно в&nbsp;течение рабочего дня. А&nbsp;пока можно заглянуть в&nbsp;канал.</p>
-          <a href="https://t.me/marketing_solo" target="_blank" rel="noopener" class="btn btn-outline" style="color: var(--cream); border-color: var(--cream)">Канал @marketing_solo</a>
+          <p class="lead-status" id="leadStatus" aria-live="polite">выберите тему — текст сообщения обновится</p>
         </div>
       </div>
     </div>
@@ -1351,39 +1367,31 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Контактная форма: валидация + AJAX-отправка (Netlify Forms)
-const cform = document.getElementById('contactForm');
-if (cform) {
-  const reqs = [...cform.querySelectorAll('input[required], textarea[required]')];
-  const validate = (el) => {
-    const wrap = el.closest('.field');
-    const err = wrap.querySelector('.field-err');
-    let msg = '';
-    if (!el.value.trim()) msg = 'Заполните это поле';
-    else if (el.id === 'cf-contact' && !/[@.]/.test(el.value)) msg = 'Укажите Telegram или email';
-    wrap.classList.toggle('invalid', !!msg);
-    if (err) err.textContent = msg;
-    return !msg;
-  };
-  reqs.forEach(el => el.addEventListener('blur', () => validate(el)));
-  reqs.forEach(el => el.addEventListener('input', () => { if (el.closest('.field').classList.contains('invalid')) validate(el); }));
-  cform.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const ok = reqs.map(validate).every(Boolean);
-    if (!ok) { cform.querySelector('.field.invalid input, .field.invalid textarea')?.focus(); return; }
-    const btn = document.getElementById('cf-submit');
-    btn.disabled = true; btn.textContent = 'Отправляю…';
+// Telegram lead prompt
+const leadMessages = {
+  audit: 'Юлиана, хочу разобрать маркетинг. Сейчас у меня: [коротко про проект]. Главная проблема: [что не работает].',
+  content: 'Юлиана, хочу собрать контент-систему. Сейчас контент выглядит так: [что публикую]. Хочу, чтобы он приводил к заявкам/продажам.',
+  launch: 'Юлиана, хочу подготовить запуск. Продукт: [что продаю]. Нужно понять воронку, контент и план действий.',
+  stuck: 'Юлиана, хочу понять, что не работает. Маркетинг вроде есть, но результата нет: [что уже пробовали].'
+};
+const leadMessage = document.getElementById('leadMessage');
+const leadStatus = document.getElementById('leadStatus');
+document.querySelectorAll('[data-lead-option]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-lead-option]').forEach(item => item.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    leadMessage.textContent = leadMessages[btn.dataset.leadOption];
+    if (leadStatus) leadStatus.textContent = 'текст обновлён — можно скопировать и отправить';
+  });
+});
+const copyLeadMessage = document.getElementById('copyLeadMessage');
+if (copyLeadMessage && leadMessage) {
+  copyLeadMessage.addEventListener('click', async () => {
     try {
-      const body = new URLSearchParams(new FormData(cform)).toString();
-      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
-      cform.hidden = true;
-      const ok2 = document.getElementById('contactSuccess');
-      ok2.hidden = false;
-      ok2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      await navigator.clipboard.writeText(leadMessage.textContent);
+      if (leadStatus) leadStatus.textContent = 'скопировано — откройте Telegram и отправьте мне';
     } catch (err) {
-      btn.disabled = false; btn.textContent = 'Отправить';
-      const note = cform.querySelector('.cf-note');
-      if (note) note.textContent = 'Не удалось отправить — напишите в Telegram @melisevaiva';
+      if (leadStatus) leadStatus.textContent = 'скопируйте текст вручную и отправьте в Telegram';
     }
   });
 }
