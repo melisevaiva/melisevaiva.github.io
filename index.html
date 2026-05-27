@@ -1290,7 +1290,7 @@
               Скопировать текст
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 8h10v12H8z"/><path d="M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
-            <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn btn-outline" style="color: var(--cream); border-color: var(--cream)">
+            <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn btn-outline" id="openTelegramLead" style="color: var(--cream); border-color: var(--cream)">
               Открыть Telegram
             </a>
           </div>
@@ -1376,12 +1376,21 @@ const leadMessages = {
 };
 const leadMessage = document.getElementById('leadMessage');
 const leadStatus = document.getElementById('leadStatus');
+const openTelegramLead = document.getElementById('openTelegramLead');
+function getTelegramLeadUrl(message) {
+  return `https://t.me/melisevaiva?text=${encodeURIComponent(message)}`;
+}
+function updateTelegramLeadUrl() {
+  if (openTelegramLead && leadMessage) openTelegramLead.href = getTelegramLeadUrl(leadMessage.textContent);
+}
+updateTelegramLeadUrl();
 document.querySelectorAll('[data-lead-option]').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('[data-lead-option]').forEach(item => item.classList.remove('is-active'));
     btn.classList.add('is-active');
     leadMessage.textContent = leadMessages[btn.dataset.leadOption];
-    if (leadStatus) leadStatus.textContent = 'текст обновлён — можно скопировать и отправить';
+    updateTelegramLeadUrl();
+    if (leadStatus) leadStatus.textContent = 'текст обновлён — можно открыть Telegram и отправить';
   });
 });
 const copyLeadMessage = document.getElementById('copyLeadMessage');
