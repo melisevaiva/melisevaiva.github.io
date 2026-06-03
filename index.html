@@ -603,6 +603,11 @@
     transition: gap 0.2s, color 0.2s }
   .product-cta:hover { gap: 0.75rem }
   .product-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none }
+  .products-cta { margin-top: var(--space-lg); display: flex; flex-wrap: wrap; align-items: center;
+    gap: var(--space-sm) var(--space-md) }
+  .products-cta-text { font-family: 'Unbounded', sans-serif; font-weight: 700; text-transform: uppercase;
+    font-size: var(--text-base); letter-spacing: -0.01em; color: var(--cream) }
+  .products-cta .btn svg { stroke: currentColor; fill: none }
   .product-badge {
     display: inline-block; align-self: flex-start;
     background: var(--cream); color: var(--red-silk);
@@ -1106,11 +1111,11 @@
       <div class="product reveal">
         <span class="product-job">нужна ясность</span>
         <h3 class="product-name">MARKETING CHECK-UP</h3>
-        <p class="product-price">25 000<span class="cur">&nbsp;₽</span> <em>· час-полтора</em></p>
-        <p class="product-situation">&laquo;Я&nbsp;делаю кучу всего, по&nbsp;ощущениям бегу быстро. Результата нет. Хочу понять, за&nbsp;что хвататься&raquo;</p>
-        <p class="product-desc">Раскладываем ваш маркетинг на&nbsp;части: бренд, продуктовая линейка, контент, продажи. Нахожу, где именно проваливается. Уходите с&nbsp;конкретным планом на&nbsp;4-6&nbsp;недель.</p>
-        <p class="product-outcome">Ясность, с&nbsp;чего начать. Первые результаты через месяц-два</p>
-        <a href="https://forms.gle/sp3LSF6z8H7tF7KBA" target="_blank" rel="noopener" class="product-cta">
+        <p class="product-price">25 000<span class="cur">&nbsp;₽</span> <em>· 90&nbsp;минут</em></p>
+        <p class="product-situation">&laquo;У&nbsp;меня есть проект, аудитория и&nbsp;экспертиза&nbsp;— но&nbsp;непонятно, как превратить это в&nbsp;деньги и&nbsp;с&nbsp;чего начать&raquo;</p>
+        <p class="product-desc">За&nbsp;90&nbsp;минут разбираю ваш проект как продюсер: что&nbsp;мешает зарабатывать, что&nbsp;делать первым и&nbsp;в&nbsp;каком порядке.</p>
+        <p class="product-outcome">Конкретный план на&nbsp;ближайший шаг. Дальше&nbsp;— сами или в&nbsp;сопровождение</p>
+        <a href="https://docs.google.com/forms/d/1HFY45OTBsF0rGspvQBjKgwl3_SintpTM6IvlcD9djYQ/viewform" target="_blank" rel="noopener" class="product-cta">
           Заполнить анкету на разбор
           <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1119,22 +1124,30 @@
       <div class="product product-featured reveal">
         <span class="product-badge">чаще всего берут</span>
         <span class="product-job">нужна сборка</span>
-        <h3 class="product-name">BRAND SYSTEM</h3>
+        <h3 class="product-name">Сопровождение</h3>
         <p class="product-price">300 000<span class="cur">&nbsp;₽</span> <em>· 3 месяца</em></p>
-        <p class="product-situation">&laquo;Я&nbsp;понимаю, что&nbsp;нужно менять, но&nbsp;одна не&nbsp;вывезу. Нужен человек, который пройдёт это со&nbsp;мной&raquo;</p>
-        <p class="product-desc">Собираем целостную конструкцию: бренд, линейка продуктов, контент, продажи. Я&nbsp;рядом на&nbsp;каждом шаге. Делаю вместе с&nbsp;вами.</p>
-        <p class="product-outcome">Собранный бренд и&nbsp;продуктовая линейка. Доход стабилизируется</p>
+        <p class="product-situation">&laquo;Есть что&nbsp;монетизировать, и&nbsp;я&nbsp;готова делать сама&nbsp;— но&nbsp;нужен человек, который видит всю картину и&nbsp;держит курс&raquo;</p>
+        <p class="product-desc">Созваниваемся раз в&nbsp;неделю. Вы&nbsp;исполняете, я&nbsp;отвечаю за&nbsp;стратегию, приоритеты и&nbsp;за&nbsp;то, чтобы вы&nbsp;не&nbsp;распылились и&nbsp;не&nbsp;выгорели. Это не&nbsp;агентство: я&nbsp;не&nbsp;делаю за&nbsp;вас&nbsp;— я&nbsp;веду.</p>
+        <p class="product-outcome">За&nbsp;3 месяца доходим до&nbsp;цели. В&nbsp;конце&nbsp;— итог: продлеваем или расходимся</p>
       </div>
 
       <div class="product reveal">
-        <span class="product-job">нужен директор</span>
-        <h3 class="product-name">PRIVATE CMO</h3>
-        <p class="product-price product-price--talk">Цена обсуждается</p>
-        <p class="product-situation">&laquo;Маркетинг съедает всё время. Мне&nbsp;нужен человек, который это заберёт&raquo;</p>
-        <p class="product-desc">Постоянная работа. Становлюсь вашим внешним директором по&nbsp;маркетингу. Стратегия, каналы, подрядчики, аналитика. Вы&nbsp;занимаетесь продуктом и&nbsp;клиентами, маркетинг на&nbsp;мне.</p>
-        <p class="product-outcome">Маркетинг работает. Вы&nbsp;занимаетесь тем, что&nbsp;умеете лучше всего</p>
+        <span class="product-job">нужен партнёр</span>
+        <h3 class="product-name">Продюсирование под ключ</h3>
+        <p class="product-price product-price--talk">Процент с&nbsp;результата</p>
+        <p class="product-situation">&laquo;Готова отдать всю бизнес-сторону и&nbsp;идти вдолгую&nbsp;— и&nbsp;делить результат&raquo;</p>
+        <p class="product-desc">Забираю бизнес целиком: продукты, запуски, команду, экономику. Вы&nbsp;остаётесь экспертом и&nbsp;лицом, я&nbsp;отвечаю за&nbsp;деньги. Беру процент с&nbsp;заработанного вместе.</p>
+        <p class="product-outcome">Выстроенный бизнес вокруг вас. Заметные деньги обычно со&nbsp;второго года</p>
       </div>
 
+    </div>
+
+    <div class="products-cta reveal">
+      <p class="products-cta-text">Не&nbsp;уверены, какой формат ваш?</p>
+      <a href="https://t.me/melisevaiva" target="_blank" rel="noopener" class="btn">
+        Написать — разберёмся вместе
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
