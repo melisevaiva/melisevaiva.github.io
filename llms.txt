@@ -11,6 +11,21 @@ Canonical site: https://juliana-loginova.ru/
 - https://juliana-loginova.ru/case-careerum.html — флагманский кейс Careerum: 27 запусков за 3,5 года и 350+ млн рублей продаж.
 - https://juliana-loginova.ru/site-map.html — HTML-карта сайта: все публичные страницы, услуги, примеры текстов, технические файлы и контакты.
 
+## Service pages
+- https://juliana-loginova.ru/marketing-check-up.html — Marketing Check-up: 90-минутная диагностика маркетинга для экспертов, поиск точки поломки и ближайшего шага.
+- https://juliana-loginova.ru/marketing-support.html — маркетинговое сопровождение экспертов на 3 месяца: стратегия, приоритеты, контент, продажи и запуск.
+- https://juliana-loginova.ru/production.html — продюсирование личного бренда под ключ: продукты, запуски, команда, экономика и рост выручки за процент с результата.
+- https://juliana-loginova.ru/content-strategy.html — контент-стратегия для экспертов: Telegram, Instagram, email, прогревы и тексты на ключевые действия.
+- https://juliana-loginova.ru/email-marketing.html — email-маркетинг для экспертных запусков: вебинары, клубы, дожимы, повторные покупки и реактивация базы.
+- https://juliana-loginova.ru/stories-warmup.html — сторис-прогревы для запусков, вебинаров, листов ожидания и трипваеров.
+
+## Case pages
+- https://juliana-loginova.ru/case-vanda-wang.html — Vanda Wang: 39 сторис, лист ожидания вырос в 3 раза, более 20% покупок из листа.
+- https://juliana-loginova.ru/case-sozonik.html — Созоник: 46 сторис, 20 000+ регистраций на вебинар из Instagram, 86 млн рублей заказов.
+- https://juliana-loginova.ru/case-anna-babich.html — Анна Бабич: 36 сторис, 1 000+ заказов в первый день, ежедневные продажи без участия эксперта.
+- https://juliana-loginova.ru/case-chatbot-psychologist.html — чатбот-психолог для Анны Бабич: идея, UX, сценарии, продающие триггеры и автономная продажа.
+- https://juliana-loginova.ru/case-telegram-content.html — Telegram-контент для прогрева и предзаписи: каналы, лидмагниты, листы ожидания и запусковые сценарии.
+
 ## Portfolio examples
 - https://juliana-loginova.ru/texts/channel-content.html — Telegram-контент для канала предзаписи и набора регистраций на вебинар.
 - https://juliana-loginova.ru/texts/lidmagnet.html — пример текста для лидмагнита.
