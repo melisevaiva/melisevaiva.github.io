@@ -24,12 +24,16 @@
   if (/^\d{5,}$/.test(ymId)) {
     window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
     window.ym.l = 1 * new Date();
-    loadScript('https://mc.yandex.ru/metrika/tag.js');
+    loadScript('https://mc.yandex.ru/metrika/tag.js?id=' + encodeURIComponent(ymId));
     window.ym(Number(ymId), 'init', {
+      ssr: true,
       clickmap: true,
+      ecommerce: 'dataLayer',
+      referrer: document.referrer,
+      url: location.href,
       trackLinks: true,
       accurateTrackBounce: true,
-      webvisor: false
+      webvisor: true
     });
   }
 
