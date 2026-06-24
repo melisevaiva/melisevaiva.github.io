@@ -1,0 +1,121 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Услуги Юлианы Логиновой",
+  "url": "https://juliana-loginova.ru/",
+  "inLanguage": "ru-RU",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Service",
+        "name": "Marketing Check-up для экспертов",
+        "url": "https://juliana-loginova.ru/marketing-check-up.html",
+        "serviceType": "Маркетинговая диагностика",
+        "description": "90-минутная диагностика маркетинга: где ломается система, что мешает заявкам и продажам, какой ближайший шаг делать первым.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн",
+        "offers": {
+          "@type": "Offer",
+          "price": "25000",
+          "priceCurrency": "RUB"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Service",
+        "name": "Маркетинговое сопровождение экспертов",
+        "url": "https://juliana-loginova.ru/marketing-support.html",
+        "serviceType": "Маркетинговое сопровождение",
+        "description": "Три месяца регулярной стратегической работы с маркетингом, контентом, продажами и запуском.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн",
+        "offers": {
+          "@type": "Offer",
+          "price": "300000",
+          "priceCurrency": "RUB"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "name": "Продюсирование личного бренда под ключ",
+        "url": "https://juliana-loginova.ru/production.html",
+        "serviceType": "Продюсирование экспертного бизнеса",
+        "description": "Долгосрочная работа с продуктовой линейкой, запуском, командой, экономикой и ростом выручки экспертного проекта.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Service",
+        "name": "Контент-стратегия для эксперта",
+        "url": "https://juliana-loginova.ru/content-strategy.html",
+        "serviceType": "Контент-стратегия",
+        "description": "Telegram, Instagram, email, сторис-прогревы, лидмагниты и тексты на ключевые действия: подписку, заявку, регистрацию и покупку.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
+        "name": "Email-маркетинг для экспертных запусков",
+        "url": "https://juliana-loginova.ru/email-marketing.html",
+        "serviceType": "Email-маркетинг",
+        "description": "Письма для вебинаров, клубов, дожимов, повторных покупок, реактивации базы и продаж продуктов с длинным циклом решения.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Service",
+        "name": "Сторис-прогревы для запусков",
+        "url": "https://juliana-loginova.ru/stories-warmup.html",
+        "serviceType": "Сторис-прогрев",
+        "description": "Сценарии сторис перед вебинарами, запусками, листами ожидания, трипваерами и покупками.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн"
+      }
+    }
+  ]
+}

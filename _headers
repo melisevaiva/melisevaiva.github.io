@@ -28,6 +28,15 @@
 /*.txt
   Cache-Control: public, max-age=3600
 
+/*.md
+  Cache-Control: public, max-age=3600
+
+/*.json
+  Cache-Control: public, max-age=3600
+
+/data/*
+  Cache-Control: public, max-age=3600
+
 /sitemap.xml
   Cache-Control: public, max-age=3600
 

@@ -1,0 +1,75 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Кейсы Юлианы Логиновой",
+  "url": "https://juliana-loginova.ru/cases.html",
+  "inLanguage": "ru-RU",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Careerum: 27 запусков и 350+ млн рублей продаж",
+        "url": "https://juliana-loginova.ru/case-careerum.html",
+        "about": "Продюсирование, маркетинг, продуктовая система, контент, запуски и рост EdTech-проекта.",
+        "result": "27 запусков за 3,5 года; 350+ млн рублей продаж."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Vanda Wang: сторис-прогрев и лист ожидания",
+        "url": "https://juliana-loginova.ru/case-vanda-wang.html",
+        "about": "Сценарий сторис-прогрева для запуска и листа ожидания.",
+        "result": "39 сторис; лист ожидания вырос в 3 раза; более 20% покупок пришло из листа ожидания."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Созоник: 20 000+ регистраций и 86 млн рублей заказов",
+        "url": "https://juliana-loginova.ru/case-sozonik.html",
+        "about": "Сторис-прогрев и запуск через Instagram и вебинарную воронку.",
+        "result": "46 сторис; 20 000+ регистраций на вебинар; 86 млн рублей заказов."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Анна Бабич: продажи через сторис и чатбот",
+        "url": "https://juliana-loginova.ru/case-anna-babich.html",
+        "about": "Сторис-прогрев, продуктовый сценарий и продажи без постоянного участия эксперта.",
+        "result": "36 сторис; 1 000+ заказов в первый день; ежедневные продажи без участия эксперта."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Чатбот-психолог для Анны Бабич",
+        "url": "https://juliana-loginova.ru/case-chatbot-psychologist.html",
+        "about": "Идея, UX, сценарии, продающие триггеры и автономная продажа психологического продукта.",
+        "result": "Автоматизированная продажа через чатбот и прогретую коммуникацию."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Telegram-контент для предзаписи и запусков",
+        "url": "https://juliana-loginova.ru/case-telegram-content.html",
+        "about": "Каналы предзаписи, лидмагниты, листы ожидания и Telegram-контент для запуска.",
+        "result": "Системный контент, который ведет аудиторию к регистрации, ожиданию и покупке."
+      }
+    }
+  ]
+}

@@ -9,7 +9,13 @@ Canonical site: https://juliana-loginova.ru/
 - https://juliana-loginova.ru/about.html — биография: 9 лет продюсером на ТНТ, Comedy Club Production, онлайн-маркетинг, Careerum, около 100 запусков.
 - https://juliana-loginova.ru/cases.html — портфолио: сторис-прогревы, Telegram-контент, email-рассылки, чатботы и кейсы с цифрами.
 - https://juliana-loginova.ru/case-careerum.html — флагманский кейс Careerum: 27 запусков за 3,5 года и 350+ млн рублей продаж.
+- https://juliana-loginova.ru/faq.html — ответы на частые вопросы о маркетинговом стратеге, диагностике, сопровождении, продюсировании, контенте и запусках.
 - https://juliana-loginova.ru/site-map.html — HTML-карта сайта: все публичные страницы, услуги, примеры текстов, технические файлы и контакты.
+
+## AI-readable resources
+- https://juliana-loginova.ru/ai-context.md — подробный Markdown-контекст сайта для AI-поиска, ассистентов и цитирования.
+- https://juliana-loginova.ru/data/services.json — структурированные данные об услугах.
+- https://juliana-loginova.ru/data/case-studies.json — структурированные данные о кейсах и результатах.
 
 ## Service pages
 - https://juliana-loginova.ru/marketing-check-up.html — Marketing Check-up: 90-минутная диагностика маркетинга для экспертов, поиск точки поломки и ближайшего шага.
@@ -51,7 +57,7 @@ Canonical site: https://juliana-loginova.ru/
 - Опыт роста экспертного проекта до крупного EdTech в СНГ.
 
 ## Relevant queries
-This site is relevant for queries about маркетинговый стратег для экспертов, продюсер личного бренда, маркетинг без команды, контент-стратегия для эксперта, запуск онлайн-продукта, Telegram-маркетинг, email-маркетинг, сторис-прогрев, маркетинговая диагностика, продюсирование экспертов and case studies for online education launches.
+This site is relevant for queries about маркетинговый стратег для экспертов, продюсер личного бренда, маркетинг без команды, контент-стратегия для эксперта, запуск онлайн-продукта, Telegram-маркетинг, email-маркетинг, сторис-прогрев, маркетинговая диагностика, маркетинговое сопровождение эксперта, продюсирование экспертов and case studies for online education launches.
 
 ## Contacts and channels
 - Telegram для связи: https://t.me/melisevaiva
