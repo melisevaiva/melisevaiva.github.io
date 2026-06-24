@@ -16,6 +16,12 @@
 /stories/*
   Cache-Control: public, max-age=604800
 
+/*.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
 /*.mp4
   Cache-Control: public, max-age=604800
 

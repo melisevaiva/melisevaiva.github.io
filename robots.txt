@@ -1,0 +1,37 @@
+User-agent: *
+Allow: /
+Disallow: /v/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /v/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /v/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /v/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /v/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /v/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /v/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /v/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /v/
+
+Sitemap: https://juliana-loginova.ru/sitemap.xml
