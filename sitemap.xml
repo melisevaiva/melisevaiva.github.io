@@ -204,4 +204,41 @@
       <image:loc>https://juliana-loginova.ru/photos/optimized/street-2-640.jpg</image:loc>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://juliana-loginova.ru/articles.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/marketing-bez-komandy.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
 </urlset>

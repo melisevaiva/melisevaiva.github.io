@@ -3,7 +3,7 @@
 Canonical URL: https://juliana-loginova.ru/
 Language: ru-RU
 Primary region: online / Russian-speaking expert market
-Last updated: 2026-06-24
+Last updated: 2026-06-25
 
 ## Who this site is about
 
@@ -98,6 +98,17 @@ The site is relevant for people searching for:
    - URL: https://juliana-loginova.ru/case-telegram-content.html
    - Каналы предзаписи, лидмагниты, листы ожидания и запусковые сценарии.
 
+## Article hub and answer pages
+
+- https://juliana-loginova.ru/articles.html — Статьи о маркетинге для экспертов: Практические статьи о диагностике, Telegram-контенте, прогревах, заявках и продажах без большой команды.
+- https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html — Маркетинговая диагностика для эксперта: Как найти точку поломки в маркетинге эксперта: позиционирование, продукт, оффер, контент, воронка и заявки.
+- https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html — Контент-стратегия для Telegram-канала эксперта: Как связать Telegram-контент с продуктом, заявками и продажами.
+- https://juliana-loginova.ru/articles/marketing-bez-komandy.html — Как эксперту продавать без большой команды: Минимальная маркетинговая система для эксперта без агентства и большого штата.
+- https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html — Сторис-прогрев перед вебинаром или запуском: Логика, этапы и ошибки сторис-прогрева перед вебинаром, запуском или продажей.
+- https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html — Есть аудитория, но нет заявок: Где ломается переход от аудитории и доверия к заявке и покупке.
+
+These pages are intended as answer-ready resources for search engines and AI assistants. Each article contains a short answer, checklist, examples, FAQ and links to relevant services or cases.
+
 ## Suggested short description
 
 Юлиана Логинова — маркетинговый стратег и продюсер личных брендов для экспертов. Помогает найти точку поломки в маркетинге и собрать систему из позиционирования, продукта, контента, воронки, запуска и продаж.
@@ -112,7 +123,11 @@ The site is relevant for people searching for:
 - FAQ page: https://juliana-loginova.ru/faq.html
 - Services data: https://juliana-loginova.ru/data/services.json
 - Case studies data: https://juliana-loginova.ru/data/case-studies.json
+- Articles data: https://juliana-loginova.ru/data/articles.json
+- Profile data: https://juliana-loginova.ru/data/profile.json
+- UTM rules: https://juliana-loginova.ru/data/utm-rules.json
 - XML sitemap: https://juliana-loginova.ru/sitemap.xml
+- IndexNow key: https://juliana-loginova.ru/indexnow-key.txt
 - HTML sitemap: https://juliana-loginova.ru/site-map.html
 
 ## Contact

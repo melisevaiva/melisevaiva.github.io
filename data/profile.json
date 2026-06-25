@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://juliana-loginova.ru/#person",
+  "name": "Юлиана Логинова",
+  "url": "https://juliana-loginova.ru/",
+  "image": "https://juliana-loginova.ru/photos/optimized/street-lean-640.jpg",
+  "jobTitle": "Маркетинговый стратег, продюсер личных брендов",
+  "description": "Юлиана Логинова помогает экспертам найти точку поломки в маркетинге и собрать систему из позиционирования, продукта, контента, воронки, запуска и продаж.",
+  "sameAs": [
+    "https://t.me/marketing_solo",
+    "https://t.me/melisevaiva"
+  ],
+  "knowsAbout": [
+    "маркетинг для экспертов",
+    "маркетинговая диагностика",
+    "личный бренд",
+    "контент-стратегия",
+    "Telegram-маркетинг",
+    "email-маркетинг",
+    "сторис-прогревы",
+    "запуски онлайн-продуктов",
+    "продюсирование экспертного бизнеса"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Юлиана Логинова",
+    "url": "https://juliana-loginova.ru/"
+  },
+  "mainEntityOfPage": "https://juliana-loginova.ru/about.html",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Форматы работы с Юлианой Логиновой",
+    "url": "https://juliana-loginova.ru/",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Marketing Check-up",
+        "url": "https://juliana-loginova.ru/marketing-check-up.html",
+        "price": "25000",
+        "priceCurrency": "RUB"
+      },
+      {
+        "@type": "Offer",
+        "name": "Маркетинговое сопровождение",
+        "url": "https://juliana-loginova.ru/marketing-support.html",
+        "price": "300000",
+        "priceCurrency": "RUB"
+      },
+      {
+        "@type": "Offer",
+        "name": "Продюсирование под ключ",
+        "url": "https://juliana-loginova.ru/production.html"
+      }
+    ]
+  },
+  "dateModified": "2026-06-25"
+}

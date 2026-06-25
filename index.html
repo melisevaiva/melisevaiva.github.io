@@ -27,7 +27,12 @@
 <link rel="alternate" hreflang="ru" href="https://juliana-loginova.ru/">
 <link rel="alternate" hreflang="x-default" href="https://juliana-loginova.ru/">
 <meta name="theme-color" content="#c83232">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -491,19 +496,23 @@
     .hero h1 {
       font-size: 1.55rem;
       line-height: 1.16;
-      max-width: 100%;
+      max-width: 21rem;
       overflow-wrap: anywhere;
+      letter-spacing: 0;
     }
     .hero-subtitle {
       font-size: 1rem;
-      max-width: 100%;
+      max-width: 21rem;
     }
     .hero-code {
       font-size: 0.78rem;
+      max-width: 21rem;
+      overflow-wrap: anywhere;
     }
     .hero-cta-row {
       display: grid;
       grid-template-columns: 1fr;
+      max-width: 21rem;
     }
     .hero-cta-row .btn {
       width: 100%;
@@ -536,6 +545,112 @@
   @keyframes float {
     0%, 100% { transform: translateX(-50%) translateY(0) }
     50% { transform: translateX(-50%) translateY(6px) }
+  }
+
+  .site-path {
+    padding: var(--space-md) 0;
+    background: var(--concrete);
+    color: var(--cream);
+    border-top: 1px solid rgba(245,240,230,0.12);
+    border-bottom: 1px solid rgba(245,240,230,0.12);
+  }
+  .site-path-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1px;
+    background: rgba(245,240,230,0.12);
+  }
+  .site-path-grid a {
+    min-height: 5.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--concrete);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-xs);
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .site-path-grid a span {
+    font-family: 'Fragment Mono', monospace;
+    font-weight: 400;
+    color: var(--red-silk);
+  }
+  .site-path-grid a:hover {
+    color: var(--red-silk);
+  }
+  .mobile-bottom-nav {
+    display: none;
+  }
+  @media (max-width: 860px) {
+    .site-path-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    body {
+      padding-bottom: 4.4rem;
+    }
+    .site-path {
+      padding: 0;
+    }
+    .site-path .container {
+      width: 100%;
+    }
+    .site-path-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .site-path-grid a {
+      min-width: 42vw;
+      min-height: 4.4rem;
+      scroll-snap-align: start;
+      border-right: 1px solid rgba(245,240,230,0.12);
+    }
+    .mobile-bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 180;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(26,26,26,0.96);
+      border-top: 1px solid rgba(245,240,230,0.14);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .mobile-bottom-nav a {
+      min-height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.2rem;
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Fragment Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: lowercase;
+      border-right: 1px solid rgba(245,240,230,0.08);
+    }
+    .mobile-bottom-nav a:last-child {
+      border-right: none;
+    }
+    .mobile-bottom-nav a:active,
+    .mobile-bottom-nav a:hover {
+      color: var(--red-silk);
+    }
+    .to-top {
+      bottom: 5rem;
+    }
   }
 
   /* ─── CTA Buttons ─── */
@@ -1195,6 +1310,12 @@
 <body>
 <noscript><div><img src="https://mc.yandex.ru/watch/110118083" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 <div class="scroll-progress" id="progress"></div>
+<nav class="mobile-bottom-nav" aria-label="Быстрые разделы">
+  <a href="#products">форматы</a>
+  <a href="/cases.html">кейсы</a>
+  <a href="/articles.html">статьи</a>
+  <a href="/faq.html">FAQ</a>
+</nav>
 
 <!-- Navigation -->
 <nav class="nav" id="nav">
@@ -1207,6 +1328,7 @@
       <li><a href="index.html" aria-current="page">главная</a></li>
       <li><a href="about.html">обо мне</a></li>
       <li><a href="cases.html">кейсы: контент</a></li>
+      <li><a href="articles.html">статьи</a></li>
       <li><a href="case-careerum.html">кейс</a></li>
       <li><a href="#contact">написать</a></li>
     </ul>
@@ -1218,8 +1340,8 @@
   <div class="container">
     <div class="hero-split">
       <div>
-        <h1 class="reveal">ВЫ&nbsp;ЗНАЕТЕ СВОЁ ДЕЛО ЛУЧШЕ ВСЕХ. А&nbsp;ДЕНЬГИ ПОЧЕМУ-ТО <span class="accent">У&nbsp;КОНКУРЕНТОВ</span></h1>
-        <p class="hero-subtitle reveal">Знакомо: вы&nbsp;пишете посты, запускаете продукты, вкладываете время. Результат скачет. В&nbsp;одном месяце густо, в&nbsp;другом пусто. Я&nbsp;разбираюсь, где&nbsp;ломается, и&nbsp;пересобираю маркетинг так, чтобы он&nbsp;работал без&nbsp;вашего ежедневного героизма.</p>
+        <h1 class="reveal">ВЫ ЗНАЕТЕ СВОЁ ДЕЛО<br>ЛУЧШЕ ВСЕХ. А ДЕНЬГИ<br>ПОЧЕМУ-ТО <span class="accent">У КОНКУРЕНТОВ</span></h1>
+        <p class="hero-subtitle reveal">Знакомо: вы пишете посты, запускаете продукты, вкладываете время. Результат скачет. В одном месяце густо, в другом пусто. Я разбираюсь, где ломается, и пересобираю маркетинг так, чтобы он работал без вашего ежедневного героизма.</p>
         <div class="hero-code reveal">
           <span>ex-продюсер ТНТ (Comedy Club, Stand Up, Танцы)</span>
           <span>CMO: 8K → 200K подписчиков, 15М+ выручки/мес</span>
@@ -1245,6 +1367,19 @@
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </header>
+
+<section class="site-path" aria-label="Разделы сайта">
+  <div class="container">
+    <nav class="site-path-grid" aria-label="Быстрые переходы">
+      <a href="#products"><span>01</span>Форматы работы</a>
+      <a href="/cases.html"><span>02</span>Кейсы и примеры</a>
+      <a href="/articles.html"><span>03</span>Статьи</a>
+      <a href="/about.html"><span>04</span>О Юлиане</a>
+      <a href="/faq.html"><span>05</span>FAQ</a>
+      <a href="#contact"><span>06</span>Связаться</a>
+    </nav>
+  </div>
+</section>
 
 <!-- Struggles — Dark -->
 <section class="section-dark" id="struggles">
@@ -1561,6 +1696,7 @@
       <a href="index.html">главная</a>
       <a href="about.html">обо мне</a>
       <a href="cases.html">кейсы: контент</a>
+      <a href="articles.html">статьи</a>
       <a href="case-careerum.html">кейс</a>
       <a href="site-map.html">карта сайта</a>
       <a href="https://t.me/marketing_solo" target="_blank" rel="noopener">канал</a>

@@ -34,6 +34,19 @@ h3{font-size:var(--text-lg);margin-bottom:.55rem}
 .item{border-top:3px solid var(--red);padding-top:var(--space-sm)}
 .item p{color:var(--grey);font-size:var(--text-sm);line-height:1.65}
 .body p{max-width:58rem;margin-bottom:1rem;color:var(--grey)}
+.article-body{width:min(90%,52rem);margin-inline:auto}
+.article-body h2{max-width:22ch;margin-top:var(--space-lg)}
+.article-body h3{margin-top:var(--space-md)}
+.article-body p,.article-body li{color:var(--grey);line-height:1.75}
+.article-body p{margin-bottom:1rem}
+.article-body ul,.article-body ol{padding-left:1.25rem;margin:0 0 1.25rem}
+.article-body li{margin-bottom:.55rem}
+.article-note{border-left:4px solid var(--red);background:rgba(200,50,50,.08);padding:var(--space-sm) var(--space-md);margin:var(--space-md) 0}
+.article-note p{margin:0;color:var(--dark)}
+.article-meta{font-family:'Fragment Mono',monospace;font-size:var(--text-xs);color:var(--grey);margin-bottom:var(--space-md)}
+.related-links{display:grid;gap:.85rem;margin-top:var(--space-md)}
+.related-links a{font-weight:500;text-decoration:none;color:var(--dark)}
+.related-links a:hover{color:var(--red)}
 .metrics{display:grid;gap:var(--space-sm);margin-top:var(--space-md)}
 @media (min-width:720px){.metrics{grid-template-columns:repeat(3,1fr)}}
 .metric{padding:var(--space-md);background:rgba(200,50,50,.08);border-left:4px solid var(--red)}

@@ -50,6 +50,9 @@
     const link = event.target.closest('a[href]');
     if (!link) return;
     const href = link.href;
+    if (link.closest('.mobile-bottom-nav') || link.closest('.site-path-grid')) {
+      track('internal_nav_click', { link_url: href, link_text: link.textContent.trim().slice(0, 80) });
+    }
     if (href.includes('t.me/')) track('telegram_click', { link_url: href });
     if (href.includes('docs.google.com/forms')) track('lead_form_click', { link_url: href });
     if (href.includes('marketing_check_up_quiz_bot')) track('quiz_bot_click', { link_url: href });

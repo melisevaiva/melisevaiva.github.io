@@ -1,0 +1,56 @@
+{
+  "site": "https://juliana-loginova.ru/",
+  "dateModified": "2026-06-25",
+  "defaultRules": [
+    {
+      "channel": "Telegram channel",
+      "utm_source": "telegram",
+      "utm_medium": "social",
+      "utm_campaign": "content",
+      "example": "https://juliana-loginova.ru/articles.html?utm_source=telegram&utm_medium=social&utm_campaign=content&utm_content=post"
+    },
+    {
+      "channel": "Telegram direct",
+      "utm_source": "telegram",
+      "utm_medium": "dm",
+      "utm_campaign": "consultation",
+      "example": "https://juliana-loginova.ru/marketing-check-up.html?utm_source=telegram&utm_medium=dm&utm_campaign=consultation"
+    },
+    {
+      "channel": "Instagram",
+      "utm_source": "instagram",
+      "utm_medium": "social",
+      "utm_campaign": "content",
+      "example": "https://juliana-loginova.ru/stories-warmup.html?utm_source=instagram&utm_medium=social&utm_campaign=stories"
+    },
+    {
+      "channel": "Email",
+      "utm_source": "email",
+      "utm_medium": "newsletter",
+      "utm_campaign": "launch",
+      "example": "https://juliana-loginova.ru/production.html?utm_source=email&utm_medium=newsletter&utm_campaign=launch"
+    },
+    {
+      "channel": "Podcast or interview",
+      "utm_source": "partner",
+      "utm_medium": "referral",
+      "utm_campaign": "interview",
+      "example": "https://juliana-loginova.ru/about.html?utm_source=partner&utm_medium=referral&utm_campaign=interview"
+    }
+  ],
+  "contentValues": [
+    "post",
+    "story",
+    "bio",
+    "pinned",
+    "newsletter",
+    "interview",
+    "case",
+    "article"
+  ],
+  "notes": [
+    "Использовать lowercase латиницу для utm_source, utm_medium, utm_campaign и utm_content.",
+    "Не ставить UTM на внутренние ссылки между страницами сайта.",
+    "Для каждого внешнего размещения фиксировать campaign и content, чтобы видеть вклад площадки в GA4, Метрике и Search Console."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Статьи Юлианы Логиновой о маркетинге для экспертов",
+  "url": "https://juliana-loginova.ru/articles.html",
+  "dateModified": "2026-06-25",
+  "inLanguage": "ru-RU",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Article",
+        "headline": "Маркетинговая диагностика для эксперта: как понять, почему нет продаж",
+        "url": "https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html",
+        "description": "Как эксперту найти точку поломки в маркетинге: позиционирование, продукт, оффер, контент, воронка, заявки и ближайший шаг к продажам.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Article",
+        "headline": "Контент-стратегия для Telegram-канала эксперта",
+        "url": "https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html",
+        "description": "Как эксперту выстроить Telegram-контент, который связан с продуктом, заявками и продажами: рубрики, смыслы, прогревы и путь читателя.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Article",
+        "headline": "Как эксперту продавать без большой команды",
+        "url": "https://juliana-loginova.ru/articles/marketing-bez-komandy.html",
+        "description": "Как эксперту выстроить маркетинг без агентства и большого штата: приоритеты, простая воронка, контент, заявки и делегирование только нужного.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Article",
+        "headline": "Как собрать сторис-прогрев перед вебинаром или запуском",
+        "url": "https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html",
+        "description": "Как строится сторис-прогрев перед вебинаром, запуском, листом ожидания или продажей: логика, этапы, ошибки, структура и примеры.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Article",
+        "headline": "Есть аудитория, но нет заявок: где ломается маркетинг эксперта",
+        "url": "https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html",
+        "description": "Почему у эксперта может быть аудитория, охваты и доверие, но не быть заявок: слабый оффер, непонятный продукт, нет CTA, нет воронки или доказательств.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    }
+  ]
+}
