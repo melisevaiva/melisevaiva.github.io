@@ -65,6 +65,66 @@
         "datePublished": "2026-06-25",
         "dateModified": "2026-06-25"
       }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Article",
+        "headline": "Сколько стоит маркетинговый стратег для эксперта",
+        "url": "https://juliana-loginova.ru/articles/skolko-stoit-marketingoviy-strateg.html",
+        "description": "Из чего складывается стоимость маркетингового стратега для эксперта: диагностика, сопровождение, продюсирование, зона ответственности и результат.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Article",
+        "headline": "Продюсер или маркетолог: кто нужен эксперту",
+        "url": "https://juliana-loginova.ru/articles/produser-ili-marketolog-dlya-eksperta.html",
+        "description": "Как эксперту понять, нужен ему маркетолог, маркетинговый стратег или продюсер: разница ролей, ответственность, признаки и критерии выбора.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Article",
+        "headline": "Почему Telegram-канал эксперта не продаёт",
+        "url": "https://juliana-loginova.ru/articles/telegram-kanal-ne-prodaet.html",
+        "description": "Почему Telegram-канал эксперта может иметь подписчиков и реакции, но не давать заявок: ошибки оффера, контента, доверия и призывов к действию.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Article",
+        "headline": "Как упаковать экспертный продукт, чтобы его понимали и покупали",
+        "url": "https://juliana-loginova.ru/articles/kak-upakovat-ekspertny-produkt.html",
+        "description": "Как эксперту упаковать продукт: результат, аудитория, формат, цена, границы работы, доказательства, оффер и первый шаг к покупке.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Article",
+        "headline": "Что писать в канале перед запуском продукта",
+        "url": "https://juliana-loginova.ru/articles/chto-pisat-pered-zapuskom.html",
+        "description": "Что писать эксперту перед запуском продукта в Telegram, Instagram или email: темы, прогрев, кейсы, возражения, оффер и последовательность публикаций.",
+        "datePublished": "2026-06-25",
+        "dateModified": "2026-06-25"
+      }
     }
   ]
 }

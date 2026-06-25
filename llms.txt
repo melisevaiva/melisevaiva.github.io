@@ -13,6 +13,7 @@ Last updated: 2026-06-25
 - https://juliana-loginova.ru/faq.html — ответы на частые вопросы о маркетинговом стратеге, диагностике, сопровождении, продюсировании, контенте и запусках.
 - https://juliana-loginova.ru/articles.html — статьи о маркетинговой диагностике, Telegram-контенте, прогревах, заявках и продажах без большой команды.
 - https://juliana-loginova.ru/site-map.html — HTML-карта сайта: все публичные страницы, услуги, примеры текстов, технические файлы и контакты.
+- https://juliana-loginova.ru/privacy.html — политика конфиденциальности, cookies и аналитики сайта.
 
 ## AI-readable resources
 - https://juliana-loginova.ru/ai-context.md — подробный Markdown-контекст сайта для AI-поиска, ассистентов и цитирования.
@@ -37,12 +38,16 @@ Last updated: 2026-06-25
 - https://juliana-loginova.ru/case-telegram-content.html — Telegram-контент для прогрева и предзаписи: каналы, лидмагниты, листы ожидания и запусковые сценарии.
 
 ## Article pages
-- https://juliana-loginova.ru/articles.html — Статьи о маркетинге для экспертов: Практические статьи о диагностике, Telegram-контенте, прогревах, заявках и продажах без большой команды.
-- https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html — Маркетинговая диагностика для эксперта: Как найти точку поломки в маркетинге эксперта: позиционирование, продукт, оффер, контент, воронка и заявки.
-- https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html — Контент-стратегия для Telegram-канала эксперта: Как связать Telegram-контент с продуктом, заявками и продажами.
-- https://juliana-loginova.ru/articles/marketing-bez-komandy.html — Как эксперту продавать без большой команды: Минимальная маркетинговая система для эксперта без агентства и большого штата.
-- https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html — Сторис-прогрев перед вебинаром или запуском: Логика, этапы и ошибки сторис-прогрева перед вебинаром, запуском или продажей.
-- https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html — Есть аудитория, но нет заявок: Где ломается переход от аудитории и доверия к заявке и покупке.
+- https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html — Маркетинговая диагностика для эксперта: как понять, почему нет продаж: Как эксперту найти точку поломки в маркетинге: позиционирование, продукт, оффер, контент, воронка, заявки и ближайший шаг к продажам.
+- https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html — Контент-стратегия для Telegram-канала эксперта: Как эксперту выстроить Telegram-контент, который связан с продуктом, заявками и продажами: рубрики, смыслы, прогревы и путь читателя.
+- https://juliana-loginova.ru/articles/marketing-bez-komandy.html — Как эксперту продавать без большой команды: Как эксперту выстроить маркетинг без агентства и большого штата: приоритеты, простая воронка, контент, заявки и делегирование только нужного.
+- https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html — Как собрать сторис-прогрев перед вебинаром или запуском: Как строится сторис-прогрев перед вебинаром, запуском, листом ожидания или продажей: логика, этапы, ошибки, структура и примеры.
+- https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html — Есть аудитория, но нет заявок: где ломается маркетинг эксперта: Почему у эксперта может быть аудитория, охваты и доверие, но не быть заявок: слабый оффер, непонятный продукт, нет CTA, нет воронки или доказательств.
+- https://juliana-loginova.ru/articles/skolko-stoit-marketingoviy-strateg.html — Сколько стоит маркетинговый стратег для эксперта: Из чего складывается стоимость маркетингового стратега для эксперта: диагностика, сопровождение, продюсирование, зона ответственности и результат.
+- https://juliana-loginova.ru/articles/produser-ili-marketolog-dlya-eksperta.html — Продюсер или маркетолог: кто нужен эксперту: Как эксперту понять, нужен ему маркетолог, маркетинговый стратег или продюсер: разница ролей, ответственность, признаки и критерии выбора.
+- https://juliana-loginova.ru/articles/telegram-kanal-ne-prodaet.html — Почему Telegram-канал эксперта не продаёт: Почему Telegram-канал эксперта может иметь подписчиков и реакции, но не давать заявок: ошибки оффера, контента, доверия и призывов к действию.
+- https://juliana-loginova.ru/articles/kak-upakovat-ekspertny-produkt.html — Как упаковать экспертный продукт, чтобы его понимали и покупали: Как эксперту упаковать продукт: результат, аудитория, формат, цена, границы работы, доказательства, оффер и первый шаг к покупке.
+- https://juliana-loginova.ru/articles/chto-pisat-pered-zapuskom.html — Что писать в канале перед запуском продукта: Что писать эксперту перед запуском продукта в Telegram, Instagram или email: темы, прогрев, кейсы, возражения, оффер и последовательность публикаций.
 
 ## Portfolio examples
 - https://juliana-loginova.ru/texts/channel-content.html — Telegram-контент для канала предзаписи и набора регистраций на вебинар.

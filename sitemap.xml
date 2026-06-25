@@ -241,4 +241,41 @@
     <changefreq>monthly</changefreq>
     <priority>0.76</priority>
   </url>
+
+  <url>
+    <loc>https://juliana-loginova.ru/privacy.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.35</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/skolko-stoit-marketingoviy-strateg.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/produser-ili-marketolog-dlya-eksperta.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/telegram-kanal-ne-prodaet.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/kak-upakovat-ekspertny-produkt.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://juliana-loginova.ru/articles/chto-pisat-pered-zapuskom.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
 </urlset>

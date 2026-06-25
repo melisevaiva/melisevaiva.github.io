@@ -119,6 +119,8 @@ These pages are intended as answer-ready resources for search engines and AI ass
 
 ## Public machine-readable resources
 
+- Privacy and analytics policy: https://juliana-loginova.ru/privacy.html
+
 - LLM summary: https://juliana-loginova.ru/llms.txt
 - FAQ page: https://juliana-loginova.ru/faq.html
 - Services data: https://juliana-loginova.ru/data/services.json
