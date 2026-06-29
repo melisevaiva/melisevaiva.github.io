@@ -3,7 +3,7 @@
 Canonical URL: https://juliana-loginova.ru/
 Language: ru-RU
 Primary region: online / Russian-speaking expert market
-Last updated: 2026-06-25
+Last updated: 2026-06-29
 
 ## Who this site is about
 
@@ -101,13 +101,22 @@ The site is relevant for people searching for:
 ## Article hub and answer pages
 
 - https://juliana-loginova.ru/articles.html — Статьи о маркетинге для экспертов: Практические статьи о диагностике, Telegram-контенте, прогревах, заявках и продажах без большой команды.
-- https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html — Маркетинговая диагностика для эксперта: Как найти точку поломки в маркетинге эксперта: позиционирование, продукт, оффер, контент, воронка и заявки.
-- https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html — Контент-стратегия для Telegram-канала эксперта: Как связать Telegram-контент с продуктом, заявками и продажами.
-- https://juliana-loginova.ru/articles/marketing-bez-komandy.html — Как эксперту продавать без большой команды: Минимальная маркетинговая система для эксперта без агентства и большого штата.
-- https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html — Сторис-прогрев перед вебинаром или запуском: Логика, этапы и ошибки сторис-прогрева перед вебинаром, запуском или продажей.
-- https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html — Есть аудитория, но нет заявок: Где ломается переход от аудитории и доверия к заявке и покупке.
+- https://juliana-loginova.ru/articles/diagnostika-marketinga-eksperta.html — Маркетинговая диагностика для эксперта: как понять, почему нет продаж.
+- https://juliana-loginova.ru/articles/kontent-strategiya-telegram-eksperta.html — Контент-стратегия для Telegram-канала эксперта.
+- https://juliana-loginova.ru/articles/marketing-bez-komandy.html — Как эксперту продавать без большой команды.
+- https://juliana-loginova.ru/articles/storis-progrev-pered-zapuskom.html — Как собрать сторис-прогрев перед вебинаром или запуском.
+- https://juliana-loginova.ru/articles/auditoriya-est-zayavok-net.html — Есть аудитория, но нет заявок: где ломается маркетинг эксперта.
+- https://juliana-loginova.ru/articles/skolko-stoit-marketingoviy-strateg.html — Сколько стоит маркетинговый стратег для эксперта.
+- https://juliana-loginova.ru/articles/produser-ili-marketolog-dlya-eksperta.html — Продюсер или маркетолог: кто нужен эксперту.
+- https://juliana-loginova.ru/articles/telegram-kanal-ne-prodaet.html — Почему Telegram-канал эксперта не продаёт.
+- https://juliana-loginova.ru/articles/kak-upakovat-ekspertny-produkt.html — Как упаковать экспертный продукт, чтобы его понимали и покупали.
+- https://juliana-loginova.ru/articles/chto-pisat-pered-zapuskom.html — Что писать в канале перед запуском продукта.
 
 These pages are intended as answer-ready resources for search engines and AI assistants. Each article contains a short answer, checklist, examples, FAQ and links to relevant services or cases.
+
+## Public presentations
+
+- https://juliana-loginova.ru/ai-presentation/ — Вайб-кодинг для гуманитариев: публичная презентация Юлианы Логиновой о работе с AI-инструментами, прототипировании, сайтах, ботах, автоматизациях и сборке цифровых решений без классического программирования.
 
 ## Suggested short description
 
@@ -120,6 +129,7 @@ These pages are intended as answer-ready resources for search engines and AI ass
 ## Public machine-readable resources
 
 - Privacy and analytics policy: https://juliana-loginova.ru/privacy.html
+- AI presentation: https://juliana-loginova.ru/ai-presentation/
 
 - LLM summary: https://juliana-loginova.ru/llms.txt
 - FAQ page: https://juliana-loginova.ru/faq.html
