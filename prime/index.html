@@ -41,14 +41,14 @@ function brandline(right){
     <div><div class="u" style="font-size:.72rem;letter-spacing:.04em">Юлиана Логинова</div></div>
     <div class="cmt">// ${right||'я в прайме'}</div></div>`;
 }
-function tvWall(count, capOverride){
+function tvWall(count, capOverride, subOverride){
   const caps = STATE.rating_caps, total=40, lit=Math.round((count/5)*total), pct=Math.round((count/5)*100);
   let cells=''; for(let i=0;i<total;i++) cells+=`<div class="tv ${i<lit?'on':''}"></div>`;
   return `<div class="wall-wrap">
     <div class="wall-top"><span class="lbl">// ваша узнаваемость</span>
       <span class="rating">${pct}% <small>эфира</small></span></div>
     <div class="tvgrid">${cells}</div>
-    <div class="wall-cap">${esc(capOverride || caps[count])}<span class="cmt">// ${count} из 5 эпизодов в эфире</span></div>
+    <div class="wall-cap">${esc(capOverride || caps[count])}<span class="cmt">${esc(subOverride || (count+' из 5 в эфире'))}</span></div>
   </div>`;
 }
 
@@ -56,7 +56,8 @@ function screenBoot(msg, demo){
   app.innerHTML = `<div class="screen on stag" style="padding-top:64px">
     ${brandline()}
     <h1 class="lead">Я в<span class="red">прайме</span></h1>
-    <p style="margin:14px 0 18px">${esc(msg)}</p>
+    <p class="sell-promise" style="margin:12px 0 6px">5 дней — и ваш блог собран так, что вас начинают замечать.</p>
+    <p style="margin:6px 0 18px;color:var(--grey)">${esc(msg)}</p>
     <a class="cta" href="https://t.me/${BOT}" target="_blank" rel="noopener">Открыть в Telegram</a>
     ${demo?`<a class="cta ghost" style="margin-top:10px" href="preview.html">Посмотреть демо</a>`:''}
   </div>`;
@@ -66,21 +67,22 @@ function renderPaywall(){
   const p = STATE.paywall;
   return `<div class="screen on stag">
     ${brandline()}
+    ${p.urgency?`<div class="urgency">${esc(p.urgency)}</div>`:''}
     <div class="eyebrow">${esc(p.kicker)}</div>
     <h1 class="lead">${esc(p.title_top)}<span class="red">${esc(p.title_red)}</span></h1>
     <p class="sell-pain">${esc(p.pain)}</p>
     <p class="sell-promise">${esc(p.promise)}</p>
-    ${tvWall(0, p.wall_caption)}
-    <div class="sell-h">${esc(p.episodes_title)}</div>
-    ${STATE.episodes.map(e=>`<div class="stage lock"><div class="snum">${e.n}</div>
-      <div><div class="stitle">${esc(e.tag)}</div><div class="sdesc">${esc(e.title)}</div></div>
-      <div class="sflag">🔒</div></div>`).join('')}
     <div class="sell-h">${esc(p.get_title)}</div>
     <ul class="get-list">${(p.get||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
+    ${p.not_line?`<p class="sell-reassure">${esc(p.not_line)}</p>`:''}
     <div class="proof-card"><div class="proof-h">${esc(p.proof_title)}</div>${esc(p.proof)}</div>
+    ${tvWall(5, p.wall_caption, 'прайм-тайм')}
+    <div class="sell-h">${esc(p.episodes_title)}</div>
+    ${p.episodes_line?`<p class="episodes-line">${esc(p.episodes_line)}</p>`:''}
+    ${p.price_anchor?`<p class="price-anchor">${esc(p.price_anchor)}</p>`:''}
     <p class="sell-reassure">${esc(p.reassure)}</p>
-    <button class="cta" onclick="buy()">${esc(p.cta)}</button>
-    <p class="price-note">${esc(p.cta_note)}</p>
+    <div class="sticky-cta"><button class="cta" onclick="buy()">${esc(p.cta)}</button>
+      <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span></div>
   </div>`;
 }
 
@@ -92,10 +94,12 @@ function renderDash(){
     <div class="eyebrow">// кастинг · ${rec>=5?'финал':'этап '+(Math.min(unlocked,5))+' из 5'}</div>
     <h1 class="lead">${esc(STATE.name)||'Привет'}, <span class="red">вас начинают замечать</span></h1>
     ${tvWall(rec)}
+    ${rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Новый эпизод открывается каждый день — заходите утром.</p>`:''}
     <div style="height:8px"></div>
     ${STATE.episodes.map(e=>{
       const st = done.has(e.n) ? 'done' : (e.n<=unlocked ? 'now' : 'lock');
-      const flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':'🔒');
+      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(e.n===unlocked+1?'завтра':'🔒'));
+      if(st!=='lock') flag += ' ›';
       const badge = st==='done' ? `<div class="badge-chip">${esc(e.badge)}</div>`:'';
       const click = st==='lock' ? '' : `onclick="openEp(${e.n})" style="cursor:pointer"`;
       return `<div class="stage ${st}" ${click}>
@@ -129,7 +133,10 @@ function renderEp(e){
     </div>
     ${ e.done
       ? `<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${e.final?`<button class="cta" onclick="showFinal()">Финал</button>`:''}</div>`
-      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Сделала ✅</button>` }
+      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>` }
+    ${ STATE.feedback && STATE.feedback.cta ? `<div class="fb-up">
+      <button class="cta gold" onclick="feedbackReview(${e.n})">${esc(STATE.feedback.cta)}</button>
+      <p class="price-note">${esc(STATE.feedback.note||'')}</p></div>` : '' }
   </div>`;
 }
 
@@ -158,12 +165,34 @@ async function openEp(n){
   if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Попробуйте позже.'); return; }
   app.innerHTML = renderEp(r.data); window.scrollTo(0,0);
 }
+function celebrateWall(prev, cur){
+  const total=40, prevLit=Math.round((prev/5)*total), curLit=Math.round((cur/5)*total);
+  let cells=''; for(let i=0;i<total;i++){
+    if(i<prevLit) cells+=`<div class="tv on"></div>`;
+    else if(i<curLit) cells+=`<div class="tv on lightup" style="animation-delay:${((i-prevLit)*0.05).toFixed(2)}s"></div>`;
+    else cells+=`<div class="tv"></div>`;
+  }
+  const pct=Math.round((cur/5)*100);
+  return `<div class="wall-wrap"><div class="wall-top"><span class="lbl">// ваша узнаваемость</span>
+    <span class="rating">${pct}% <small>эфира</small></span></div><div class="tvgrid">${cells}</div></div>`;
+}
+function renderCelebrate(ep, prev, cur){
+  const isFinal = ep>=5, badge = (STATE.episodes.find(e=>e.n===ep)||{}).badge || '';
+  return `<div class="screen on"><div class="celebrate">
+    <div class="cel-cap">${isFinal?'// премьера':'// эпизод '+ep+' в эфире'}</div>
+    ${celebrateWall(prev, cur)}
+    <div class="cel-badge">${esc(badge)}</div>
+    <p class="cel-line">${esc(STATE.rating_caps[cur]||'')}</p>
+    <button class="cta" onclick="${isFinal?'showFinal()':'showDash()'}">${isFinal?'Смотреть финал':'Дальше'}</button>
+  </div></div>`;
+}
 async function complete(n){
   const btn=document.getElementById('doneBtn'); if(btn){btn.disabled=true;btn.textContent='…';}
+  const prev = STATE.recognition;
   const r = await api('/api/episode/'+n+'/done', {method:'POST'});
   if(r.status===200){ STATE=r.data; if(tg&&tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-    if(n>=5){ showFinal(); } else { showDash(); } }
-  else { if(btn){btn.disabled=false;btn.textContent='Сделала ✅';} tgAlert('Не удалось сохранить. Попробуйте ещё раз.'); }
+    app.innerHTML = renderCelebrate(n, prev, STATE.recognition); window.scrollTo(0,0); }
+  else { if(btn){btn.disabled=false;btn.textContent='Готово ✅';} tgAlert('Не удалось сохранить. Попробуйте ещё раз.'); }
 }
 function buy(){
   // счёт выставляет бот (см. PAYMENT-SPEC): открываем бота с триггером покупки
@@ -171,7 +200,8 @@ function buy(){
   else { location.href = `https://t.me/${BOT}?start=buy_challenge`; }
 }
 function checkup(){ const url=`https://t.me/${BOT}?start=checkup`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
-function share(){ const t='Я прохожу челлендж «Я в прайме» 📺';
+function feedbackReview(n){ const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
+function share(){ const t='Я в прайме — сезон пройден 📺';
   if(tg){ tg.openTelegramLink('https://t.me/share/url?url='+encodeURIComponent('https://t.me/'+BOT)+'&text='+encodeURIComponent(t)); }
 }
 function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); } }
