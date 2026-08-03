@@ -41,14 +41,14 @@ function brandline(right){
     <div><div class="u" style="font-size:.72rem;letter-spacing:.04em">Юлиана Логинова</div></div>
     <div class="cmt">// ${right||'я в прайме'}</div></div>`;
 }
-function tvWall(count){
+function tvWall(count, capOverride){
   const caps = STATE.rating_caps, total=40, lit=Math.round((count/5)*total), pct=Math.round((count/5)*100);
   let cells=''; for(let i=0;i<total;i++) cells+=`<div class="tv ${i<lit?'on':''}"></div>`;
   return `<div class="wall-wrap">
     <div class="wall-top"><span class="lbl">// ваша узнаваемость</span>
       <span class="rating">${pct}% <small>эфира</small></span></div>
     <div class="tvgrid">${cells}</div>
-    <div class="wall-cap">${esc(caps[count])}<span class="cmt">// ${count} из 5 эпизодов в эфире</span></div>
+    <div class="wall-cap">${esc(capOverride || caps[count])}<span class="cmt">// ${count} из 5 эпизодов в эфире</span></div>
   </div>`;
 }
 
@@ -68,15 +68,17 @@ function renderPaywall(){
     ${brandline()}
     <div class="eyebrow">${esc(p.kicker)}</div>
     <h1 class="lead">${esc(p.title_top)}<span class="red">${esc(p.title_red)}</span></h1>
-    <p class="cmt" style="margin:0 0 18px">${esc(p.sub)}</p>
-    <p style="margin-bottom:16px">${esc(p.lead)}</p>
-    ${tvWall(0)}
-    <div style="height:18px"></div>
+    <p class="sell-pain">${esc(p.pain)}</p>
+    <p class="sell-promise">${esc(p.promise)}</p>
+    ${tvWall(0, p.wall_caption)}
+    <div class="sell-h">${esc(p.episodes_title)}</div>
     ${STATE.episodes.map(e=>`<div class="stage lock"><div class="snum">${e.n}</div>
       <div><div class="stitle">${esc(e.tag)}</div><div class="sdesc">${esc(e.title)}</div></div>
       <div class="sflag">🔒</div></div>`).join('')}
-    <p style="margin:18px 0 4px">${esc(p.note)}</p>
-    <div style="height:14px"></div>
+    <div class="sell-h">${esc(p.get_title)}</div>
+    <ul class="get-list">${(p.get||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
+    <div class="proof-card"><div class="proof-h">${esc(p.proof_title)}</div>${esc(p.proof)}</div>
+    <p class="sell-reassure">${esc(p.reassure)}</p>
     <button class="cta" onclick="buy()">${esc(p.cta)}</button>
     <p class="price-note">${esc(p.cta_note)}</p>
   </div>`;

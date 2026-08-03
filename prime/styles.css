@@ -94,6 +94,18 @@
   .cta.gold{background:var(--concrete);color:var(--gold)}
   .price-note{text-align:center;color:var(--grey);font-size:.78rem;margin-top:10px}
 
+  /* ---------- продающий первый экран (мини-лендинг) ---------- */
+  .sell-pain{font-size:1.08rem;font-weight:500;color:var(--concrete);line-height:1.42;margin:16px 0 12px}
+  .sell-promise{font-size:.98rem;color:#2b2926;margin:0 0 18px}
+  .sell-h{font-family:'Unbounded';text-transform:uppercase;font-weight:600;font-size:.78rem;letter-spacing:-.01em;color:var(--red);margin:24px 0 10px}
+  .get-list{list-style:none;margin:0;padding:0}
+  .get-list li{position:relative;padding:9px 0 9px 27px;font-size:.94rem;color:#2b2926;border-top:1px solid rgba(74,74,82,.14)}
+  .get-list li:first-child{border-top:none}
+  .get-list li::before{content:"✓";position:absolute;left:2px;top:9px;color:var(--red);font-weight:700}
+  .proof-card{background:var(--concrete);color:var(--cream);padding:18px;margin:24px 0 8px;clip-path:var(--cut-soft);font-size:.92rem;line-height:1.5}
+  .proof-card .proof-h{font-family:'Unbounded';text-transform:uppercase;font-weight:700;font-size:.72rem;color:var(--gold);letter-spacing:.04em;margin-bottom:8px}
+  .sell-reassure{font-size:.9rem;color:var(--grey);margin:18px 0 14px}
+
   /* ---------- episode reading ---------- */
   .ep-head{margin:6px 0 18px}
   .ep-kicker{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
