@@ -75,13 +75,15 @@
   /* ---------- dashboard episode list ---------- */
   .lead{font-size:clamp(1.7rem,7vw,2.15rem);margin:24px 0 6px;}
   .lead .red{display:block}
-  .stage{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid rgba(74,74,82,.18);position:relative;}
+  .stage{display:grid;grid-template-columns:auto 1fr auto;gap:16px;width:100%;padding:18px 0;
+    border:0;border-top:1px solid rgba(74,74,82,.18);position:relative;background:none;color:inherit;
+    font:inherit;text-align:left;cursor:pointer;}
   .stage:last-child{border-bottom:1px solid rgba(74,74,82,.18)}
   .snum{width:46px;height:46px;display:grid;place-items:center;font-family:'Unbounded';font-weight:700;font-size:1.05rem;
     background:var(--cream-2);color:var(--grey);clip-path:var(--cut-soft);transition:.3s var(--ease);}
   .stage.done .snum{background:var(--concrete);color:var(--gold);}
   .stage.now .snum{background:var(--red);color:var(--cream);clip-path:var(--cut-sharp);box-shadow:var(--shadow);}
-  .stage.lock{opacity:.5}
+  .stage.lock{opacity:.5;cursor:default}
   .stitle{font-family:'Unbounded';text-transform:uppercase;font-weight:600;font-size:.86rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:3px}
   .sdesc{font-size:.82rem;color:var(--grey)}
   .sflag{margin-left:auto;font-family:'JetBrains Mono';font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;align-self:center}
@@ -147,7 +149,8 @@
   .final-hero{text-align:left}
   .final-badge{display:inline-flex;align-items:center;gap:8px;background:var(--concrete);color:var(--gold);
     font-family:'JetBrains Mono';font-size:.72rem;padding:8px 14px;border-radius:100px;margin-bottom:16px}
-  .share{background:var(--cream-2);padding:16px;margin:18px 0;clip-path:var(--cut-soft);text-align:center}
+  .share{display:block;width:100%;background:var(--cream-2);color:inherit;border:0;padding:16px;margin:18px 0;
+    clip-path:var(--cut-soft);text-align:center;font:inherit;cursor:pointer}
   .share .u{font-size:.95rem;margin-bottom:4px}
 
   /* ---------- dev bar (только для превью) ---------- */
