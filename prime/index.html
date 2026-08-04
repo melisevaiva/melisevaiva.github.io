@@ -31,9 +31,18 @@ let STATE = null;
 
 async function api(path, opts){
   opts = opts || {};
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 12000);
   opts.headers = Object.assign({'Authorization':'tma '+INIT}, opts.headers||{});
-  const r = await fetch(API_BASE + path, opts);
-  return { status:r.status, data: r.status!==204 ? await r.json().catch(()=>null) : null };
+  opts.signal = controller.signal;
+  try{
+    const r = await fetch(API_BASE + path, opts);
+    return { status:r.status, data: r.status!==204 ? await r.json().catch(()=>null) : null };
+  }catch(e){
+    return { status:0, data:null };
+  }finally{
+    clearTimeout(timeout);
+  }
 }
 
 function brandline(right){
@@ -102,12 +111,12 @@ function renderDash(){
       let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(e.n===unlocked+1?'завтра':'🔒'));
       if(st!=='lock') flag += ' ›';
       const badge = st==='done' ? `<div class="badge-chip">${esc(e.badge)}</div>`:'';
-      const click = st==='lock' ? '' : `onclick="openEp(${e.n})" style="cursor:pointer"`;
-      return `<div class="stage ${st}" ${click}>
+      const click = st==='lock' ? 'disabled' : `onclick="openEp(${e.n})"`;
+      return `<button type="button" class="stage ${st}" ${click}>
         <div class="snum">${e.n}</div>
         <div><div class="stagehead"><div class="stitle">${esc(e.tag)}</div></div>
           <div class="sdesc">${esc(e.title)}</div>${badge}</div>
-        <div class="sflag">${flag}</div></div>`;
+        <div class="sflag">${flag}</div></button>`;
     }).join('')}
     ${rec>=5?`<div style="height:18px"></div><button class="cta" onclick="showFinal()">Смотреть финал</button>`:''}
   </div>`;
@@ -148,8 +157,8 @@ function renderFinal(){
     <h1 class="lead">${esc(f.title_top)}<span class="red">${esc(f.title_red)}</span></h1>
     ${tvWall(5)}
     <p style="margin:18px 0">${esc(f.body)}</p>
-    <div class="share" onclick="share()"><div class="u">${esc(f.share)}</div><div class="cmt">${esc(f.share_note)}</div></div>
-    <p style="margin:6px 0 4px"><b>И тут честно.</b> ${esc(f.checkup_lead)}</p>
+    <button type="button" class="share" onclick="share()"><div class="u">${esc(f.share)}</div><div class="cmt">${esc(f.share_note)}</div></button>
+    <p style="margin:6px 0 4px">${esc(f.checkup_lead)}</p>
     <p class="cmt" style="margin:0 0 16px">${esc(f.checkup_note)}</p>
     <button class="cta gold" onclick="checkup()">${esc(f.checkup_cta)}</button>
   </div>`;
