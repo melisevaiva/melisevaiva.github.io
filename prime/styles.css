@@ -100,6 +100,9 @@
   .cta:active{transform:translateY(1px)}
   .cta.ghost{background:transparent;color:var(--concrete);box-shadow:inset 0 0 0 1.5px var(--concrete);clip-path:none;}
   .cta.gold{background:var(--concrete);color:var(--gold)}
+  .back-link{display:inline-flex;align-items:center;background:none;border:0;padding:4px 0 12px;
+    color:var(--grey);font-family:'JetBrains Mono';font-size:.78rem;cursor:pointer}
+  .back-link:active{color:var(--red)}
   .price-note{text-align:center;color:var(--grey);font-size:.78rem;margin-top:10px}
   /* липкая кнопка покупки на длинном пейволле */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;z-index:40;

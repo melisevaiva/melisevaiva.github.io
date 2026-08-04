@@ -114,6 +114,7 @@ function renderDash(){
 
 function renderEp(e){
   return `<div class="screen on stag">
+    <button class="back-link" onclick="showDash()" aria-label="Назад к списку эпизодов">← Назад к эпизодам</button>
     ${brandline('эпизод '+e.n+' из 5')}
     <div class="ep-head prose">
       <div class="ep-kicker">// эпизод ${e.n} · ${esc(e.tag)}</div>
@@ -140,6 +141,7 @@ function renderEp(e){
 function renderFinal(){
   const f = STATE.final;
   return `<div class="screen on stag">
+    <button class="back-link" onclick="showDash()" aria-label="Назад к списку эпизодов">← Назад к эпизодам</button>
     ${brandline('финал сезона')}
     <div class="final-badge">${esc(f.badge)}</div>
     <h1 class="lead">${esc(f.title_top)}<span class="red">${esc(f.title_red)}</span></h1>
@@ -153,14 +155,18 @@ function renderFinal(){
 }
 
 // ---- переходы ----
-function showDash(){ app.innerHTML = STATE.paid ? renderDash() : renderPaywall(); window.scrollTo(0,0); }
-function showFinal(){ app.innerHTML = renderFinal(); window.scrollTo(0,0); }
+function setBackButton(visible){
+  if(!tg || !tg.BackButton) return;
+  if(visible) tg.BackButton.show(); else tg.BackButton.hide();
+}
+function showDash(){ app.innerHTML = STATE.paid ? renderDash() : renderPaywall(); setBackButton(false); window.scrollTo(0,0); }
+function showFinal(){ app.innerHTML = renderFinal(); setBackButton(true); window.scrollTo(0,0); }
 async function openEp(n){
   const r = await api('/api/episode/'+n);
   if(r.status===402){ STATE.paid=false; showDash(); return; }
   if(r.status===403){ tgAlert('Этот эпизод откроется в свой день. Возвращайтесь завтра 🎬'); return; }
   if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Попробуйте позже.'); return; }
-  app.innerHTML = renderEp(r.data); window.scrollTo(0,0);
+  app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
 }
 function celebrateWall(prev, cur){
   const total=40, prevLit=Math.round((prev/5)*total), curLit=Math.round((cur/5)*total);
@@ -205,7 +211,7 @@ function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); }
 
 // ---- старт ----
 async function boot(){
-  try{ if(tg){ tg.ready(); tg.expand(); } }catch(e){}
+  try{ if(tg){ tg.ready(); tg.expand(); if(tg.BackButton){ tg.BackButton.onClick(showDash); } } }catch(e){}
   if(!INIT){ screenBoot('Откройте приложение через бота @'+BOT+' после оплаты — тогда откроется ваш сезон.', false); return; }
   const r = await api('/api/state');
   if(r.status===401){ screenBoot('Сессия не подтвердилась. Откройте приложение заново через бота.', false); return; }
