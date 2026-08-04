@@ -82,6 +82,7 @@ function renderPaywall(){
     ${p.price_anchor?`<p class="price-anchor">${esc(p.price_anchor)}</p>`:''}
     <p class="sell-reassure">${esc(p.reassure)}</p>
     <div class="sticky-cta"><button class="cta" onclick="buy()">${esc(p.cta)}</button>
+      ${p.promo_cta?`<button class="promo-link" onclick="promo()">${esc(p.promo_cta)}</button>`:''}
       <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span></div>
   </div>`;
 }
@@ -201,6 +202,10 @@ function buy(){
   // счёт выставляет бот (см. PAYMENT-SPEC): открываем бота с триггером покупки
   if(tg){ tg.openTelegramLink(`https://t.me/${BOT}?start=buy_challenge`); tg.close(); }
   else { location.href = `https://t.me/${BOT}?start=buy_challenge`; }
+}
+function promo(){
+  const url=`https://t.me/${BOT}?start=prime_test`;
+  if(tg){ tg.openTelegramLink(url); } else { location.href=url; }
 }
 function checkup(){ const url=`https://t.me/${BOT}?start=checkup`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
 function feedbackReview(n){ const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
