@@ -138,9 +138,6 @@
     box-shadow:inset 0 0 0 1px rgba(200,50,50,.18)}
   .taskcard .th{font-family:'Unbounded';font-weight:700;text-transform:uppercase;font-size:.78rem;color:var(--red);margin-bottom:8px;letter-spacing:.02em}
   .sting{font-style:italic;color:var(--grey);font-size:.92rem;margin-top:2px}
-  .wm{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;opacity:.05}
-  .wm span{position:absolute;font-family:'JetBrains Mono';font-size:13px;color:var(--concrete);white-space:nowrap;transform:rotate(-24deg)}
-
   /* ---------- final ---------- */
   .final-hero{text-align:left}
   .final-badge{display:inline-flex;align-items:center;gap:8px;background:var(--concrete);color:var(--gold);

@@ -113,10 +113,7 @@ function renderDash(){
 }
 
 function renderEp(e){
-  const uname = e.username || STATE.username || '';
-  const wm = Array.from({length:14}).map((_,i)=>`<span style="top:${i*60-20}px;left:${(i%2)*40-10}px">@${esc(uname)} · я в прайме · </span>`).join('');
   return `<div class="screen on stag">
-    <div class="wm">${wm}</div>
     ${brandline('эпизод '+e.n+' из 5')}
     <div class="ep-head prose">
       <div class="ep-kicker">// эпизод ${e.n} · ${esc(e.tag)}</div>
