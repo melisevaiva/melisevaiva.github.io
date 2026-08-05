@@ -85,6 +85,13 @@ function renderPaywall(){
     <ul class="get-list">${(p.get||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
     ${p.not_line?`<p class="sell-reassure">${esc(p.not_line)}</p>`:''}
     <div class="proof-card"><div class="proof-h">${esc(p.proof_title)}</div>${esc(p.proof)}</div>
+    ${p.example_title?`<div class="example-card">
+      <div class="sell-h">${esc(p.example_title)}</div>
+      <div class="example-before">${esc(p.example_before)}</div>
+      <div class="example-arrow">↓</div>
+      <div class="example-after">${esc(p.example_after)}</div>
+      <p>${esc(p.example_note||'')}</p>
+    </div>`:''}
     ${tvWall(5, p.wall_caption, 'прайм-тайм')}
     <div class="sell-h">${esc(p.episodes_title)}</div>
     ${p.episodes_line?`<p class="episodes-line">${esc(p.episodes_line)}</p>`:''}
