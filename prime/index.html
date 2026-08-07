@@ -21,8 +21,8 @@
 <script>
 const BOT = "marketing_check_up_quiz_bot";
 // База API (VPS). Витрина на GitHub Pages → fetch сюда (CORS на бэкенде).
-// Позже можно заменить на https://api.juliana-loginova.ru:8443 (1 DNS-запись).
-const API_BASE = "https://api.89.191.226.165.nip.io:8443";
+// Постоянный адрес API: при следующей смене IP менять приложение не потребуется.
+const API_BASE = "https://api.juliana-loginova.ru:8443";
 const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
 const INIT = tg ? tg.initData : "";
 const app = document.getElementById('app');
