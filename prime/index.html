@@ -164,7 +164,6 @@ function renderFinal(){
     <h1 class="lead">${esc(f.title_top)}<span class="red">${esc(f.title_red)}</span></h1>
     ${tvWall(5)}
     <p style="margin:18px 0">${esc(f.body)}</p>
-    <button type="button" class="share" onclick="share()"><div class="u">${esc(f.share)}</div><div class="cmt">${esc(f.share_note)}</div></button>
     <p style="margin:6px 0 4px">${esc(f.checkup_lead)}</p>
     <p class="cmt" style="margin:0 0 16px">${esc(f.checkup_note)}</p>
     <button class="cta gold" onclick="checkup()">${esc(f.checkup_cta)}</button>
@@ -225,9 +224,6 @@ function promo(){
 }
 function checkup(){ const url=`https://t.me/${BOT}?start=checkup`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
 function feedbackReview(n){ const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
-function share(){ const t='Я в прайме — сезон пройден 📺';
-  if(tg){ tg.openTelegramLink('https://t.me/share/url?url='+encodeURIComponent('https://t.me/'+BOT)+'&text='+encodeURIComponent(t)); }
-}
 function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); } }
 
 // ---- старт ----
