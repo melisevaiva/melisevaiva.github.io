@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260831-4');
+  target.searchParams.set('v', '20260831-5');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -30,6 +30,7 @@ if (location.hostname !== 'api.juliana-loginova.ru') {
 
 <script>
 const BOT = "marketing_check_up_quiz_bot";
+const PRIME_LINK = `https://t.me/${BOT}?start=prime`;
 // База API (VPS). Витрина на GitHub Pages → fetch сюда (CORS на бэкенде).
 // Постоянный адрес API: при следующей смене IP менять приложение не потребуется.
 // Стандартный 443: порт 8443 режут VPN, публичный Wi-Fi и часть мобильных операторов.
@@ -166,6 +167,11 @@ function openCardOriginal(path){
   else window.open(url,'_blank','noopener');
 }
 
+function openPrimeLink(){
+  if(tg&&tg.openTelegramLink) tg.openTelegramLink(PRIME_LINK);
+  else window.open(PRIME_LINK,'_blank','noopener');
+}
+
 async function saveCard(path,n,btn){
   const original=btn?btn.textContent:'';
   if(btn){btn.disabled=true;btn.textContent='Готовлю файл…';}
@@ -175,7 +181,11 @@ async function saveCard(path,n,btn){
     const blob=await response.blob();
     const file=new File([blob],`pamjatka-epizod-${n}.png`,{type:blob.type||'image/png'});
     if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-      await navigator.share({files:[file],title:`Памятка к эпизоду ${n}`});
+      await navigator.share({
+        files:[file], title:`Памятка к эпизоду ${n}`,
+        text:`Эта памятка — часть приложения «Я в прайме». ${PRIME_LINK}`,
+        url:PRIME_LINK
+      });
     }else{
       const href=URL.createObjectURL(blob), link=document.createElement('a');
       link.href=href; link.download=file.name; document.body.appendChild(link); link.click(); link.remove();
@@ -327,6 +337,7 @@ function renderEp(e){
         </button>
         <figcaption>Нажмите на памятку, чтобы открыть её в полном размере.</figcaption>
         <button type="button" class="card-save" onclick='saveCard(${jsq(e.card)},${e.n},this)'>Сохранить памятку ↓</button>
+        <button type="button" class="prime-app-link" onclick="openPrimeLink()">Открыть приложение «Я в прайме» ↗</button>
       </figure>`:''}
       ${(e.after||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.sting?`<p class="sting">${esc(e.sting)}</p>`:''}

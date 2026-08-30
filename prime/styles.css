@@ -239,6 +239,7 @@
 }
 .card-save { width:100%; margin-top:10px; padding:11px 14px; border:1px solid rgba(74,74,82,.25); background:var(--cream-2); color:var(--concrete); font:600 .8rem 'Rubik'; cursor:pointer; }
 .card-save:disabled { opacity:.65; cursor:wait; }
+.prime-app-link { width:100%; margin-top:8px; padding:9px 12px; border:0; background:transparent; color:var(--red); font:700 .76rem 'JetBrains Mono'; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
 .card-overlay { position:fixed; inset:0; z-index:100; background:rgba(12,12,12,.92); display:flex; align-items:center; justify-content:center; padding:14px; overflow:auto; }
 .card-modal { position:relative; width:min(100%,680px); max-height:100%; overflow:auto; background:var(--cream); padding:42px 12px 14px; }
 .card-modal>img { display:block; width:100%; height:auto; }
