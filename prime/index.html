@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260831-1');
+  target.searchParams.set('v', '20260831-2');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -43,6 +43,7 @@ const INIT = tg ? tg.initData : "";
 const app = document.getElementById('app');
 const esc = s => (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;');
 let STATE = null;
+let currentAudioUrl = null;
 
 async function api(path, opts){
   opts = opts || {};
@@ -58,6 +59,37 @@ async function api(path, opts){
   }finally{
     clearTimeout(timeout);
   }
+}
+
+async function apiBlob(path){
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 30000);
+  try{
+    const r = await fetch(API_BASE + path, {
+      headers:{'Authorization':'tma '+INIT}, signal:controller.signal
+    });
+    return {status:r.status, blob:r.status===200 ? await r.blob() : null};
+  }catch(e){ return {status:0, blob:null}; }
+  finally{ clearTimeout(timeout); }
+}
+
+function disposeAudio(){
+  if(currentAudioUrl){ URL.revokeObjectURL(currentAudioUrl); currentAudioUrl=null; }
+}
+
+async function loadEpisodeAudio(n){
+  const mount=document.getElementById('episodeAudioMount');
+  if(!mount) return;
+  mount.textContent='Загружаю аудиоурок…';
+  const r=await apiBlob('/api/episode/'+n+'/audio');
+  if(!document.getElementById('episodeAudioMount')) return;
+  if(r.status!==200 || !r.blob){
+    mount.innerHTML=`<button type="button" class="audio-retry" onclick="loadEpisodeAudio(${n})">Не удалось загрузить · повторить</button>`;
+    return;
+  }
+  disposeAudio();
+  currentAudioUrl=URL.createObjectURL(r.blob);
+  mount.innerHTML=`<audio controls preload="metadata" playsinline src="${currentAudioUrl}">Ваш браузер не поддерживает аудио.</audio>`;
 }
 
 function brandline(right){
@@ -185,6 +217,10 @@ function renderEp(e){
     <div class="prose">
       <p>${esc(STATE.name)||'Привет'}, привет!</p>
       ${(e.prose||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
+      ${e.audio?`<section class="episode-audio" aria-label="Аудиоурок эпизода">
+        <div class="audio-kicker">▶ Аудиоурок от Юлианы</div>
+        <div id="episodeAudioMount" class="audio-mount" aria-live="polite">Загружаю аудиоурок…</div>
+      </section>`:''}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
       ${e.card?`<figure class="cardshot"><img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
@@ -222,8 +258,8 @@ function setBackButton(visible){
   if(!tg || !tg.BackButton) return;
   if(visible) tg.BackButton.show(); else tg.BackButton.hide();
 }
-function showDash(){ app.innerHTML = STATE.paid ? renderDash() : renderLockedSeason(); setBackButton(false); window.scrollTo(0,0); }
-function showFinal(){ app.innerHTML = renderFinal(); setBackButton(true); window.scrollTo(0,0); }
+function showDash(){ disposeAudio(); app.innerHTML = STATE.paid ? renderDash() : renderLockedSeason(); setBackButton(false); window.scrollTo(0,0); }
+function showFinal(){ disposeAudio(); app.innerHTML = renderFinal(); setBackButton(true); window.scrollTo(0,0); }
 async function openEp(n){
   let r = await api('/api/episode/'+n);
   // Мобильный WebView иногда роняет самый первый запрос после клика молча,
@@ -232,7 +268,8 @@ async function openEp(n){
   if(r.status===402){ STATE.paid=false; showDash(); return; }
   if(r.status===403){ tgAlert('Этот эпизод откроется в свой день. Возвращайтесь завтра 🎬'); return; }
   if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Проверьте связь и попробуйте ещё раз.'); return; }
-  app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
+  disposeAudio(); app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
+  if(r.data.audio) loadEpisodeAudio(n);
 }
 function celebrateWall(prev, cur){
   const total=40, prevLit=Math.round((prev/5)*total), curLit=Math.round((cur/5)*total);
