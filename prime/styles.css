@@ -194,6 +194,7 @@
 
 /* Памятка эпизода: скачиваемая карточка с заданием */
 .cardshot { margin: 18px 0 4px; }
+.card-preview { display:block; width:100%; border:0; padding:0; background:transparent; cursor:zoom-in; }
 .cardshot img {
   width: 100%; height: auto; display: block;
   border: 1px solid rgba(245, 240, 230, .16);
@@ -201,3 +202,11 @@
 .cardshot figcaption {
   margin-top: 8px; font-size: 12px; line-height: 1.45; opacity: .62;
 }
+.card-save { width:100%; margin-top:10px; padding:11px 14px; border:1px solid rgba(74,74,82,.25); background:var(--cream-2); color:var(--concrete); font:600 .8rem 'Rubik'; cursor:pointer; }
+.card-save:disabled { opacity:.65; cursor:wait; }
+.card-overlay { position:fixed; inset:0; z-index:100; background:rgba(12,12,12,.92); display:flex; align-items:center; justify-content:center; padding:14px; overflow:auto; }
+.card-modal { position:relative; width:min(100%,680px); max-height:100%; overflow:auto; background:var(--cream); padding:42px 12px 14px; }
+.card-modal>img { display:block; width:100%; height:auto; }
+.card-close { position:absolute; top:6px; right:8px; width:34px; height:34px; border:0; border-radius:50%; background:var(--concrete); color:var(--cream); font-size:24px; line-height:1; cursor:pointer; }
+.card-actions { display:grid; gap:8px; margin-top:12px; }
+.card-actions .cta { margin:0; }

@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260831-2');
+  target.searchParams.set('v', '20260831-3');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -42,6 +42,7 @@ const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : 
 const INIT = tg ? tg.initData : "";
 const app = document.getElementById('app');
 const esc = s => (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const jsq = s => JSON.stringify(String(s||''));
 let STATE = null;
 let currentAudioUrl = null;
 
@@ -90,6 +91,60 @@ async function loadEpisodeAudio(n){
   disposeAudio();
   currentAudioUrl=URL.createObjectURL(r.blob);
   mount.innerHTML=`<audio controls preload="metadata" playsinline src="${currentAudioUrl}">Ваш браузер не поддерживает аудио.</audio>`;
+}
+
+function cardAbsoluteUrl(path){ return new URL(path, location.href).href; }
+
+function closeCard(){
+  const overlay=document.getElementById('cardOverlay');
+  if(overlay) overlay.remove();
+}
+
+function openCard(path, n){
+  closeCard();
+  const overlay=document.createElement('div');
+  overlay.id='cardOverlay';
+  overlay.className='card-overlay';
+  overlay.setAttribute('role','dialog');
+  overlay.setAttribute('aria-modal','true');
+  overlay.setAttribute('aria-label','Памятка к эпизоду '+n);
+  overlay.innerHTML=`<div class="card-modal">
+    <button type="button" class="card-close" onclick="closeCard()" aria-label="Закрыть памятку">×</button>
+    <img src="${cardAbsoluteUrl(path)}" alt="Памятка к эпизоду ${n}">
+    <div class="card-actions">
+      <button type="button" class="cta" onclick='saveCard(${jsq(path)},${n},this)'>Сохранить памятку</button>
+      <button type="button" class="cta ghost" onclick='openCardOriginal(${jsq(path)})'>Открыть оригинал</button>
+    </div></div>`;
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeCard(); });
+  document.body.appendChild(overlay);
+}
+
+function openCardOriginal(path){
+  const url=cardAbsoluteUrl(path);
+  if(tg&&tg.openLink) tg.openLink(url,{try_instant_view:false});
+  else window.open(url,'_blank','noopener');
+}
+
+async function saveCard(path,n,btn){
+  const original=btn?btn.textContent:'';
+  if(btn){btn.disabled=true;btn.textContent='Готовлю файл…';}
+  try{
+    const response=await fetch(cardAbsoluteUrl(path));
+    if(!response.ok) throw new Error('card_fetch_failed');
+    const blob=await response.blob();
+    const file=new File([blob],`pamjatka-epizod-${n}.png`,{type:blob.type||'image/png'});
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:`Памятка к эпизоду ${n}`});
+    }else{
+      const href=URL.createObjectURL(blob), link=document.createElement('a');
+      link.href=href; link.download=file.name; document.body.appendChild(link); link.click(); link.remove();
+      setTimeout(()=>URL.revokeObjectURL(href),1500);
+    }
+    if(btn) btn.textContent='Сохранено ✓';
+  }catch(e){
+    if(e&&e.name!=='AbortError') openCardOriginal(path);
+    if(btn){btn.disabled=false;btn.textContent=original||'Сохранить памятку';}
+  }
 }
 
 function brandline(right){
@@ -223,8 +278,13 @@ function renderEp(e){
       </section>`:''}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
-      ${e.card?`<figure class="cardshot"><img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
-        <figcaption>Памятка к эпизоду. Нажмите, чтобы открыть в полном размере и сохранить.</figcaption></figure>`:''}
+      ${e.card?`<figure class="cardshot">
+        <button type="button" class="card-preview" onclick='openCard(${jsq(e.card)},${e.n})' aria-label="Открыть памятку к эпизоду ${e.n}">
+          <img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
+        </button>
+        <figcaption>Нажмите на памятку, чтобы открыть её в полном размере.</figcaption>
+        <button type="button" class="card-save" onclick='saveCard(${jsq(e.card)},${e.n},this)'>Сохранить памятку ↓</button>
+      </figure>`:''}
       ${(e.after||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.sting?`<p class="sting">${esc(e.sting)}</p>`:''}
       ${e.next?`<p class="cmt" style="margin-top:14px">// ${esc(e.next)}</p>`:''}
