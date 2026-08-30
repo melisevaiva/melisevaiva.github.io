@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260831-3');
+  target.searchParams.set('v', '20260831-4');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -45,6 +45,7 @@ const esc = s => (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const jsq = s => JSON.stringify(String(s||''));
 let STATE = null;
 let currentAudioUrl = null;
+let currentAudioElement = null;
 
 async function api(path, opts){
   opts = opts || {};
@@ -75,13 +76,53 @@ async function apiBlob(path){
 }
 
 function disposeAudio(){
+  if(currentAudioElement){ currentAudioElement.pause(); currentAudioElement=null; }
   if(currentAudioUrl){ URL.revokeObjectURL(currentAudioUrl); currentAudioUrl=null; }
+}
+
+function formatAudioTime(value){
+  if(!Number.isFinite(value)) return '0:00';
+  const minutes=Math.floor(value/60), seconds=Math.floor(value%60);
+  return `${minutes}:${String(seconds).padStart(2,'0')}`;
+}
+
+function mountAudioPlayer(url,n){
+  const mount=document.getElementById('episodeAudioMount');
+  if(!mount) return;
+  mount.innerHTML=`<div class="audio-player">
+    <audio preload="metadata" playsinline src="${url}"></audio>
+    <button type="button" class="audio-toggle" aria-label="Воспроизвести аудиоурок эпизода ${n}"><span>▶</span></button>
+    <div class="audio-console">
+      <div class="audio-console-top"><span class="audio-status"><i></i> в эфире</span><span class="audio-duration">0:00</span></div>
+      <div class="audio-wave" aria-hidden="true">${'<i></i>'.repeat(18)}</div>
+      <input class="audio-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Перемотка аудиоурока">
+      <div class="audio-times"><span class="audio-current">0:00</span><span>// эпизод ${n}</span></div>
+    </div>
+  </div>`;
+  const player=mount.querySelector('.audio-player'), audio=player.querySelector('audio');
+  const toggle=player.querySelector('.audio-toggle'), icon=toggle.querySelector('span');
+  const seek=player.querySelector('.audio-seek'), current=player.querySelector('.audio-current');
+  const duration=player.querySelector('.audio-duration');
+  currentAudioElement=audio;
+  const sync=()=>{
+    const progress=audio.duration ? (audio.currentTime/audio.duration)*100 : 0;
+    seek.value=String(progress); seek.style.setProperty('--progress',progress+'%');
+    current.textContent=formatAudioTime(audio.currentTime);
+  };
+  audio.addEventListener('loadedmetadata',()=>{duration.textContent=formatAudioTime(audio.duration);sync();});
+  audio.addEventListener('timeupdate',sync);
+  audio.addEventListener('play',()=>{player.classList.add('playing');icon.textContent='Ⅱ';toggle.setAttribute('aria-label','Поставить аудиоурок на паузу');});
+  audio.addEventListener('pause',()=>{player.classList.remove('playing');icon.textContent='▶';toggle.setAttribute('aria-label','Продолжить аудиоурок');});
+  audio.addEventListener('ended',()=>{audio.currentTime=0;sync();});
+  toggle.addEventListener('click',()=>{ if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); });
+  seek.addEventListener('input',()=>{ if(audio.duration) audio.currentTime=(Number(seek.value)/100)*audio.duration; });
+  audio.load();
 }
 
 async function loadEpisodeAudio(n){
   const mount=document.getElementById('episodeAudioMount');
   if(!mount) return;
-  mount.textContent='Загружаю аудиоурок…';
+  mount.innerHTML='<div class="audio-loading"><i></i><span>Готовим эфир…</span></div>';
   const r=await apiBlob('/api/episode/'+n+'/audio');
   if(!document.getElementById('episodeAudioMount')) return;
   if(r.status!==200 || !r.blob){
@@ -90,7 +131,7 @@ async function loadEpisodeAudio(n){
   }
   disposeAudio();
   currentAudioUrl=URL.createObjectURL(r.blob);
-  mount.innerHTML=`<audio controls preload="metadata" playsinline src="${currentAudioUrl}">Ваш браузер не поддерживает аудио.</audio>`;
+  mountAudioPlayer(currentAudioUrl,n);
 }
 
 function cardAbsoluteUrl(path){ return new URL(path, location.href).href; }
@@ -269,13 +310,15 @@ function renderEp(e){
       <div class="ep-kicker">// эпизод ${e.n} · ${esc(e.tag)}</div>
       <h1 class="ep-title">${esc(e.title)}</h1>
     </div>
+    ${e.audio?`<section class="episode-audio" aria-label="Аудиоурок эпизода">
+      <div class="audio-brand"><span class="audio-kicker">// голос режиссёра</span><span class="audio-chip">премьера</span></div>
+      <div class="audio-heading">Сначала — <span>голосом</span></div>
+      <div class="audio-byline">Юлиана Логинова · авторский разбор</div>
+      <div id="episodeAudioMount" class="audio-mount" aria-live="polite"><div class="audio-loading"><i></i><span>Готовим эфир…</span></div></div>
+    </section>`:''}
     <div class="prose">
       <p>${esc(STATE.name)||'Привет'}, привет!</p>
       ${(e.prose||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
-      ${e.audio?`<section class="episode-audio" aria-label="Аудиоурок эпизода">
-        <div class="audio-kicker">▶ Аудиоурок от Юлианы</div>
-        <div id="episodeAudioMount" class="audio-mount" aria-live="polite">Загружаю аудиоурок…</div>
-      </section>`:''}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
       ${e.card?`<figure class="cardshot">
