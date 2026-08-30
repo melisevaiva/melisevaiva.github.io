@@ -150,7 +150,7 @@ function renderEp(e){
       ? `<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${e.final?`<button class="cta" onclick="showFinal()">Финал</button>`:''}</div>`
       : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>` }
     ${ STATE.feedback && STATE.feedback.cta ? `<div class="fb-up">
-      <button class="cta gold" onclick="feedbackReview(${e.n})">${esc(STATE.feedback.cta)}</button>
+      <button class="cta gold" onclick="feedbackReview(${e.n}, this)">${esc(STATE.feedback.cta)}</button>
       <p class="price-note">${esc(STATE.feedback.note||'')}</p></div>` : '' }
   </div>`;
 }
@@ -223,7 +223,12 @@ function promo(){
   if(tg){ tg.openTelegramLink(url); } else { location.href=url; }
 }
 function checkup(){ const url=`https://t.me/${BOT}?start=checkup`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
-function feedbackReview(n){ const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
+function feedbackReview(n, btn){
+  // Счёт выставляет бот. Кнопку гасим, иначе каждый повторный клик шлёт ещё один инвойс.
+  if(btn){ const was=btn.textContent; btn.disabled=true; btn.textContent='Счёт в чате с ботом ↑';
+    setTimeout(()=>{ btn.disabled=false; btn.textContent=was; }, 20000); }
+  const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;}
+}
 function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); } }
 
 // ---- старт ----
