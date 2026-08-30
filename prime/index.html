@@ -129,6 +129,36 @@ function renderDash(){
   </div>`;
 }
 
+function renderLockedSeason(){
+  const p = STATE.paywall;
+  return `<div class="screen on stag">
+    ${brandline('превью сезона')}
+    <div class="eyebrow">// 5 эпизодов · по 15 минут в день</div>
+    <h1 class="lead">${esc(STATE.name)||'Привет'}, ваш сезон <span class="red">пока закрыт</span></h1>
+    <p class="sell-promise">${esc(p.promise)}</p>
+    ${tvWall(0, 'Стена загорается с каждым выполненным днём', 'пока 0 из 5')}
+    <div class="sell-h" style="margin-top:18px">Путь за 5 дней</div>
+    ${STATE.episodes.map(e=>`
+      <button type="button" class="stage lock" onclick="lockedHint()">
+        <div class="snum">${e.n}</div>
+        <div><div class="stagehead"><div class="stitle">${esc(e.tag)}</div></div>
+          <div class="sdesc">${esc(e.title)}</div></div>
+        <div class="sflag">🔒</div></button>`).join('')}
+    <p class="sell-reassure" style="margin-top:14px">Первый эпизод открывается сразу после оплаты, дальше по одному в день.</p>
+    <button class="cta ghost" style="margin-top:12px" onclick="showPaywall()">Что внутри и почему это работает</button>
+    <div class="sticky-cta">
+      <button class="cta" onclick="buy()">${esc(p.cta)}</button>
+      <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span>
+    </div>
+  </div>`;
+}
+
+function lockedHint(){
+  tgAlert('Эпизод откроется после покупки: первый сразу, остальные по одному в день.');
+}
+
+function showPaywall(){ app.innerHTML = renderPaywall(); setBackButton(true); window.scrollTo(0,0); }
+
 function renderEp(e){
   return `<div class="screen on stag">
     <button class="back-link" onclick="showDash()" aria-label="Назад к списку эпизодов">← Назад к эпизодам</button>
@@ -142,6 +172,8 @@ function renderEp(e){
       ${(e.prose||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
+      ${e.card?`<figure class="cardshot"><img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
+        <figcaption>Памятка к эпизоду. Нажмите, чтобы открыть в полном размере и сохранить.</figcaption></figure>`:''}
       ${(e.after||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.sting?`<p class="sting">${esc(e.sting)}</p>`:''}
       ${e.next?`<p class="cmt" style="margin-top:14px">// ${esc(e.next)}</p>`:''}
@@ -175,13 +207,16 @@ function setBackButton(visible){
   if(!tg || !tg.BackButton) return;
   if(visible) tg.BackButton.show(); else tg.BackButton.hide();
 }
-function showDash(){ app.innerHTML = STATE.paid ? renderDash() : renderPaywall(); setBackButton(false); window.scrollTo(0,0); }
+function showDash(){ app.innerHTML = STATE.paid ? renderDash() : renderLockedSeason(); setBackButton(false); window.scrollTo(0,0); }
 function showFinal(){ app.innerHTML = renderFinal(); setBackButton(true); window.scrollTo(0,0); }
 async function openEp(n){
-  const r = await api('/api/episode/'+n);
+  let r = await api('/api/episode/'+n);
+  // Мобильный WebView иногда роняет самый первый запрос после клика молча,
+  // без кода ошибки. Один тихий повтор чинит это, не тревожа человека алертом.
+  if(r.status===0){ await new Promise(res=>setTimeout(res,600)); r = await api('/api/episode/'+n); }
   if(r.status===402){ STATE.paid=false; showDash(); return; }
   if(r.status===403){ tgAlert('Этот эпизод откроется в свой день. Возвращайтесь завтра 🎬'); return; }
-  if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Попробуйте позже.'); return; }
+  if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Проверьте связь и попробуйте ещё раз.'); return; }
   app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
 }
 function celebrateWall(prev, cur){

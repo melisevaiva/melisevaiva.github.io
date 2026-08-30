@@ -186,3 +186,14 @@
     .celebrate,.cel-badge,.tv.lightup{animation:none}
     .tv.lightup{opacity:1;transform:none}
   }
+
+/* Памятка эпизода: скачиваемая карточка с заданием */
+.cardshot { margin: 18px 0 4px; }
+.cardshot img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid rgba(245, 240, 230, .16);
+}
+.cardshot figcaption {
+  margin-top: 8px; font-size: 12px; line-height: 1.45; opacity: .62;
+}
+
