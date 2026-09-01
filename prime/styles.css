@@ -170,6 +170,9 @@
   .audio-console{min-width:0}
   .audio-console-top,.audio-times{display:flex;align-items:center;justify-content:space-between;gap:8px;text-transform:uppercase;letter-spacing:.08em;font-size:.56rem}
   .audio-status{display:inline-flex;align-items:center;gap:6px;color:var(--gold)}
+  .audio-speed{border:1px solid rgba(245,240,230,.28);background:transparent;color:rgba(245,240,230,.72);padding:3px 8px;font-family:'JetBrains Mono';font-size:.6rem;letter-spacing:.06em;cursor:pointer;font-variant-numeric:tabular-nums;transition:.15s ease}
+  .audio-speed:active{transform:scale(.94)}
+  .audio-player.playing .audio-speed{border-color:var(--gold);color:var(--gold)}
   .audio-status i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 9px rgba(200,50,50,.9)}
   .audio-duration,.audio-times{color:rgba(245,240,230,.5)}
   .audio-wave{height:24px;display:flex;align-items:center;gap:3px;margin:5px 0 1px;overflow:hidden}

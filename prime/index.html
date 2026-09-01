@@ -87,6 +87,13 @@ function formatAudioTime(value){
   return `${minutes}:${String(seconds).padStart(2,'0')}`;
 }
 
+const AUDIO_SPEEDS=[1,1.5,2];
+function getAudioSpeed(){
+  const saved=Number(localStorage.getItem('audioSpeed'));
+  return AUDIO_SPEEDS.includes(saved) ? saved : 1;
+}
+function setAudioSpeed(v){ try{ localStorage.setItem('audioSpeed',String(v)); }catch(e){} }
+
 function mountAudioPlayer(url,n){
   const mount=document.getElementById('episodeAudioMount');
   if(!mount) return;
@@ -94,23 +101,32 @@ function mountAudioPlayer(url,n){
     <audio preload="metadata" playsinline src="${url}"></audio>
     <button type="button" class="audio-toggle" aria-label="Воспроизвести аудиоурок эпизода ${n}"><span>▶</span></button>
     <div class="audio-console">
-      <div class="audio-console-top"><span class="audio-status"><i></i> в эфире</span><span class="audio-duration">0:00</span></div>
+      <div class="audio-console-top"><span class="audio-status"><i></i> в эфире</span>
+        <button type="button" class="audio-speed" aria-label="Скорость воспроизведения">1×</button></div>
       <div class="audio-wave" aria-hidden="true">${'<i></i>'.repeat(18)}</div>
       <input class="audio-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Перемотка аудиоурока">
-      <div class="audio-times"><span class="audio-current">0:00</span><span>// эпизод ${n}</span></div>
+      <div class="audio-times"><span class="audio-current">0:00</span><span class="audio-duration">0:00</span></div>
     </div>
   </div>`;
   const player=mount.querySelector('.audio-player'), audio=player.querySelector('audio');
   const toggle=player.querySelector('.audio-toggle'), icon=toggle.querySelector('span');
   const seek=player.querySelector('.audio-seek'), current=player.querySelector('.audio-current');
   const duration=player.querySelector('.audio-duration');
+  const speedBtn=player.querySelector('.audio-speed');
   currentAudioElement=audio;
+  const applySpeed=v=>{ audio.playbackRate=v; speedBtn.textContent=(v===1?'1':v===1.5?'1.5':'2')+'×';
+    speedBtn.setAttribute('aria-label','Скорость воспроизведения: '+v+'×'); };
+  applySpeed(getAudioSpeed());
+  speedBtn.addEventListener('click',()=>{
+    const next=AUDIO_SPEEDS[(AUDIO_SPEEDS.indexOf(audio.playbackRate)+1)%AUDIO_SPEEDS.length];
+    applySpeed(next); setAudioSpeed(next);
+  });
   const sync=()=>{
     const progress=audio.duration ? (audio.currentTime/audio.duration)*100 : 0;
     seek.value=String(progress); seek.style.setProperty('--progress',progress+'%');
     current.textContent=formatAudioTime(audio.currentTime);
   };
-  audio.addEventListener('loadedmetadata',()=>{duration.textContent=formatAudioTime(audio.duration);sync();});
+  audio.addEventListener('loadedmetadata',()=>{duration.textContent=formatAudioTime(audio.duration);applySpeed(getAudioSpeed());sync();});
   audio.addEventListener('timeupdate',sync);
   audio.addEventListener('play',()=>{player.classList.add('playing');icon.textContent='Ⅱ';toggle.setAttribute('aria-label','Поставить аудиоурок на паузу');});
   audio.addEventListener('pause',()=>{player.classList.remove('playing');icon.textContent='▶';toggle.setAttribute('aria-label','Продолжить аудиоурок');});
@@ -347,7 +363,7 @@ function renderEp(e){
       ? `<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${e.final?`<button class="cta" onclick="showFinal()">Финал</button>`:''}</div>`
       : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>` }
     ${ STATE.feedback && STATE.feedback.cta ? `<div class="fb-up">
-      <button class="cta gold" onclick="feedbackReview(${e.n}, this)">${esc(STATE.feedback.cta)}</button>
+      <button class="cta gold" onclick="feedbackReview(${e.n}, this)">${esc((STATE.feedback.cta||'').replace('{n}', e.n))}</button>
       <p class="price-note">${esc(STATE.feedback.note||'')}</p></div>` : '' }
   </div>`;
 }
