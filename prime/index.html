@@ -16,7 +16,7 @@ if (location.hostname !== 'api.juliana-loginova.ru') {
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;900&family=Rubik:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..130,700..900&family=Unbounded:wght@600;700;900&family=Rubik:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
@@ -275,55 +275,36 @@ function renderPaywall(){
 function renderDash(){
   const done = new Set(STATE.progress.map(p=>p.day));
   const unlocked = STATE.unlocked_day, rec = STATE.recognition;
+  // Эпизод 1 открыт всем. У неоплатившего замки 2-5 ведут на продающий экран,
+  // поэтому витрина одна и та же, меняются только подписи и нижний блок.
+  const free = !STATE.paid;
+  const p = STATE.paywall;
   return `<div class="screen on stag">
-    ${brandline('добро пожаловать на кастинг')}
-    <div class="eyebrow">// кастинг · ${rec>=5?'финал':'этап '+(Math.min(unlocked,5))+' из 5'}</div>
-    <h1 class="lead">${esc(STATE.name)||'Привет'}, <span class="red">вас начинают замечать</span></h1>
+    ${brandline(free?'первый эпизод открыт':'добро пожаловать на кастинг')}
+    <div class="eyebrow">// ${free?'эпизод 1 из 5 · бесплатно':'кастинг · '+(rec>=5?'финал':'этап '+(Math.min(unlocked,5))+' из 5')}</div>
+    <h1 class="lead">${esc(STATE.name)||'Привет'}, <span class="red">${free?'начнём с заявки':'вас начинают замечать'}</span></h1>
     ${tvWall(rec)}
-    ${rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Новый эпизод открывается каждый день — заходите утром.</p>`:''}
+    ${free?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Первый эпизод занимает 15 минут. Остальные четыре открываются после оплаты.</p>`
+          :(rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Новый эпизод открывается каждый день — заходите утром.</p>`:'')}
     <div style="height:8px"></div>
     ${STATE.episodes.map(e=>{
       const st = done.has(e.n) ? 'done' : (e.n<=unlocked ? 'now' : 'lock');
-      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(e.n===unlocked+1?'завтра':'🔒'));
-      if(st!=='lock') flag += ' ›';
+      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(free?'1490 ₽':(e.n===unlocked+1?'завтра':'🔒')));
+      if(st!=='lock' || free) flag += ' ›';
       const badge = st==='done' ? `<div class="badge-chip">${esc(e.badge)}</div>`:'';
-      const click = st==='lock' ? 'disabled' : `onclick="openEp(${e.n})"`;
+      const click = st!=='lock' ? `onclick="openEp(${e.n})"` : (free ? 'onclick="showPaywall()"' : 'disabled');
       return `<button type="button" class="stage ${st}" ${click}>
         <div class="snum">${e.n}</div>
         <div><div class="stagehead"><div class="stitle">${esc(e.tag)}</div></div>
           <div class="sdesc">${esc(e.title)}</div>${badge}</div>
         <div class="sflag">${flag}</div></button>`;
     }).join('')}
-    ${rec>=5?`<div style="height:18px"></div><button class="cta" onclick="showFinal()">Смотреть финал</button>`:''}
+    ${free?`<div style="height:18px"></div>
+      <button class="cta ghost" onclick="showPaywall()">Что в остальных четырёх эпизодах</button>
+      <div class="sticky-cta"><button class="cta" onclick="buy()">${esc(p.cta)}</button>
+        <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span></div>`
+      :((rec>=5||unlocked>=5)?`<div style="height:18px"></div><button class="cta" onclick="showFinal()">Смотреть финал</button>`:'')}
   </div>`;
-}
-
-function renderLockedSeason(){
-  const p = STATE.paywall;
-  return `<div class="screen on stag">
-    ${brandline('превью сезона')}
-    <div class="eyebrow">// 5 эпизодов · по 15 минут в день</div>
-    <h1 class="lead">${esc(STATE.name)||'Привет'}, ваш сезон <span class="red">пока закрыт</span></h1>
-    <p class="sell-promise">${esc(p.promise)}</p>
-    ${tvWall(0, 'Стена загорается с каждым выполненным днём', 'пока 0 из 5')}
-    <div class="sell-h" style="margin-top:18px">Путь за 5 дней</div>
-    ${STATE.episodes.map(e=>`
-      <button type="button" class="stage lock" onclick="lockedHint()">
-        <div class="snum">${e.n}</div>
-        <div><div class="stagehead"><div class="stitle">${esc(e.tag)}</div></div>
-          <div class="sdesc">${esc(e.title)}</div></div>
-        <div class="sflag">🔒</div></button>`).join('')}
-    <p class="sell-reassure" style="margin-top:14px">Первый эпизод открывается сразу после оплаты, дальше по одному в день.</p>
-    <button class="cta ghost" style="margin-top:12px" onclick="showPaywall()">Что внутри и почему это работает</button>
-    <div class="sticky-cta">
-      <button class="cta" onclick="buy()">${esc(p.cta)}</button>
-      <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span>
-    </div>
-  </div>`;
-}
-
-function lockedHint(){
-  tgAlert('Эпизод откроется после покупки: первый сразу, остальные по одному в день.');
 }
 
 function showPaywall(){ app.innerHTML = renderPaywall(); setBackButton(true); window.scrollTo(0,0); }
@@ -361,11 +342,79 @@ function renderEp(e){
     </div>
     ${ e.done
       ? `<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${e.final?`<button class="cta" onclick="showFinal()">Финал</button>`:''}</div>`
-      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>` }
-    ${ STATE.feedback && STATE.feedback.cta ? `<div class="fb-up">
-      <button class="cta gold" onclick="feedbackReview(${e.n}, this)">${esc((STATE.feedback.cta||'').replace('{n}', e.n))}</button>
-      <p class="price-note">${esc(STATE.feedback.note||'')}</p></div>` : '' }
+      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>${e.final?`<button class="cta ghost" style="margin-top:10px" onclick="showFinal()">Смотреть финал</button>`:''}` }
+    ${ STATE.feedback && STATE.feedback.cta ? (STATE.paid
+      ? `<div class="fb-up">
+      <button class="cta gold" onclick="feedbackReview(${e.n})">${esc((STATE.feedback.cta||'').replace('{n}', e.n))}</button>
+      <p class="price-note">${esc(STATE.feedback.note||'')}</p></div>`
+      : `<div class="fb-up">
+      <p class="price-note">Голосовой разбор задания я записываю участникам «Я в прайме».</p>
+      <button class="cta ghost" onclick="showPaywall()">Открыть остальные эпизоды</button></div>`) : '' }
   </div>`;
+}
+
+function sessionOffer(o){
+  if(!o) return '';
+  const name = esc(STATE.name) || 'Привет';
+  const pr = STATE.session_price || {};
+  // Классы те же, что у paywall: финал не должен выглядеть чужим экраном.
+  return `<div class="offer">
+    <div class="eyebrow">${esc(o.eyebrow)}</div>
+    <p class="offer-lead">${esc(o.lead).replace('{name}', name)}</p>
+    ${STATE.diagnosis?`<p class="diag">${esc(STATE.diagnosis)}</p>`:''}
+    <h2 class="offer-h">${esc(o.title_top)}<span class="red">${esc(o.title_red)}</span></h2>
+    <p class="offer-sub">${esc(o.subtitle)}</p>
+    <p class="sell-pain">${esc(o.pain)}</p>
+    <p class="sell-promise">${esc(o.promise)}</p>
+    <div class="sell-h">${esc(o.get_title)}</div>
+    <ul class="get-list">${(o.get||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
+    <div class="after-card">
+      <div class="after-h">${esc(o.after_title)}</div>
+      <ul>${(o.after||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
+    </div>
+    <div class="not-card">
+      <div class="not-h">${esc(o.not_title)}</div>
+      <ul>${(o.not_list||[]).map(n=>`<li>${esc(n)}</li>`).join('')}</ul>
+    </div>
+    <figure class="who">
+      <img src="img/juliana.jpg" alt="Юлиана Логинова" loading="lazy">
+      <figcaption>Юлиана Логинова <span>${esc(o.photo_caption)}</span></figcaption>
+    </figure>
+    <div class="proof-card"><div class="proof-h">${esc(o.proof_title)}</div>${esc(o.proof)}</div>
+    <div class="price-block">
+      <div class="price-num">${(pr.rub||9900).toLocaleString('ru-RU')} ₽</div>
+      ${pr.early?`<div class="price-was">${(pr.full_rub||12900).toLocaleString('ru-RU')} ₽</div>`:''}
+      <div class="price-what">${esc(o.price_what)}</div>
+    </div>
+    ${pr.early&&pr.deadline?`<div class="countdown" id="countdown" data-deadline="${esc(pr.deadline)}">
+      <span class="cd-label">цена участника действует ещё</span>
+      <span class="cd-time">—</span></div>`:''}
+    <button class="cta gold" onclick="session()">${esc(o.cta)}</button>
+    <p class="sc-note" style="margin-top:10px;text-align:center">${esc(o.cta_note)}</p>
+  </div>`;
+}
+
+let countdownTimer = null;
+function startCountdown(){
+  clearInterval(countdownTimer);
+  const box = document.getElementById('countdown');
+  if(!box) return;
+  const deadline = new Date(box.dataset.deadline).getTime();
+  const out = box.querySelector('.cd-time');
+  const tick = () => {
+    const left = deadline - Date.now();
+    if(left <= 0){                       // окно закрылось — берём у сервера новую цену
+      clearInterval(countdownTimer);
+      boot();
+      return;
+    }
+    const d = Math.floor(left/86400000), h = Math.floor(left/3600000)%24;
+    const m = Math.floor(left/60000)%60, sec = Math.floor(left/1000)%60;
+    const pad = n => String(n).padStart(2,'0');
+    out.textContent = (d?d+' д ':'') + pad(h)+':'+pad(m)+':'+pad(sec);
+  };
+  tick();
+  countdownTimer = setInterval(tick, 1000);
 }
 
 function renderFinal(){
@@ -377,9 +426,7 @@ function renderFinal(){
     <h1 class="lead">${esc(f.title_top)}<span class="red">${esc(f.title_red)}</span></h1>
     ${tvWall(5)}
     <p style="margin:18px 0">${esc(f.body)}</p>
-    <p style="margin:6px 0 4px">${esc(f.checkup_lead)}</p>
-    <p class="cmt" style="margin:0 0 16px">${esc(f.checkup_note)}</p>
-    <button class="cta gold" onclick="checkup()">${esc(f.checkup_cta)}</button>
+    ${sessionOffer(f.session)}
   </div>`;
 }
 
@@ -388,14 +435,14 @@ function setBackButton(visible){
   if(!tg || !tg.BackButton) return;
   if(visible) tg.BackButton.show(); else tg.BackButton.hide();
 }
-function showDash(){ disposeAudio(); app.innerHTML = STATE.paid ? renderDash() : renderLockedSeason(); setBackButton(false); window.scrollTo(0,0); }
-function showFinal(){ disposeAudio(); app.innerHTML = renderFinal(); setBackButton(true); window.scrollTo(0,0); }
+function showDash(){ disposeAudio(); app.innerHTML = renderDash(); setBackButton(false); window.scrollTo(0,0); }
+function showFinal(){ disposeAudio(); app.innerHTML = renderFinal(); startCountdown(); setBackButton(true); window.scrollTo(0,0); }
 async function openEp(n){
   let r = await api('/api/episode/'+n);
   // Мобильный WebView иногда роняет самый первый запрос после клика молча,
   // без кода ошибки. Один тихий повтор чинит это, не тревожа человека алертом.
   if(r.status===0){ await new Promise(res=>setTimeout(res,600)); r = await api('/api/episode/'+n); }
-  if(r.status===402){ STATE.paid=false; showDash(); return; }
+  if(r.status===402){ STATE.paid=false; showPaywall(); return; }
   if(r.status===403){ tgAlert('Этот эпизод откроется в свой день. Возвращайтесь завтра 🎬'); return; }
   if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Проверьте связь и попробуйте ещё раз.'); return; }
   disposeAudio(); app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
@@ -414,12 +461,19 @@ function celebrateWall(prev, cur){
 }
 function renderCelebrate(ep, prev, cur){
   const isFinal = ep>=5, badge = (STATE.episodes.find(e=>e.n===ep)||{}).badge || '';
+  // Человек только что получил результат бесплатного эпизода. Здесь он решает,
+  // идти ли дальше, поэтому вместо «Дальше» стоит предложение остальных эпизодов.
+  const free = !STATE.paid;
+  const p = STATE.paywall;
   return `<div class="screen on"><div class="celebrate">
     <div class="cel-cap">${isFinal?'// премьера':'// эпизод '+ep+' в эфире'}</div>
     ${celebrateWall(prev, cur)}
     <div class="cel-badge">${esc(badge)}</div>
     <p class="cel-line">${esc(STATE.rating_caps[cur]||'')}</p>
-    <button class="cta" onclick="${isFinal?'showFinal()':'showDash()'}">${isFinal?'Смотреть финал':'Дальше'}</button>
+    ${free?`<p class="cel-line" style="font-size:.86rem;opacity:.85">Заявка готова. Дальше зритель, заходы, профиль и план на месяц.</p>
+      <button class="cta" onclick="buy()">${esc(p.cta)}</button>
+      <button class="cta ghost" style="margin-top:10px" onclick="showPaywall()">Сначала посмотреть, что внутри</button>`
+      :`<button class="cta" onclick="${isFinal?'showFinal()':'showDash()'}">${isFinal?'Смотреть финал':'Дальше'}</button>`}
   </div></div>`;
 }
 async function complete(n){
@@ -430,28 +484,50 @@ async function complete(n){
     app.innerHTML = renderCelebrate(n, prev, STATE.recognition); window.scrollTo(0,0); }
   else { if(btn){btn.disabled=false;btn.textContent='Готово ✅';} tgAlert('Не удалось сохранить. Попробуйте ещё раз.'); }
 }
+// Счета и оплату выставляет бот (см. PAYMENT-SPEC), поэтому часть кнопок уводит в чат.
+// Telegram переключает экран не всегда: без этого объяснения человек слышит уведомление
+// и не понимает, что произошло, поэтому приложение сначала показывает, куда его ведут.
+function handoff(url, title, body){
+  disposeAudio();
+  app.innerHTML = `<div class="screen on stag">
+    ${brandline('переходим в чат с ботом')}
+    <div class="eyebrow">// сообщение уже там</div>
+    <h1 class="lead">${esc(title)}</h1>
+    <p class="sell-reassure" style="margin:14px 0 0">${esc(body)}</p>
+    <div style="height:18px"></div>
+    <a class="cta" style="display:block;text-align:center;text-decoration:none" href="${url}">Открыть чат с ботом ↗</a>
+    <button class="cta ghost" style="margin-top:10px" onclick="showDash()">Вернуться к эпизодам</button>
+  </div>`;
+  setBackButton(true);
+  window.scrollTo(0,0);
+  if(tg){ tg.openTelegramLink(url); } else { location.href = url; }
+}
 function buy(){
-  // счёт выставляет бот (см. PAYMENT-SPEC): открываем бота с триггером покупки
-  if(tg){ tg.openTelegramLink(`https://t.me/${BOT}?start=buy_challenge`); tg.close(); }
-  else { location.href = `https://t.me/${BOT}?start=buy_challenge`; }
+  handoff(`https://t.me/${BOT}?start=buy_challenge`, 'Счёт ждёт в чате с ботом',
+    'Откройте чат с ботом и оплатите доступ. Приложение обновится само: эпизоды 2–5 станут открытыми.');
 }
 function promo(){
-  const url=`https://t.me/${BOT}?start=prime_test`;
-  if(tg){ tg.openTelegramLink(url); } else { location.href=url; }
+  handoff(`https://t.me/${BOT}?start=prime_test`, 'Промокод вводится в чате',
+    'Откройте чат с ботом и отправьте код одним сообщением по формату /promo ВАШКОД.');
 }
-function checkup(){ const url=`https://t.me/${BOT}?start=checkup`; if(tg){tg.openTelegramLink(url);} else {location.href=url;} }
-function feedbackReview(n, btn){
-  // Счёт выставляет бот. Кнопку гасим, иначе каждый повторный клик шлёт ещё один инвойс.
-  if(btn){ const was=btn.textContent; btn.disabled=true; btn.textContent='Счёт в чате с ботом ↑';
-    setTimeout(()=>{ btn.disabled=false; btn.textContent=was; }, 20000); }
-  const url=`https://t.me/${BOT}?start=fb_${n}`; if(tg){tg.openTelegramLink(url);} else {location.href=url;}
+function checkup(){
+  handoff(`https://t.me/${BOT}?start=checkup`, 'Подробности в чате с ботом',
+    'Открываю чат: там описание и следующий шаг.');
+}
+function session(){
+  handoff(`https://t.me/${BOT}?start=session`, 'Запись на сессию — в чате с ботом',
+    'Открываю чат: там свободные слоты и подтверждение времени.');
+}
+function feedbackReview(n){
+  handoff(`https://t.me/${BOT}?start=fb_${n}`, 'Счёт на разбор ждёт в чате',
+    `Откройте чат с ботом: там счёт за разбор эпизода ${n}. После оплаты пришлёте туда же свою работу.`);
 }
 function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); } }
 
 // ---- старт ----
 async function boot(){
   try{ if(tg){ tg.ready(); tg.expand(); if(tg.BackButton){ tg.BackButton.onClick(showDash); } } }catch(e){}
-  if(!INIT){ screenBoot('Откройте приложение через бота @'+BOT+' после оплаты — тогда откроется ваш сезон.', false); return; }
+  if(!INIT){ screenBoot('Откройте приложение через бота @'+BOT+' — первый эпизод открыт всем.', false); return; }
   const r = await api('/api/state');
   if(r.status===401){ screenBoot('Сессия не подтвердилась. Откройте приложение заново через бота.', false); return; }
   if(r.status!==200 || !r.data){ screenBoot('Сервис временно недоступен. Попробуйте чуть позже.', false); return; }

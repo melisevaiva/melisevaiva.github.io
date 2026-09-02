@@ -136,6 +136,51 @@
   .urgency{display:inline-block;background:var(--red);color:var(--cream);font-family:'JetBrains Mono';
     font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;clip-path:var(--cut-soft);margin-bottom:12px}
   .price-anchor{font-size:.9rem;color:var(--grey);margin:20px 0 0;padding-left:14px;border-left:2px solid var(--gold)}
+  /* ---------- оффер в финале сезона ---------- */
+  .offer{margin:30px 0 0;padding:26px 0 0;border-top:1px solid rgba(74,74,82,.2)}
+  .offer-h{font-family:'Unbounded';font-weight:700;font-size:1.42rem;line-height:1.12;
+    letter-spacing:-.02em;text-transform:uppercase;color:var(--concrete);margin:6px 0 0}
+  .offer-h .red{color:var(--red);display:block}
+  .offer-lead{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--grey);margin:10px 0 2px}
+  .diag{margin:12px 0 0;padding:10px 14px;background:var(--cream-2);border-left:3px solid var(--red);
+    font-size:.9rem;color:#2b2926;line-height:1.45}
+
+  .after-card{margin:20px 0 0;padding:16px 18px;background:var(--cream-2);border-left:3px solid var(--gold)}
+  .after-card .after-h{font-family:'Unbounded';text-transform:uppercase;font-weight:600;font-size:.72rem;
+    letter-spacing:.02em;color:var(--concrete);margin-bottom:9px}
+  .after-card ul{list-style:none;margin:0;padding:0}
+  .after-card li{position:relative;padding:5px 0 5px 18px;font-size:.9rem;color:#2b2926;line-height:1.45}
+  .after-card li::before{content:"→";position:absolute;left:0;top:5px;color:var(--gold);font-weight:700}
+  .who{margin:26px 0 0;position:relative;clip-path:var(--cut-soft);overflow:hidden}
+  .who img{display:block;width:100%;height:auto;filter:grayscale(12%) contrast(1.04)}
+  .who figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;
+    background:linear-gradient(180deg,rgba(26,26,26,0),rgba(26,26,26,.86) 62%);
+    font-family:'Unbounded';font-weight:600;font-size:.8rem;color:var(--cream);letter-spacing:-.01em}
+  .who figcaption span{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;
+    font-size:.72rem;color:var(--gold);letter-spacing:.04em;margin-top:3px}
+  .offer-sub{font-size:1rem;color:#2b2926;line-height:1.45;margin:10px 0 4px}
+  .price-was{font-family:'Anybody','Unbounded',sans-serif;font-weight:700;font-size:1.1rem;
+    color:var(--grey-soft);text-decoration:line-through;align-self:baseline}
+  .countdown{margin:12px 0 0;padding:10px 14px;background:var(--concrete);color:var(--cream);
+    clip-path:var(--cut-soft);display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .countdown .cd-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+  .countdown .cd-time{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;
+    font-size:1.15rem;letter-spacing:.01em;color:var(--cream);white-space:nowrap}
+
+  .price-block{margin:22px 0 0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .price-num{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;font-variation-settings:'wdth' 108;
+    font-size:2.5rem;line-height:1;color:var(--red);letter-spacing:-.02em}
+  .price-what{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--grey);
+    line-height:1.4;flex:1;min-width:150px}
+
+  .not-card{margin:22px 0 0;padding:16px 18px;background:var(--cream-2);clip-path:var(--cut-soft)}
+  .not-card .not-h{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--grey);margin-bottom:10px}
+  .not-card ul{list-style:none;margin:0;padding:0}
+  .not-card li{position:relative;padding:5px 0 5px 20px;font-size:.88rem;color:var(--grey);line-height:1.45}
+  .not-card li::before{content:"—";position:absolute;left:0;top:5px;color:var(--grey-soft)}
+
   .episodes-line{font-size:.94rem;color:var(--grey);margin:4px 0 0;line-height:1.5}
 
   /* ---------- episode reading ---------- */
