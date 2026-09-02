@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260902-2');
+  target.searchParams.set('v', '20260902-3');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -580,40 +580,60 @@ async function complete(n){
 // Счета и оплату выставляет бот (см. PAYMENT-SPEC), поэтому часть кнопок уводит в чат.
 // Telegram переключает экран не всегда: без этого объяснения человек слышит уведомление
 // и не понимает, что произошло, поэтому приложение сначала показывает, куда его ведут.
-function handoff(url, title, body){
+function handoff(url, title, body, cta, sent){
   disposeAudio();
   app.innerHTML = `<div class="screen on stag">
-    ${brandline('переходим в чат с ботом')}
-    <div class="eyebrow">// сообщение уже там</div>
+    ${brandline('следующий шаг — в Telegram')}
+    <div class="eyebrow">// сначала всё объясним</div>
     <h1 class="lead">${esc(title)}</h1>
-    <p class="sell-reassure" style="margin:14px 0 0">${esc(body)}</p>
+    <div class="handoff-note" id="handoffStatus" role="status" aria-live="polite">
+      <b>Что произойдёт дальше</b>
+      <span>${esc(body)}</span>
+    </div>
     <div style="height:18px"></div>
-    <a class="cta" style="display:block;text-align:center;text-decoration:none" href="${url}">Открыть чат с ботом ↗</a>
+    <button class="cta" id="handoffBtn" onclick='openHandoff(${jsq(url)},${jsq(sent)},this)'>${esc(cta||'Открыть чат с ботом')} ↗</button>
     <button class="cta ghost" style="margin-top:10px" onclick="showDash()">Вернуться к эпизодам</button>
   </div>`;
   setBackButton(true);
   window.scrollTo(0,0);
-  if(tg){ tg.openTelegramLink(url); } else { location.href = url; }
+}
+function openHandoff(url, sent, btn){
+  if(btn){btn.disabled=true;btn.textContent='Открываю Telegram…';}
+  const status=document.getElementById('handoffStatus');
+  if(status){
+    status.classList.add('sent');
+    status.innerHTML=`<b>Команда отправляется в бот ✓</b><span>${esc(sent)}</span>`;
+  }
+  setTimeout(()=>{
+    if(tg&&tg.openTelegramLink) tg.openTelegramLink(url);
+    else location.href=url;
+    setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='Открыть чат ещё раз ↗';}},1200);
+  },180);
 }
 function buy(){
-  handoff(`https://t.me/${BOT}?start=buy_challenge`, 'Счёт ждёт в чате с ботом',
-    'Откройте чат с ботом и оплатите доступ. Приложение обновится само: эпизоды 2–5 станут открытыми.');
+  handoff(`https://t.me/${BOT}?start=buy_challenge`, 'Оплата продолжается в чате с ботом',
+    'После нажатия бот пришлёт счёт на 1490 ₽. После оплаты следующий эпизод откроется сразу после задания или автоматически через сутки.',
+    'Получить счёт в боте', 'Бот сейчас пришлёт счёт на 1490 ₽. Если чат не открылся, нажмите кнопку ещё раз.');
 }
 function promo(){
   handoff(`https://t.me/${BOT}?start=prime_test`, 'Промокод вводится в чате',
-    'Откройте чат с ботом и отправьте код одним сообщением по формату /promo ВАШКОД.');
+    'После нажатия откроется бот. Отправьте ему код одним сообщением по формату /promo ВАШКОД.',
+    'Ввести промокод в боте', 'Бот сейчас откроет ввод промокода. Если чат не открылся, нажмите кнопку ещё раз.');
 }
 function checkup(){
-  handoff(`https://t.me/${BOT}?start=checkup`, 'Подробности в чате с ботом',
-    'Открываю чат: там описание и следующий шаг.');
+  handoff(`https://t.me/${BOT}?start=checkup`, 'Подробности придут в чат с ботом',
+    'После нажатия бот пришлёт описание и следующий шаг.',
+    'Получить подробности в боте', 'Бот сейчас пришлёт подробности. Если чат не открылся, нажмите кнопку ещё раз.');
 }
 function session(){
-  handoff(`https://t.me/${BOT}?start=session`, 'Запись на сессию — в чате с ботом',
-    'Открываю чат: там свободные слоты и подтверждение времени.');
+  handoff(`https://t.me/${BOT}?start=session`, 'Запись продолжается в чате с ботом',
+    'После нажатия бот покажет свободные слоты и поможет подтвердить время.',
+    'Посмотреть свободные слоты', 'Бот сейчас покажет свободные слоты. Если чат не открылся, нажмите кнопку ещё раз.');
 }
 function feedbackReview(n){
-  handoff(`https://t.me/${BOT}?start=fb_${n}`, 'Счёт на разбор ждёт в чате',
-    `Откройте чат с ботом: там счёт за разбор эпизода ${n}. После оплаты пришлёте туда же свою работу.`);
+  handoff(`https://t.me/${BOT}?start=fb_${n}`, 'Разбор оформляется в чате с ботом',
+    `После нажатия бот пришлёт счёт за разбор эпизода ${n}. После оплаты вы отправите работу туда же.`,
+    'Получить счёт на разбор', `Бот сейчас пришлёт счёт за разбор эпизода ${n}. Если чат не открылся, нажмите кнопку ещё раз.`);
 }
 function tgAlert(m){ if(tg&&tg.showAlert){ tg.showAlert(m); } else { alert(m); } }
 

@@ -236,6 +236,11 @@
   .saved-result .work-kicker{color:var(--gold);margin-bottom:7px}
   .saved-result p{margin:0;font-size:.92rem;line-height:1.5}
   .return-later{display:block;margin:10px auto 0;padding:8px 12px;border:0;background:none;color:var(--grey);font:500 .76rem 'JetBrains Mono';text-decoration:underline;cursor:pointer}
+  .handoff-note{margin:18px 0 0;padding:16px 18px;background:var(--cream-2);border-left:3px solid var(--gold);color:var(--concrete)}
+  .handoff-note b{display:block;font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+  .handoff-note span{display:block;font-size:.94rem;line-height:1.5}
+  .handoff-note.sent{background:#edf4ea;border-left-color:#67865b}
+  .handoff-note.sent b{color:#4f7046}
   .episode-audio{position:relative;overflow:hidden;margin:0 0 24px;padding:18px;background:
     radial-gradient(circle at 95% 0,rgba(200,50,50,.28),transparent 38%),
     linear-gradient(145deg,#292824 0%,#171715 100%);color:var(--cream);clip-path:var(--cut-soft);
