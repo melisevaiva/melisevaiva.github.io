@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260902-1');
+  target.searchParams.set('v', '20260902-2');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -281,11 +281,11 @@ function renderDash(){
     <h1 class="lead">${esc(STATE.name)||'Привет'}, <span class="red">${free?'начнём с заявки':'вас начинают замечать'}</span></h1>
     ${tvWall(rec)}
     ${free?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Первый эпизод занимает 15 минут. Остальные четыре открываются после оплаты.</p>`
-          :(rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Можно проходить по одному эпизоду в день или продолжать сразу. Следующий откроется после сохранения работы.</p>`:'')}
+          :(rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Выполните задание — и следующий эпизод откроется сразу. Или дождитесь его автоматического открытия через сутки.</p>`:'')}
     <div style="height:8px"></div>
     ${STATE.episodes.map(e=>{
       const st = done.has(e.n) ? 'done' : (e.n<=unlocked ? 'now' : 'lock');
-      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(free?'1490 ₽':(e.n===unlocked+1?'после задания':'🔒')));
+      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(free?'1490 ₽':(e.n===unlocked+1?'после задания или завтра':'🔒')));
       if(st!=='lock' || free) flag += ' ›';
       const badge = st==='done' ? `<div class="badge-chip">${esc(e.badge)}</div>`:'';
       const click = st!=='lock' ? `onclick="openEp(${e.n})"` : (free ? 'onclick="showPaywall()"' : 'disabled');
