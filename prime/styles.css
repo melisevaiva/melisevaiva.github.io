@@ -142,6 +142,13 @@
     letter-spacing:-.02em;text-transform:uppercase;color:var(--concrete);margin:6px 0 0}
   .offer-h .red{color:var(--red);display:block}
   .offer-lead{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--grey);margin:10px 0 2px}
+  .submitcard{margin:14px 0 0;padding:14px 16px;background:var(--cream-2);
+    border-left:3px solid var(--gold)}
+  .submitcard .sub-h{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--grey);margin-bottom:7px}
+  .submitcard p{font-size:.92rem;color:#2b2926;line-height:1.45;margin:0}
+  .submitcard .sub-promise{margin-top:6px;color:var(--grey);font-size:.86rem}
+
   .diag{margin:12px 0 0;padding:10px 14px;background:var(--cream-2);border-left:3px solid var(--red);
     font-size:.9rem;color:#2b2926;line-height:1.45}
 

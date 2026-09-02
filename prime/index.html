@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260831-5');
+  target.searchParams.set('v', '20260902-1');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -328,6 +328,11 @@ function renderEp(e){
       ${(e.prose||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
+      ${e.submit?`<div class="submitcard">
+        <div class="sub-h">на разбор</div>
+        <p>${esc(e.submit)}</p>
+        ${e.submit_promise?`<p class="sub-promise">${esc(e.submit_promise)}</p>`:''}
+      </div>`:''}
       ${e.card?`<figure class="cardshot">
         <button type="button" class="card-preview" onclick='openCard(${jsq(e.card)},${e.n})' aria-label="Открыть памятку к эпизоду ${e.n}">
           <img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
@@ -436,7 +441,10 @@ function setBackButton(visible){
   if(visible) tg.BackButton.show(); else tg.BackButton.hide();
 }
 function showDash(){ disposeAudio(); app.innerHTML = renderDash(); setBackButton(false); window.scrollTo(0,0); }
-function showFinal(){ disposeAudio(); app.innerHTML = renderFinal(); startCountdown(); setBackButton(true); window.scrollTo(0,0); }
+function showFinal(){ disposeAudio(); app.innerHTML = renderFinal(); startCountdown();
+  // Отмечаем показ оффера: по этой отметке бот перестаёт звать вернуться
+  // и начинает напоминать про срок цены участника.
+  api('/api/offer-seen', {method:'POST'}); setBackButton(true); window.scrollTo(0,0); }
 async function openEp(n){
   let r = await api('/api/episode/'+n);
   // Мобильный WebView иногда роняет самый первый запрос после клика молча,
