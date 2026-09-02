@@ -9,7 +9,7 @@
 // приложения и API, сохраняя Telegram WebApp-параметры из hash.
 if (location.hostname !== 'api.juliana-loginova.ru') {
   const target = new URL('https://api.juliana-loginova.ru/');
-  target.searchParams.set('v', '20260902-3');
+  target.searchParams.set('v', '20260902-4');
   target.hash = location.hash;
   location.replace(target.toString());
 }
@@ -619,11 +619,6 @@ function promo(){
   handoff(`https://t.me/${BOT}?start=prime_test`, 'Промокод вводится в чате',
     'После нажатия откроется бот. Отправьте ему код одним сообщением по формату /promo ВАШКОД.',
     'Ввести промокод в боте', 'Бот сейчас откроет ввод промокода. Если чат не открылся, нажмите кнопку ещё раз.');
-}
-function checkup(){
-  handoff(`https://t.me/${BOT}?start=checkup`, 'Подробности придут в чат с ботом',
-    'После нажатия бот пришлёт описание и следующий шаг.',
-    'Получить подробности в боте', 'Бот сейчас пришлёт подробности. Если чат не открылся, нажмите кнопку ещё раз.');
 }
 function session(){
   handoff(`https://t.me/${BOT}?start=session`, 'Запись продолжается в чате с ботом',
