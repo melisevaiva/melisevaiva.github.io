@@ -53,6 +53,7 @@ async function api(path, opts){
   const controller = new AbortController();
   const timeout = setTimeout(()=>controller.abort(), 12000);
   opts.headers = Object.assign({'Authorization':'tma '+INIT}, opts.headers||{});
+  if(opts.body && !opts.headers['Content-Type']) opts.headers['Content-Type']='application/json';
   opts.signal = controller.signal;
   try{
     const r = await fetch(API_BASE + path, opts);
@@ -183,11 +184,6 @@ function openCardOriginal(path){
   else window.open(url,'_blank','noopener');
 }
 
-function openPrimeLink(){
-  if(tg&&tg.openTelegramLink) tg.openTelegramLink(PRIME_LINK);
-  else window.open(PRIME_LINK,'_blank','noopener');
-}
-
 async function saveCard(path,n,btn){
   const original=btn?btn.textContent:'';
   if(btn){btn.disabled=true;btn.textContent='Готовлю файл…';}
@@ -234,7 +230,7 @@ function screenBoot(msg, demo){
   app.innerHTML = `<div class="screen on stag" style="padding-top:64px">
     ${brandline()}
     <h1 class="lead">Я в<span class="red">прайме</span></h1>
-    <p class="sell-promise" style="margin:12px 0 6px">5 дней — и ваш блог собран так, что вас начинают замечать.</p>
+    <p class="sell-promise" style="margin:12px 0 6px">5 коротких эпизодов, после которых вас легче понять и заметить.</p>
     <p style="margin:6px 0 18px;color:var(--grey)">${esc(msg)}</p>
     <a class="cta" href="https://t.me/${BOT}" target="_blank" rel="noopener">Открыть в Telegram</a>
     ${demo?`<a class="cta ghost" style="margin-top:10px" href="preview.html">Посмотреть демо</a>`:''}
@@ -285,11 +281,11 @@ function renderDash(){
     <h1 class="lead">${esc(STATE.name)||'Привет'}, <span class="red">${free?'начнём с заявки':'вас начинают замечать'}</span></h1>
     ${tvWall(rec)}
     ${free?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Первый эпизод занимает 15 минут. Остальные четыре открываются после оплаты.</p>`
-          :(rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Новый эпизод открывается каждый день — заходите утром.</p>`:'')}
+          :(rec<5?`<p class="sell-reassure" style="margin:12px 0 0;font-size:.82rem">Можно проходить по одному эпизоду в день или продолжать сразу. Следующий откроется после сохранения работы.</p>`:'')}
     <div style="height:8px"></div>
     ${STATE.episodes.map(e=>{
       const st = done.has(e.n) ? 'done' : (e.n<=unlocked ? 'now' : 'lock');
-      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(free?'1490 ₽':(e.n===unlocked+1?'завтра':'🔒')));
+      let flag = st==='done'?'в эфире ✓':(st==='now'?'открыт':(free?'1490 ₽':(e.n===unlocked+1?'после задания':'🔒')));
       if(st!=='lock' || free) flag += ' ›';
       const badge = st==='done' ? `<div class="badge-chip">${esc(e.badge)}</div>`:'';
       const click = st!=='lock' ? `onclick="openEp(${e.n})"` : (free ? 'onclick="showPaywall()"' : 'disabled');
@@ -303,13 +299,94 @@ function renderDash(){
       <button class="cta ghost" onclick="showPaywall()">Что в остальных четырёх эпизодах</button>
       <div class="sticky-cta"><button class="cta" onclick="buy()">${esc(p.cta)}</button>
         <span class="sc-note">${esc(p.cta_reassure||p.cta_note||'')}</span></div>`
-      :((rec>=5||unlocked>=5)?`<div style="height:18px"></div><button class="cta" onclick="showFinal()">Смотреть финал</button>`:'')}
+      :(rec>=5?`<div style="height:18px"></div><button class="cta" onclick="showFinal()">Смотреть финал</button>`:'')}
   </div>`;
 }
 
 function showPaywall(){ app.innerHTML = renderPaywall(); setBackButton(true); window.scrollTo(0,0); }
 
+const HOOK_TYPES={scene:'Сцена',number:'Цифра',dispute:'Спор',confession:'Признание'};
+const ROUTES={message:'Написать в личные сообщения',link:'Перейти по ссылке',application:'Оставить заявку'};
+const draftTimers={};
+function attr(value){return esc(String(value||'')).replace(/"/g,'&quot;');}
+function storedDraft(n){try{return JSON.parse(localStorage.getItem('primeDraft'+n)||'null');}catch(e){return null;}}
+function episodePayload(e){
+  const server=(e.submission&&e.submission.payload)||{};
+  return Object.keys(server).length ? server : (storedDraft(e.n)||{});
+}
+function inputField(id,label,value,placeholder,max,area){
+  const control=area
+    ? `<textarea id="${id}" rows="3" maxlength="${max}" placeholder="${attr(placeholder)}" oninput="scheduleDraft(currentEpisode)">${esc(value||'')}</textarea>`
+    : `<input id="${id}" type="text" maxlength="${max}" value="${attr(value||'')}" placeholder="${attr(placeholder)}" oninput="scheduleDraft(currentEpisode)">`;
+  return `<label class="work-field"><span>${esc(label)}</span>${control}</label>`;
+}
+function renderWorkbook(e){
+  const p=episodePayload(e);
+  if(e.n===1) return `<section class="workbook"><div class="work-kicker">// ваша рабочая тетрадь</div>
+    ${inputField('audience','Кому вы помогаете?',p.audience,'Например: руководителям небольших команд',80,false)}
+    ${inputField('change','Что у человека меняется?',p.change,'Например: перестаёт приносить работу домой',120,false)}
+    ${inputField('logline','Ваша фраза для шапки',p.logline,'Помогаю руководителям перестать приносить работу домой',220,true)}
+    <p class="field-note" id="wordCount">Лучше уложиться в 15 слов. Допустимо от 5 до 25.</p></section>`;
+  if(e.n===2) return `<section class="workbook"><div class="work-kicker">// один живой зритель</div>
+    ${inputField('name_age','Как его зовут и сколько ему лет?',p.name_age,'Анна, 37 лет',80,false)}
+    ${inputField('context','Где и когда он читает ваш блог?',p.context,'В метро по дороге домой',240,true)}
+    ${inputField('pain','Что у него болит прямо сейчас?',p.pain,'Опишите конкретную ситуацию',400,true)}
+    ${inputField('words','Как он сам об этом говорит?',p.words,'Живая фраза без профессиональных терминов',300,true)}</section>`;
+  if(e.n===3){
+    const hooks=Array.isArray(p.hooks)&&p.hooks.length===3?p.hooks:[{type:'scene',text:''},{type:'number',text:''},{type:'dispute',text:''}];
+    return `<section class="workbook"><div class="work-kicker">// три разных захода</div>
+      ${inputField('source','Как начинался последний пост? Можно пропустить',p.source,'Сегодня хочу рассказать...',500,true)}
+      ${hooks.map((h,i)=>`<div class="hook-row"><label><span>Приём ${i+1}</span><select id="hookType${i}" onchange="scheduleDraft(currentEpisode)">${Object.entries(HOOK_TYPES).map(([v,l])=>`<option value="${v}" ${h.type===v?'selected':''}>${l}</option>`).join('')}</select></label>${inputField('hookText'+i,'Заход '+(i+1),h.text,'Первая фраза поста',300,true)}</div>`).join('')}
+      <fieldset class="choice"><legend>Какой заход берёте в работу?</legend>${[1,2,3].map(n=>`<label><input type="radio" name="favorite" value="${n}" ${Number(p.favorite)===n?'checked':''} onchange="scheduleDraft(currentEpisode)"> ${n}</label>`).join('')}</fieldset></section>`;
+  }
+  if(e.n===4){const checks=new Set(p.checks||[]);return `<section class="workbook"><div class="work-kicker">// проверка первого кадра</div>
+    <div class="checklist">${[['bio','В шапке есть понятная фраза и результат'],['pin','В закрепе понятен способ обратиться или купить'],['grid','Первые девять публикаций поддерживают главную тему']].map(([v,l])=>`<label><input type="checkbox" value="${v}" ${checks.has(v)?'checked':''} onchange="scheduleDraft(currentEpisode)"><span>${l}</span></label>`).join('')}</div>
+    ${inputField('changes','Что именно вы изменили сегодня?',p.changes,'Коротко перечислите изменения',500,true)}
+    <p class="field-note">Пока не всё готово? Черновик сохранится, можно вернуться позже.</p></section>`;}
+  const items=Array.isArray(p.items)&&p.items.length===8?p.items:Array.from({length:8},()=>({topic:'',teaser:''}));
+  return `<section class="workbook"><div class="work-kicker">// сетка из восьми публикаций</div>
+    <label class="work-field"><span>Куда ведём читателя?</span><select id="route" onchange="scheduleDraft(currentEpisode)">${Object.entries(ROUTES).map(([v,l])=>`<option value="${v}" ${p.route===v?'selected':''}>${l}</option>`).join('')}</select></label>
+    ${inputField('action','Что именно он должен сделать?',p.action,'Например: написать слово ПРАЙМ',180,false)}
+    <div class="grid-progress" id="gridProgress">Готово 0 из 8</div>
+    ${items.map((item,i)=>`<div class="plan-row"><b>${i+1}</b><div>${inputField('topic'+i,'Тема публикации',item.topic,'Тема '+(i+1),140,false)}${inputField('teaser'+i,'Зачем вернуться к следующей?',item.teaser,'Одна строка анонса',180,false)}</div></div>`).join('')}</section>`;
+}
+function collectSubmission(n){
+  const value=id=>(document.getElementById(id)||{}).value||'';
+  if(n===1)return {audience:value('audience'),change:value('change'),logline:value('logline')};
+  if(n===2)return {name_age:value('name_age'),context:value('context'),pain:value('pain'),words:value('words')};
+  if(n===3)return {source:value('source'),hooks:[0,1,2].map(i=>({type:value('hookType'+i),text:value('hookText'+i)})),favorite:Number((document.querySelector('input[name="favorite"]:checked')||{}).value||0)};
+  if(n===4)return {checks:Array.from(document.querySelectorAll('.checklist input:checked')).map(x=>x.value),changes:value('changes')};
+  return {route:value('route'),action:value('action'),items:Array.from({length:8},(_,i)=>({topic:value('topic'+i),teaser:value('teaser'+i)}))};
+}
+function refreshWorkbookHints(){
+  if(currentEpisode===1){const el=document.getElementById('wordCount'),v=document.getElementById('logline');if(el&&v){const n=v.value.trim()?v.value.trim().split(/\s+/).length:0;el.textContent=`Сейчас ${n} слов. Лучше до 15, допустимо от 5 до 25.`;}}
+  if(currentEpisode===5){const el=document.getElementById('gridProgress');if(el){const p=collectSubmission(5);el.textContent=`Готово ${p.items.filter(x=>x.topic.trim()&&x.teaser.trim()).length} из 8`;}}
+}
+function scheduleDraft(n){
+  refreshWorkbookHints(); clearTimeout(draftTimers[n]);
+  draftTimers[n]=setTimeout(()=>saveDraft(n),800);
+}
+async function saveDraft(n){
+  const payload=collectSubmission(n);try{localStorage.setItem('primeDraft'+n,JSON.stringify(payload));}catch(e){}
+  await api('/api/episode/'+n+'/submission',{method:'PUT',body:JSON.stringify(payload)});
+}
+function completedCard(e){
+  const p=episodePayload(e);let main='Результат сохранён.';
+  if(e.n===1)main='«'+esc(p.logline||'Фраза сохранена')+'»';
+  if(e.n===2)main=esc(p.name_age||'Портрет зрителя сохранён');
+  if(e.n===3&&p.hooks)main=esc((p.hooks[(Number(p.favorite)||1)-1]||{}).text||'Три захода сохранены');
+  if(e.n===4)main=esc(p.changes||'Изменения профиля сохранены');
+  if(e.n===5)main='Восемь тем сохранены. Основа сезона собрана.';
+  return `<div class="saved-result"><div class="work-kicker">// сохранено</div><p>${main}</p></div>`;
+}
+function nextButton(e){
+  if(!STATE.paid&&e.n===1)return `<button class="cta" onclick="buy()">Открыть эпизоды 2–5</button>`;
+  if(e.n<5)return `<button class="cta" onclick="openEp(${e.n+1})">Перейти к эпизоду ${e.n+1}</button>`;
+  return `<button class="cta" onclick="showFinal()">Смотреть финал</button>`;
+}
+let currentEpisode=0;
 function renderEp(e){
+  currentEpisode=e.n;
   return `<div class="screen on stag">
     <button class="back-link" onclick="showDash()" aria-label="Назад к списку эпизодов">← Назад к эпизодам</button>
     ${brandline('эпизод '+e.n+' из 5')}
@@ -327,27 +404,26 @@ function renderEp(e){
       <p>${esc(STATE.name)||'Привет'}, привет!</p>
       ${(e.prose||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
       ${e.list&&e.list.length?`<ul class="list">${e.list.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:''}
+      ${(e.after||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
+      ${e.sting?`<p class="sting">${esc(e.sting)}</p>`:''}
+      ${e.next?`<p class="cmt" style="margin-top:14px">// ${esc(e.next)}</p>`:''}
+    </div>
+    ${e.card?`<figure class="cardshot">
+      <button type="button" class="card-preview" onclick='openCard(${jsq(e.card)},${e.n})' aria-label="Открыть памятку к эпизоду ${e.n}">
+        <img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
+      </button>
+      <figcaption>Нажмите на памятку, чтобы открыть её в полном размере.</figcaption>
+      <button type="button" class="card-save" onclick='saveCard(${jsq(e.card)},${e.n},this)'>Сохранить памятку ↓</button>
+    </figure>`:''}
+    <div class="prose">
       <div class="taskcard"><div class="th">▶ Задание · 15 минут</div>${esc(e.task)}</div>
+      ${renderWorkbook(e)}
       ${e.submit?`<div class="submitcard">
         <div class="sub-h">на разбор</div>
         <p>${esc(e.submit)}</p>
         ${e.submit_promise?`<p class="sub-promise">${esc(e.submit_promise)}</p>`:''}
       </div>`:''}
-      ${e.card?`<figure class="cardshot">
-        <button type="button" class="card-preview" onclick='openCard(${jsq(e.card)},${e.n})' aria-label="Открыть памятку к эпизоду ${e.n}">
-          <img src="${esc(e.card)}" alt="Памятка к эпизоду ${e.n}" loading="lazy">
-        </button>
-        <figcaption>Нажмите на памятку, чтобы открыть её в полном размере.</figcaption>
-        <button type="button" class="card-save" onclick='saveCard(${jsq(e.card)},${e.n},this)'>Сохранить памятку ↓</button>
-        <button type="button" class="prime-app-link" onclick="openPrimeLink()">Открыть приложение «Я в прайме» ↗</button>
-      </figure>`:''}
-      ${(e.after||[]).map(p=>`<p>${esc(p)}</p>`).join('')}
-      ${e.sting?`<p class="sting">${esc(e.sting)}</p>`:''}
-      ${e.next?`<p class="cmt" style="margin-top:14px">// ${esc(e.next)}</p>`:''}
     </div>
-    ${ e.done
-      ? `<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${e.final?`<button class="cta" onclick="showFinal()">Финал</button>`:''}</div>`
-      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Готово ✅</button>${e.final?`<button class="cta ghost" style="margin-top:10px" onclick="showFinal()">Смотреть финал</button>`:''}` }
     ${ STATE.feedback && STATE.feedback.cta ? (STATE.paid
       ? `<div class="fb-up">
       <button class="cta gold" onclick="feedbackReview(${e.n})">${esc((STATE.feedback.cta||'').replace('{n}', e.n))}</button>
@@ -355,6 +431,9 @@ function renderEp(e){
       : `<div class="fb-up">
       <p class="price-note">Голосовой разбор задания я записываю участникам «Я в прайме».</p>
       <button class="cta ghost" onclick="showPaywall()">Открыть остальные эпизоды</button></div>`) : '' }
+    ${ e.done
+      ? `${completedCard(e)}<div class="navrow"><button class="cta ghost" onclick="showDash()">К сезону</button>${nextButton(e)}</div>`
+      : `<div style="height:20px"></div><button class="cta" id="doneBtn" onclick="complete(${e.n})">Сохранить результат</button><button class="return-later" onclick="showDash()">Вернуться позже</button>` }
   </div>`;
 }
 
@@ -363,13 +442,14 @@ function sessionOffer(o){
   const name = esc(STATE.name) || 'Привет';
   const pr = STATE.session_price || {};
   // Классы те же, что у paywall: финал не должен выглядеть чужим экраном.
+  // Сначала человек читает свою ситуацию, и только потом видит название сессии:
+  // предложение должно приходить как ответ на уже названную боль.
   return `<div class="offer">
     <div class="eyebrow">${esc(o.eyebrow)}</div>
-    <p class="offer-lead">${esc(o.lead).replace('{name}', name)}</p>
+    <p class="offer-lead">${esc(o.pain)}</p>
     ${STATE.diagnosis?`<p class="diag">${esc(STATE.diagnosis)}</p>`:''}
     <h2 class="offer-h">${esc(o.title_top)}<span class="red">${esc(o.title_red)}</span></h2>
     <p class="offer-sub">${esc(o.subtitle)}</p>
-    <p class="sell-pain">${esc(o.pain)}</p>
     <p class="sell-promise">${esc(o.promise)}</p>
     <div class="sell-h">${esc(o.get_title)}</div>
     <ul class="get-list">${(o.get||[]).map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
@@ -386,16 +466,18 @@ function sessionOffer(o){
       <figcaption>Юлиана Логинова <span>${esc(o.photo_caption)}</span></figcaption>
     </figure>
     <div class="proof-card"><div class="proof-h">${esc(o.proof_title)}</div>${esc(o.proof)}</div>
-    <div class="price-block">
-      <div class="price-num">${(pr.rub||9900).toLocaleString('ru-RU')} ₽</div>
-      ${pr.early?`<div class="price-was">${(pr.full_rub||12900).toLocaleString('ru-RU')} ₽</div>`:''}
-      <div class="price-what">${esc(o.price_what)}</div>
+    <div class="ticket">
+      <div class="ticket-price">
+        <span class="price-num">${(pr.rub||9900).toLocaleString('ru-RU')} ₽</span>
+        ${pr.early?`<span class="price-was">${(pr.full_rub||12900).toLocaleString('ru-RU')} ₽</span>`:''}
+      </div>
+      <p class="ticket-what">${esc(o.price_what)}</p>
+      ${pr.early&&pr.deadline?`<div class="ticket-cd" id="countdown" data-deadline="${esc(pr.deadline)}">
+        <span class="cd-label">цена участника действует ещё</span>
+        <span class="cd-time">—</span></div>`:''}
+      <button class="ticket-cta" onclick="session()">${esc(o.cta)}</button>
+      <p class="ticket-note">${esc(o.cta_note)}</p>
     </div>
-    ${pr.early&&pr.deadline?`<div class="countdown" id="countdown" data-deadline="${esc(pr.deadline)}">
-      <span class="cd-label">цена участника действует ещё</span>
-      <span class="cd-time">—</span></div>`:''}
-    <button class="cta gold" onclick="session()">${esc(o.cta)}</button>
-    <p class="sc-note" style="margin-top:10px;text-align:center">${esc(o.cta_note)}</p>
   </div>`;
 }
 
@@ -451,9 +533,10 @@ async function openEp(n){
   // без кода ошибки. Один тихий повтор чинит это, не тревожа человека алертом.
   if(r.status===0){ await new Promise(res=>setTimeout(res,600)); r = await api('/api/episode/'+n); }
   if(r.status===402){ STATE.paid=false; showPaywall(); return; }
-  if(r.status===403){ tgAlert('Этот эпизод откроется в свой день. Возвращайтесь завтра 🎬'); return; }
+  if(r.status===403){ tgAlert('Сначала сохраните результат предыдущего эпизода.'); return; }
   if(r.status!==200){ tgAlert('Не удалось открыть эпизод. Проверьте связь и попробуйте ещё раз.'); return; }
   disposeAudio(); app.innerHTML = renderEp(r.data); setBackButton(true); window.scrollTo(0,0);
+  refreshWorkbookHints();
   if(r.data.audio) loadEpisodeAudio(n);
 }
 function celebrateWall(prev, cur){
@@ -485,12 +568,14 @@ function renderCelebrate(ep, prev, cur){
   </div></div>`;
 }
 async function complete(n){
-  const btn=document.getElementById('doneBtn'); if(btn){btn.disabled=true;btn.textContent='…';}
-  const prev = STATE.recognition;
-  const r = await api('/api/episode/'+n+'/done', {method:'POST'});
-  if(r.status===200){ STATE=r.data; if(tg&&tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-    app.innerHTML = renderCelebrate(n, prev, STATE.recognition); window.scrollTo(0,0); }
-  else { if(btn){btn.disabled=false;btn.textContent='Готово ✅';} tgAlert('Не удалось сохранить. Попробуйте ещё раз.'); }
+  const btn=document.getElementById('doneBtn'); if(btn){btn.disabled=true;btn.textContent='Сохраняю…';}
+  const payload=collectSubmission(n);
+  const r = await api('/api/episode/'+n+'/complete',{method:'POST',body:JSON.stringify(payload)});
+  if(r.status===200){ STATE=r.data;try{localStorage.removeItem('primeDraft'+n);}catch(e){}
+    if(tg&&tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success'); await openEp(n); }
+  else { if(btn){btn.disabled=false;btn.textContent='Сохранить результат';}
+    const detail=r.data&&r.data.detail;const field=detail&&detail.field;
+    tgAlert(field?'Проверьте заполнение поля «'+field+'».':'Заполните все поля задания и попробуйте ещё раз.'); }
 }
 // Счета и оплату выставляет бот (см. PAYMENT-SPEC), поэтому часть кнопок уводит в чат.
 // Telegram переключает экран не всегда: без этого объяснения человек слышит уведомление

@@ -139,7 +139,7 @@
   /* ---------- оффер в финале сезона ---------- */
   .offer{margin:30px 0 0;padding:26px 0 0;border-top:1px solid rgba(74,74,82,.2)}
   .offer-h{font-family:'Unbounded';font-weight:700;font-size:1.42rem;line-height:1.12;
-    letter-spacing:-.02em;text-transform:uppercase;color:var(--concrete);margin:6px 0 0}
+    letter-spacing:-.02em;text-transform:uppercase;color:var(--concrete);margin:22px 0 0}
   .offer-h .red{color:var(--red);display:block}
   .offer-lead{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--grey);margin:10px 0 2px}
   .submitcard{margin:14px 0 0;padding:14px 16px;background:var(--cream-2);
@@ -166,20 +166,30 @@
   .who figcaption span{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;
     font-size:.72rem;color:var(--gold);letter-spacing:.04em;margin-top:3px}
   .offer-sub{font-size:1rem;color:#2b2926;line-height:1.45;margin:10px 0 4px}
-  .price-was{font-family:'Anybody','Unbounded',sans-serif;font-weight:700;font-size:1.1rem;
-    color:var(--grey-soft);text-decoration:line-through;align-self:baseline}
-  .countdown{margin:12px 0 0;padding:10px 14px;background:var(--concrete);color:var(--cream);
-    clip-path:var(--cut-soft);display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .countdown .cd-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
-  .countdown .cd-time{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;
-    font-size:1.15rem;letter-spacing:.01em;color:var(--cream);white-space:nowrap}
-
-  .price-block{margin:22px 0 0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-  .price-num{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;font-variation-settings:'wdth' 108;
-    font-size:2.5rem;line-height:1;color:var(--red);letter-spacing:-.02em}
-  .price-what{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--grey);
-    line-height:1.4;flex:1;min-width:150px}
+  /* Цена, срок и кнопка живут одним билетом: раньше это были три плашки,
+     прижатые друг к другу, и срезы у них шли под разными углами. */
+  .ticket{margin:24px 0 0;padding:24px 22px 22px;background:var(--concrete);color:var(--cream);
+    clip-path:var(--cut-sharp)}
+  .ticket-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .ticket .price-num{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;
+    font-variation-settings:'wdth' 108;font-size:2.6rem;line-height:1;color:var(--gold);
+    letter-spacing:-.02em}
+  .ticket .price-was{font-family:'Anybody','Unbounded',sans-serif;font-weight:700;font-size:1.05rem;
+    color:rgba(245,240,230,.42);text-decoration:line-through}
+  .ticket-what{font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.5;
+    color:rgba(245,240,230,.72);margin:10px 0 0}
+  .ticket-cd{margin:16px 0 0;padding:11px 0 0;border-top:1px solid rgba(245,240,230,.16);
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .ticket-cd .cd-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--gold)}
+  .ticket-cd .cd-time{font-family:'Anybody','Unbounded',sans-serif;font-weight:900;font-size:1.05rem;
+    color:var(--cream);white-space:nowrap}
+  .ticket-cta{display:block;width:100%;margin:18px 0 0;padding:17px 22px;border:none;cursor:pointer;
+    background:var(--cream);color:var(--concrete);font-family:'Unbounded';font-weight:700;
+    font-size:.86rem;letter-spacing:.01em;clip-path:none;transition:.2s var(--ease)}
+  .ticket-cta:active{transform:translateY(1px)}
+  .ticket-note{font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.5;
+    color:rgba(245,240,230,.6);margin:10px 0 0;text-align:center}
 
   .not-card{margin:22px 0 0;padding:16px 18px;background:var(--cream-2);clip-path:var(--cut-soft)}
   .not-card .not-h{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.1em;
@@ -202,6 +212,30 @@
   .taskcard{background:#fbeeea;color:var(--concrete);padding:18px 18px 16px;margin:18px 0;clip-path:var(--cut-soft);
     box-shadow:inset 0 0 0 1px rgba(200,50,50,.18)}
   .taskcard .th{font-family:'Unbounded';font-weight:700;text-transform:uppercase;font-size:.78rem;color:var(--red);margin-bottom:8px;letter-spacing:.02em}
+  .workbook{margin:22px 0;padding:18px;background:var(--paper);border:1px solid rgba(74,74,82,.16);box-shadow:var(--shadow)}
+  .work-kicker{font-family:'JetBrains Mono';font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .work-field{display:block;margin:0 0 14px}
+  .work-field>span,.hook-row label>span{display:block;margin:0 0 6px;font-family:'Rubik';font-size:.82rem;font-weight:600;color:var(--concrete)}
+  .work-field input,.work-field textarea,.work-field select,.hook-row select{display:block;width:100%;border:1px solid rgba(74,74,82,.28);border-radius:12px;background:var(--cream);color:var(--concrete);font:400 .94rem/1.45 'Rubik';padding:12px 13px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .work-field textarea{resize:vertical;min-height:84px}
+  .work-field input:focus,.work-field textarea:focus,.work-field select:focus,.hook-row select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,50,50,.1)}
+  .field-note{font-family:'JetBrains Mono';font-size:.68rem!important;color:var(--grey-soft)!important;margin:-4px 0 0!important}
+  .hook-row{padding:14px 0 2px;border-top:1px solid rgba(74,74,82,.14)}
+  .hook-row>label:first-child{display:block;margin-bottom:10px}
+  .hook-row select{border-radius:10px;padding:10px 12px}
+  .choice{border:0;margin:8px 0 0;padding:0}
+  .choice legend{font-size:.82rem;font-weight:600;margin-bottom:8px}
+  .choice label{display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-family:'JetBrains Mono';font-size:.78rem}
+  .checklist{display:grid;gap:10px;margin-bottom:16px}
+  .checklist label{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--cream);border-radius:12px;font-size:.86rem;line-height:1.4}
+  .checklist input{width:19px;height:19px;accent-color:var(--red);flex:0 0 auto;margin-top:1px}
+  .grid-progress{display:inline-block;margin:2px 0 10px;padding:5px 9px;background:var(--concrete);color:var(--gold);font-family:'JetBrains Mono';font-size:.68rem}
+  .plan-row{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:14px 0 0;border-top:1px solid rgba(74,74,82,.14)}
+  .plan-row>b{display:grid;place-items:center;width:28px;height:28px;background:var(--red);color:var(--cream);font-family:'Unbounded';font-size:.72rem;clip-path:var(--cut-soft)}
+  .saved-result{margin:20px 0;padding:16px 18px;background:var(--concrete);color:var(--cream);clip-path:var(--cut-soft)}
+  .saved-result .work-kicker{color:var(--gold);margin-bottom:7px}
+  .saved-result p{margin:0;font-size:.92rem;line-height:1.5}
+  .return-later{display:block;margin:10px auto 0;padding:8px 12px;border:0;background:none;color:var(--grey);font:500 .76rem 'JetBrains Mono';text-decoration:underline;cursor:pointer}
   .episode-audio{position:relative;overflow:hidden;margin:0 0 24px;padding:18px;background:
     radial-gradient(circle at 95% 0,rgba(200,50,50,.28),transparent 38%),
     linear-gradient(145deg,#292824 0%,#171715 100%);color:var(--cream);clip-path:var(--cut-soft);
@@ -294,7 +328,6 @@
 }
 .card-save { width:100%; margin-top:10px; padding:11px 14px; border:1px solid rgba(74,74,82,.25); background:var(--cream-2); color:var(--concrete); font:600 .8rem 'Rubik'; cursor:pointer; }
 .card-save:disabled { opacity:.65; cursor:wait; }
-.prime-app-link { width:100%; margin-top:8px; padding:9px 12px; border:0; background:transparent; color:var(--red); font:700 .76rem 'JetBrains Mono'; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
 .card-overlay { position:fixed; inset:0; z-index:100; background:rgba(12,12,12,.92); display:flex; align-items:center; justify-content:center; padding:14px; overflow:auto; }
 .card-modal { position:relative; width:min(100%,680px); max-height:100%; overflow:auto; background:var(--cream); padding:42px 12px 14px; }
 .card-modal>img { display:block; width:100%; height:auto; }
