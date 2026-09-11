@@ -84,11 +84,11 @@
       'font:400 14px/1.5 system-ui,sans-serif', 'box-shadow:0 16px 45px rgba(0,0,0,.3)'
     ].join(';');
     notice.innerHTML =
-      '<strong id="analytics-consent-title" style="display:block;margin-bottom:.35rem">Настройки аналитики</strong>' +
-      '<p style="margin:0 0 .85rem">С вашего согласия сайт подключит Google Analytics и Яндекс.Метрику. Без согласия аналитические скрипты не загружаются. <a href="' + POLICY_URL + '" style="color:#e4b06f">Подробнее</a></p>' +
+      '<strong id="analytics-consent-title" style="display:block;margin-bottom:.35rem">Файлы cookie</strong>' +
+      '<p style="margin:0 0 .85rem">Сайт сохраняет необходимые настройки в вашем браузере. С вашего разрешения мы также используем Google Analytics и Яндекс.Метрику, чтобы понимать, какие страницы полезны посетителям. <a href="' + POLICY_URL + '" style="color:#e4b06f">Подробнее</a></p>' +
       '<div style="display:flex;flex-wrap:wrap;gap:.65rem">' +
-      '<button type="button" data-consent="accepted" style="border:0;background:#c83232;color:#fff;padding:.7rem 1rem;font-weight:700;cursor:pointer">Принять</button>' +
-      '<button type="button" data-consent="declined" style="border:1px solid rgba(245,240,230,.55);background:transparent;color:#f5f0e6;padding:.65rem 1rem;font-weight:700;cursor:pointer">Отклонить</button>' +
+      '<button type="button" data-consent="accepted" style="border:0;background:#c83232;color:#fff;padding:.7rem 1rem;font-weight:700;cursor:pointer">Разрешить аналитику</button>' +
+      '<button type="button" data-consent="declined" style="border:1px solid rgba(245,240,230,.55);background:transparent;color:#f5f0e6;padding:.65rem 1rem;font-weight:700;cursor:pointer">Только необходимые</button>' +
       '</div>';
     notice.addEventListener('click', function (event) {
       var button = event.target.closest('[data-consent]');
