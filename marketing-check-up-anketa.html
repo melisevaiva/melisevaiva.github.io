@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анкета перед маркетинговой диагностикой — Юлиана Логинова</title>
+<meta name="description" content="Анкета перед сессией маркетинговой диагностики Marketing Check-up.">
+<meta name="author" content="Юлиана Логинова">
+<meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
+<meta name="ga4-measurement-id" content="G-DFFPDDRSBR">
+<meta name="yandex-metrika-id" content="110118083">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer src="/analytics.js"></script>
+<style>
+:root{
+  --red:#c83232;--red-dark:#a92a2a;--concrete:#1a1a1a;--cream:#f5f0e6;--paper:#fbf8f1;
+  --grey:#4a4a52;--muted:#5c5852;--line:rgba(26,26,26,.16);--field-line:rgba(26,26,26,.38);
+  --cream-72:rgba(245,240,230,.72);
+  --display:'Unbounded',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.25,1,.5,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--concrete);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.2em}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+@media (min-width:48rem){.wrap{padding:0 2rem}}
+.eyebrow{font:400 .8125rem/1.5 var(--mono);margin:0 0 .9rem}
+
+/* Шапка */
+.hero{background:var(--concrete);color:var(--cream);padding:1.25rem 0 3.25rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;text-decoration:none;margin-bottom:3rem}
+.brand__mark{width:2.6rem;height:2.6rem;display:grid;place-items:center;background:var(--red);color:var(--cream);font:900 1.3rem/1 var(--display);clip-path:polygon(0 0,100% 0,100% 78%,88% 100%,0 100%)}
+.brand__name{display:grid;line-height:1.05}
+.brand__name span{font:400 .6875rem/1.2 var(--body);letter-spacing:.15em;text-transform:uppercase;color:var(--cream-72)}
+.brand__name strong{font:900 .9375rem/1.1 var(--display);letter-spacing:-.01em}
+.hero .eyebrow{color:var(--cream-72)}
+h1{font:900 clamp(1.85rem,7.6vw,3.5rem)/1.04 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 1.75rem}
+.lead p{margin:0 0 1rem;max-width:36rem;color:rgba(245,240,230,.92)}
+.facts{margin:1.75rem 0 0;padding:1rem 0 0;border-top:1px solid rgba(245,240,230,.18);font:400 .8125rem/1.8 var(--mono);color:var(--cream)}
+.facts p{margin:0}
+.facts .note{margin-top:.35rem;font:400 .875rem/1.5 var(--body);color:var(--cream-72)}
+
+/* Прогресс */
+.progress{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line)}
+.progress__inner{display:flex;align-items:center;gap:1rem;min-height:2.75rem}
+.progress__track{position:relative;flex:1;height:4px;background:rgba(26,26,26,.1);overflow:hidden}
+.progress__fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--red);transition:width .45s var(--ease)}
+.progress__count{font:500 .75rem/1 var(--mono);color:var(--grey);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* Разделы и вопросы */
+.restored{margin:2rem 0 0;font:400 .9375rem/1.5 var(--body);color:var(--grey)}
+.section{padding:3.5rem 0 .5rem}
+.section__head{border-top:2px solid var(--concrete);padding-top:.9rem;margin-bottom:2.5rem}
+.section__head .eyebrow{color:var(--grey)}
+h2{font:900 clamp(1.35rem,5.2vw,2rem)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0}
+.q{margin:0 0 2.75rem;padding:0;border:0;min-width:0}
+.q__title{display:block;float:none;width:100%;padding:0;margin:0 0 .4rem;font-weight:500;font-size:1.125rem;line-height:1.4}
+.q__num{font:500 .75rem/1 var(--mono);color:var(--grey);margin-right:.55rem;vertical-align:.12em;font-variant-numeric:tabular-nums}
+.q__req{color:var(--red);margin-left:.2rem}
+.q__hint{margin:0 0 .8rem;font-size:.9375rem;line-height:1.5;color:var(--muted);white-space:pre-line}
+.field{display:block;width:100%;margin:0;padding:.75rem .9rem;min-height:3.1rem;font:400 1.0625rem/1.5 var(--body);color:var(--concrete);background:var(--paper);border:1.5px solid var(--field-line);border-radius:0;-webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s}
+textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
+.field::placeholder{color:#8a857d}
+.field:focus{outline:none;border-color:var(--concrete);box-shadow:inset 0 0 0 1px var(--concrete)}
+.q.is-error .field{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
+.q__error{display:none;margin:.5rem 0 0;font:500 .9375rem/1.4 var(--body);color:var(--red)}
+.q.is-error .q__error{display:block}
+.opts{display:grid;gap:.1rem}
+.opt{position:relative;display:flex;align-items:flex-start;gap:.8rem;min-height:2.75rem;padding:.55rem 0;cursor:pointer;line-height:1.4}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opt__box{flex:none;width:1.375rem;height:1.375rem;margin-top:.05rem;display:grid;place-items:center;background:var(--paper);border:1.5px solid var(--concrete);transition:background .15s,border-color .15s}
+.opt--radio .opt__box{border-radius:50%}
+.opt input:checked+.opt__box{background:var(--red);border-color:var(--red)}
+.opt input:checked+.opt__box::after{content:"";width:.42rem;height:.72rem;border:solid var(--cream);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.opt--radio input:checked+.opt__box::after{width:.5rem;height:.5rem;border:0;border-radius:50%;background:var(--cream);transform:none}
+.opt input:focus-visible+.opt__box{outline:2px solid var(--concrete);outline-offset:3px}
+.q.is-error .opt__box{border-color:var(--red)}
+.opt-other{margin:.15rem 0 0 2.175rem;width:calc(100% - 2.175rem)}
+
+/* Финал */
+.last{margin:1.5rem 0 2.25rem;padding:1.6rem 1.5rem 1.75rem;background:var(--concrete);color:var(--cream)}
+.last .eyebrow{color:var(--cream-72)}
+.last p{margin:0}
+.last a{text-decoration-color:var(--red);text-decoration-thickness:2px}
+.consent{margin:0 0 1.5rem;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:1rem 2.9rem 1rem 2.1rem;border:0;background:var(--red);color:var(--cream);font:700 .9375rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:background .15s}
+.btn:hover{background:var(--red-dark)}
+.btn:focus-visible{outline:3px solid var(--concrete);outline-offset:4px}
+.btn[disabled]{cursor:progress;background:var(--red-dark)}
+@media (max-width:40rem){.btn{width:100%}}
+.status{min-height:1.5rem;margin:1rem 0 0;font:500 .875rem/1.5 var(--mono);color:var(--red)}
+.status a{color:var(--red)}
+.foot{padding:3rem 0 4.5rem;font:400 .75rem/1.6 var(--mono);color:var(--grey)}
+.foot a{color:var(--grey)}
+
+/* Отправлено */
+.done{background:var(--concrete);color:var(--cream);min-height:100vh;padding:1.25rem 0 4rem}
+.done:focus{outline:none}
+.done .eyebrow{color:var(--cream-72)}
+.done__title{font:900 clamp(2.4rem,11vw,4.5rem)/1 var(--display);text-transform:uppercase;margin:3rem 0 1.5rem}
+.done p{max-width:34rem;margin:0 0 1rem}
+.done .btn{margin:1.25rem 0 2rem}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<noscript><div><img src="https://mc.yandex.ru/watch/110118083" style="position:absolute;left:-9999px" alt=""></div></noscript>
+
+<main id="page">
+  <header class="hero">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Юлиана Логинова, главная">
+        <span class="brand__mark" aria-hidden="true">Ю</span>
+        <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
+      </a>
+      <p class="eyebrow">// маркетинговая диагностика</p>
+      <h1>Анкета перед сессией</h1>
+      <div class="lead">
+        <p>Эта анкета поможет мне подготовиться к нашей сессии.</p>
+        <p>Заполнение займёт около 25 минут. Не переживайте о «правильности» ответов — мне важно понять вашу реальную ситуацию, а не идеальную картинку.</p>
+      </div>
+      <div class="facts">
+        <p>// дедлайн: за 24 часа до сессии</p>
+        <p class="note" id="save-note" hidden>Ответы сохраняются в этом браузере: можно закрыть вкладку и вернуться позже.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="progress" id="progress" aria-hidden="true">
+    <div class="wrap progress__inner">
+      <div class="progress__track"><div class="progress__fill" id="progress-fill"></div></div>
+      <span class="progress__count" id="progress-count"></span>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="wrap"><p class="restored">Для отправки анкеты нужен включённый JavaScript. Можно заполнить её <a href="https://docs.google.com/forms/d/e/1FAIpQLSc6ZQ6F9ziewZDZ_VJSnfymdwTwdqHT489Nlzg35TRKgw_TRQ/viewform">в Google Форме</a>, ответы придут туда же.</p></div>
+  </noscript>
+
+  <form class="wrap" id="anketa" novalidate hidden>
+    <p class="restored" id="restored" hidden>Ответы с прошлого раза на месте, можно продолжать.</p>
+    <div id="sections"></div>
+
+    <div class="last">
+      <p class="eyebrow">// последний шаг</p>
+      <p>После отправки анкеты пришлите мне в Telegram <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">@melisevaiva</a> скриншоты статистики за последние 30 дней: охват или просмотры, посещения профиля, клики по ссылке и новые подписки. Если вспомните что-то ещё важное, напишите туда же.</p>
+    </div>
+
+    <p class="consent">Нажимая кнопку, вы отправляете ответы Юлиане Логиновой и соглашаетесь с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+    <button class="btn" type="submit" id="submit">Отправить анкету</button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <footer class="foot">
+    <div class="wrap"><a href="/">juliana-loginova.ru</a></div>
+  </footer>
+</main>
+
+<section class="done" id="done" tabindex="-1" hidden>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Юлиана Логинова, главная">
+      <span class="brand__mark" aria-hidden="true">Ю</span>
+      <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
+    </a>
+    <p class="eyebrow">// анкета отправлена</p>
+    <h2 class="done__title">Спасибо!</h2>
+    <p>Я изучу ваши ответы и посмотрю канал до нашей встречи.</p>
+    <p>Остался последний шаг: пришлите мне в Telegram скриншоты статистики за последние 30 дней.</p>
+    <a class="btn" href="https://t.me/melisevaiva" target="_blank" rel="noopener">Открыть Telegram</a>
+    <p>До сессии!</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var FORM_ID = '1FAIpQLSc6ZQ6F9ziewZDZ_VJSnfymdwTwdqHT489Nlzg35TRKgw_TRQ';
+  var SUBMIT_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+  var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/viewform';
+  var STORE_KEY = 'checkup-anketa-v1';
+  var OTHER = '__other_option__';
+  // Номера страниц Google Формы: 6 разделов, отправляем всё сразу
+  var PAGE_HISTORY = '0,1,2,3,4,5';
+
+  // Вопросы один в один с Google Формой 1HFY45… (версия 11.09.2026). name = поле formResponse.
+  var SECTIONS = [
+    { title: 'О вас и продукте', items: [
+      { name: 'entry.1288073630', type: 'short', req: true, title: 'Как вас зовут?', autocomplete: 'name' },
+      { name: 'emailAddress', type: 'email', req: true, title: 'Электронная почта', autocomplete: 'email' },
+      { name: 'entry.2126171765', type: 'short', title: 'Ваш ник в Telegram', hint: 'Например, @imya. Пригодится, если до сессии мне нужно будет что-то уточнить' },
+      { name: 'entry.1789748930', type: 'long', req: true, title: 'Чем вы занимаетесь?', hint: 'Опишите в 1-2 предложениях. Пример: «Помогаю предпринимателям выстроить финансовый учёт»' },
+      { name: 'entry.758117087', type: 'long', req: true, title: 'Кто ваш идеальный клиент?', hint: 'Опишите конкретного человека: кто он, чем занимается, с какой проблемой приходит' },
+      { name: 'entry.20872134', type: 'long', req: true, title: 'Какие продукты/услуги вы продаёте?', hint: 'Укажите название и цену. Пример:\n- Консультация 1:1 — 15 000 ₽\n- Курс «Финансы для предпринимателей» — 45 000 ₽' },
+      { name: 'entry.1395027424', type: 'short', req: true, title: 'Какой продукт приносит больше всего дохода?', hint: 'Если продаж пока мало, напишите, что у вас покупали последним' },
+      { name: 'entry.71496502', type: 'checkbox', req: true, title: 'Кто вам помогает с блогом и продажами?', hint: 'Можно выбрать несколько вариантов',
+        options: ['Никто, всё делаю сама или сам', 'Ассистент или помощник', 'Команда', 'Подрядчики на отдельные задачи'], other: true }
+    ] },
+    { title: 'Цифры', items: [
+      { name: 'entry.1648646247', type: 'long', req: true, title: 'Сколько вы заработали в каждый из последних 3 месяцев?', hint: 'Например: 80 000 ₽, 20 000 ₽, 140 000 ₽. Если в каком-то месяце был запуск или сезон, отметьте это' },
+      { name: 'entry.370449274', type: 'short', req: true, title: 'Сколько хотите зарабатывать и к какому сроку?', hint: 'Например: 200 000 ₽ в месяц к весне' },
+      { name: 'entry.599752154', type: 'long', req: true, title: 'Сколько подписчиков/читателей у вас есть?', hint: 'Укажите площадку и число. Пример: «Телеграм — 5 000, Инстаграм — 12 000»' },
+      { name: 'entry.169232845', type: 'short', req: true, title: 'Сколько человек за последний месяц написали вам или спросили цену?', hint: 'Если точно не помните, напишите примерно' },
+      { name: 'entry.520891651', type: 'short', req: true, title: 'Сколько продаж было за последний месяц?' },
+      { name: 'entry.580891251', type: 'checkbox', req: true, title: 'Откуда приходят клиенты сейчас?', hint: 'Можно выбрать несколько вариантов',
+        options: ['Из блога/канала', 'Сарафанное радио', 'Реклама', 'Партнёрства/коллаборации', 'Другое'] }
+    ] },
+    { title: 'Путь клиента', items: [
+      { name: 'entry.1384604581', type: 'long', req: true, title: 'Как человек из блога становится вашим клиентом?', hint: 'Опишите по шагам, от первого поста до оплаты. Например: увидел ролик, подписался, через месяц написал «сколько стоит», созвонились, оплатил' },
+      { name: 'entry.205452798', type: 'long', req: true, title: 'Что происходит после того, как человек вам написал?', hint: 'Кто отвечает, как быстро и на каком шаге люди чаще всего пропадают. Если пока никто не пишет, так и напишите' },
+      { name: 'entry.687053721', type: 'long', title: 'Что из вашего контента последним привело вам клиента?', hint: 'Пост, эфир, ролик или рассылка. Можно ссылкой. Если такого не было или не помните, оставьте пустым' }
+    ] },
+    { title: 'Что пробовали', items: [
+      { name: 'entry.1588011744', type: 'long', req: true, title: 'Что вы делали за последние 3 месяца, чтобы увеличить продажи?', hint: 'Что пробовали, что сработало, что нет' },
+      { name: 'entry.1674326102', type: 'long', req: true, title: 'За что в продвижении вы уже платили за последний год и что из этого вышло?', hint: 'Например: курс, наставник, реклама, ведение соцсетей. Если ни за что не платили, так и напишите' },
+      { name: 'entry.1240323964', type: 'radio', req: true, title: 'Где, по вашему ощущению, главная проблема?', hint: 'Один вариант',
+        options: ['Не понимаю, как себя позиционировать', 'Не понимаю, что именно продавать', 'Контент не приводит клиентов', 'Читают, но не пишут', 'Пишут, спрашивают цену и пропадают', 'Не знаю, как продавать', 'Всё вроде делаю, но результата нет', 'Другое'] },
+      { name: 'entry.1156843888', type: 'long', title: 'Что уже точно работает и это не надо менять?', hint: 'Если ничего не приходит в голову — оставьте пустым' }
+    ] },
+    { title: 'Ссылки', items: [
+      { name: 'entry.2020219355', type: 'url', req: true, title: 'Ссылка на ваш основной канал/блог' },
+      { name: 'entry.458606040', type: 'url', title: 'Ссылка на продукт/услугу (если есть страница)' }
+    ] },
+    { title: 'Ожидания от сессии', items: [
+      { name: 'entry.711542936', type: 'long', title: 'Почему вы решили разобраться именно сейчас?', hint: 'Что случилось или накопилось, после чего вы решили, что пора разобраться' },
+      { name: 'entry.1950534551', type: 'long', req: true, title: 'С каким главным вопросом вы идёте на сессию?' },
+      { name: 'entry.1508045985', type: 'long', req: true, title: 'По какому признаку через месяц вы поймёте, что сессия была полезной?', hint: 'Например: «приходит хотя бы 5 заявок в месяц» или «знаю, какой продукт продавать первым»' },
+      { name: 'entry.953518482', type: 'short', req: true, title: 'Сколько часов в неделю вы готовы тратить на блог и продажи?', hint: 'Посчитайте честно: план после сессии я составлю под это время' }
+    ] }
+  ];
+
+  var form = document.getElementById('anketa');
+  var sectionsEl = document.getElementById('sections');
+  var statusEl = document.getElementById('status');
+  var submitBtn = document.getElementById('submit');
+  var fillEl = document.getElementById('progress-fill');
+  var countEl = document.getElementById('progress-count');
+  var questions = [];
+
+  function esc(text) {
+    return String(text).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function plural(n, one, few, many) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+
+  // Разметка
+  var num = 0;
+  var total = SECTIONS.reduce(function (sum, s) { return sum + s.items.length; }, 0);
+  sectionsEl.innerHTML = SECTIONS.map(function (section, si) {
+    var items = section.items.map(function (q) {
+      num += 1;
+      var id = 'q' + num;
+      var hintId = id + '-hint';
+      var errId = id + '-err';
+      var described = (q.hint ? hintId + ' ' : '') + errId;
+      var numHtml = '<span class="q__num" aria-hidden="true">' + pad(num) + '</span>';
+      var reqHtml = q.req ? '<span class="q__req" aria-hidden="true">*</span>' : '';
+      var hintHtml = q.hint ? '<p class="q__hint" id="' + hintId + '">' + esc(q.hint) + '</p>' : '';
+      var errHtml = '<p class="q__error" id="' + errId + '"></p>';
+      questions.push({ def: q, id: id });
+
+      if (q.type === 'checkbox' || q.type === 'radio') {
+        var inputType = q.type === 'radio' ? 'radio' : 'checkbox';
+        var opts = q.options.map(function (value, oi) {
+          return '<label class="opt opt--' + inputType + '"><input type="' + inputType + '" name="' + q.name + '" value="' + esc(value) + '" id="' + id + '-o' + oi + '">' +
+            '<span class="opt__box" aria-hidden="true"></span><span>' + esc(value) + '</span></label>';
+        }).join('');
+        if (q.other) {
+          opts += '<label class="opt opt--' + inputType + '"><input type="' + inputType + '" name="' + q.name + '" value="' + OTHER + '" data-other="' + id + '-other">' +
+            '<span class="opt__box" aria-hidden="true"></span><span>Другое</span></label>' +
+            '<input class="field opt-other" type="text" id="' + id + '-other" name="' + q.name + '.other_option_response" placeholder="Свой вариант" aria-label="Свой вариант" disabled hidden>';
+        }
+        return '<fieldset class="q" id="' + id + '" data-q="' + (num - 1) + '" aria-describedby="' + described + '">' +
+          '<legend class="q__title">' + numHtml + esc(q.title) + reqHtml + '</legend>' + hintHtml +
+          '<div class="opts">' + opts + '</div>' + errHtml + '</fieldset>';
+      }
+
+      var attrs = ' id="' + id + '-in" name="' + q.name + '" aria-describedby="' + described + '"' + (q.req ? ' aria-required="true"' : '');
+      var control;
+      if (q.type === 'long') {
+        control = '<textarea class="field" rows="4"' + attrs + '></textarea>';
+      } else if (q.type === 'email') {
+        control = '<input class="field" type="email" inputmode="email" autocomplete="email" spellcheck="false"' + attrs + '>';
+      } else if (q.type === 'url') {
+        control = '<input class="field" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://"' + attrs + '>';
+      } else {
+        control = '<input class="field" type="text"' + (q.autocomplete ? ' autocomplete="' + q.autocomplete + '"' : '') + attrs + '>';
+      }
+      return '<div class="q" id="' + id + '" data-q="' + (num - 1) + '">' +
+        '<label class="q__title" for="' + id + '-in">' + numHtml + esc(q.title) + reqHtml + '</label>' + hintHtml + control + errHtml + '</div>';
+    }).join('');
+
+    return '<section class="section" aria-labelledby="s' + si + '">' +
+      '<div class="section__head"><p class="eyebrow">// раздел ' + (si + 1) + ' из ' + SECTIONS.length + '</p>' +
+      '<h2 id="s' + si + '">' + esc(section.title) + '</h2></div>' + items + '</section>';
+  }).join('');
+  form.hidden = false;
+
+  var requiredQs = questions.filter(function (q) { return q.def.req; });
+
+  // Ответы
+  function block(q) { return document.getElementById(q.id); }
+
+  function answerState(q) {
+    var el = block(q);
+    var def = q.def;
+    if (def.type === 'checkbox' || def.type === 'radio') {
+      var checked = el.querySelectorAll('input[name="' + def.name + '"]:checked');
+      if (!checked.length) return 'empty';
+      var other = el.querySelector('input[value="' + OTHER + '"]');
+      if (other && other.checked && !document.getElementById(q.id + '-other').value.trim()) return 'other';
+      return 'ok';
+    }
+    var value = document.getElementById(q.id + '-in').value.trim();
+    if (!value) return 'empty';
+    if (def.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) return 'email';
+    return 'ok';
+  }
+
+  function updateProgress() {
+    var done = requiredQs.filter(function (q) { return answerState(q) === 'ok'; }).length;
+    fillEl.style.width = Math.round(done / requiredQs.length * 100) + '%';
+    countEl.textContent = 'обязательные: ' + done + ' из ' + requiredQs.length;
+  }
+
+  function setError(q, message) {
+    var el = block(q);
+    el.classList.toggle('is-error', Boolean(message));
+    document.getElementById(q.id + '-err').textContent = message || '';
+    var inputs = el.querySelectorAll('input, textarea');
+    for (var i = 0; i < inputs.length; i++) {
+      if (message) inputs[i].setAttribute('aria-invalid', 'true'); else inputs[i].removeAttribute('aria-invalid');
+    }
+  }
+
+  var MESSAGES = { empty: 'Это обязательный вопрос', email: 'Проверьте адрес почты', other: 'Напишите свой вариант' };
+
+  function validate() {
+    var bad = [];
+    questions.forEach(function (q) {
+      var state = answerState(q);
+      var problem = state === 'other' || state === 'email' || (q.def.req && state === 'empty');
+      setError(q, problem ? MESSAGES[state] : '');
+      if (problem) bad.push(q);
+    });
+    return bad;
+  }
+
+  function autosize(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 3 + 'px';
+  }
+
+  // Черновик в браузере
+  var storage = null;
+  try {
+    storage = window.localStorage;
+    storage.setItem(STORE_KEY + '-probe', '1');
+    storage.removeItem(STORE_KEY + '-probe');
+    document.getElementById('save-note').hidden = false;
+  } catch (e) {
+    storage = null;
+  }
+
+  function collect() {
+    var data = {};
+    var els = form.elements;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (!el.name) continue;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) (data[el.name] = data[el.name] || []).push(el.value);
+      } else if (el.value) {
+        data[el.name] = el.value;
+      }
+    }
+    return data;
+  }
+
+  var saveTimer = null;
+  function scheduleSave() {
+    if (!storage) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      try { storage.setItem(STORE_KEY, JSON.stringify(collect())); } catch (e) { /* место закончилось или запрещено */ }
+    }, 300);
+  }
+
+  function syncOther(input) {
+    var target = input.getAttribute('data-other');
+    if (!target) return;
+    var field = document.getElementById(target);
+    field.hidden = !input.checked;
+    field.disabled = !input.checked;
+    if (input.checked && document.activeElement === input) field.focus();
+  }
+
+  function restore() {
+    if (!storage) return;
+    var raw;
+    try { raw = storage.getItem(STORE_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    var restoredAny = false;
+    var els = form.elements;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (!el.name || !(el.name in data)) continue;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        el.checked = data[el.name].indexOf(el.value) !== -1;
+        if (el.checked) restoredAny = true;
+      } else {
+        el.value = data[el.name];
+        restoredAny = true;
+      }
+    }
+    form.querySelectorAll('input[data-other]').forEach(function (input) {
+      var field = document.getElementById(input.getAttribute('data-other'));
+      field.hidden = !input.checked;
+      field.disabled = !input.checked;
+    });
+    if (restoredAny) document.getElementById('restored').hidden = false;
+  }
+
+  restore();
+  form.querySelectorAll('textarea').forEach(autosize);
+  updateProgress();
+
+  form.addEventListener('input', function (event) {
+    var target = event.target;
+    if (target.tagName === 'TEXTAREA') autosize(target);
+    var qEl = target.closest('.q');
+    if (qEl && qEl.classList.contains('is-error')) {
+      var q = questions[Number(qEl.getAttribute('data-q'))];
+      var state = answerState(q);
+      if (state === 'ok' || (!q.def.req && state === 'empty')) setError(q, '');
+    }
+    updateProgress();
+    scheduleSave();
+  });
+
+  form.addEventListener('change', function (event) {
+    if (event.target.matches('input[data-other]')) syncOther(event.target);
+    if (event.target.type === 'radio') {
+      form.querySelectorAll('input[name="' + event.target.name + '"][data-other]').forEach(syncOther);
+    }
+    form.dispatchEvent(new Event('input'));
+    var qEl = event.target.closest('.q');
+    if (qEl && qEl.classList.contains('is-error')) {
+      var q = questions[Number(qEl.getAttribute('data-q'))];
+      if (answerState(q) === 'ok') setError(q, '');
+    }
+  });
+
+  // Отправка в Google Форму
+  function track(name) {
+    try {
+      if (window.gtag) window.gtag('event', name);
+      var ym = document.querySelector('meta[name="yandex-metrika-id"]');
+      if (window.ym && ym) window.ym(Number(ym.content), 'reachGoal', name);
+    } catch (e) { /* аналитика не мешает отправке */ }
+  }
+
+  function payload() {
+    var params = new URLSearchParams();
+    var els = form.elements;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (!el.name || el.disabled) continue;
+      if ((el.type === 'checkbox' || el.type === 'radio') && !el.checked) continue;
+      var value = el.value.trim();
+      if (value) params.append(el.name, value);
+    }
+    params.append('pageHistory', PAGE_HISTORY);
+    params.append('fvv', '1');
+    return params;
+  }
+
+  var sending = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (sending) return;
+    statusEl.textContent = '';
+
+    var bad = validate();
+    if (bad.length) {
+      statusEl.textContent = 'Осталось ответить на ' + bad.length + ' ' + plural(bad.length, 'вопрос', 'вопроса', 'вопросов') + '. Показываю первый.';
+      var first = block(bad[0]);
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var focusable = first.querySelector('input:not([disabled]), textarea');
+      if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 350);
+      return;
+    }
+
+    sending = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляю…';
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+
+    fetch(SUBMIT_URL, { method: 'POST', mode: 'no-cors', body: payload(), signal: controller ? controller.signal : undefined })
+      .then(function () {
+        clearTimeout(timer);
+        try { if (storage) storage.removeItem(STORE_KEY); } catch (e) { /* ничего страшного */ }
+        track('checkup_anketa_submit');
+        document.getElementById('page').hidden = true;
+        var done = document.getElementById('done');
+        done.hidden = false;
+        window.scrollTo(0, 0);
+        done.focus();
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        sending = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить анкету';
+        statusEl.innerHTML = 'Не получилось отправить, похоже, пропал интернет. Ответы сохранены в этом браузере, нажмите кнопку ещё раз. ' +
+          'Если снова не выйдет, заполните анкету <a href="' + GOOGLE_FORM_URL + '" target="_blank" rel="noopener">в Google Форме</a>.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
