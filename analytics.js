@@ -1,108 +1,135 @@
 (function () {
-  const gaMeta = document.querySelector('meta[name="ga4-measurement-id"]');
-  const ymMeta = document.querySelector('meta[name="yandex-metrika-id"]');
-  const gaId = gaMeta ? gaMeta.content.trim() : '';
-  const ymId = ymMeta ? ymMeta.content.trim() : '';
+  'use strict';
+
+  var CONSENT_KEY = 'analytics_consent_v1';
+  var POLICY_URL = '/privacy.html#analytics';
+  var gaMeta = document.querySelector('meta[name="ga4-measurement-id"]');
+  var ymMeta = document.querySelector('meta[name="yandex-metrika-id"]');
+  var gaId = gaMeta ? gaMeta.content.trim() : '';
+  var ymId = ymMeta ? ymMeta.content.trim() : '';
+  var analyticsLoaded = false;
 
   function loadScript(src, onload) {
-    const script = document.createElement('script');
+    var script = document.createElement('script');
     script.async = true;
     script.src = src;
     if (onload) script.onload = onload;
     document.head.appendChild(script);
   }
 
-  if (/^G-[A-Z0-9]+$/.test(gaId)) {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId), function () {
-      window.gtag('js', new Date());
-      window.gtag('config', gaId);
-    });
-  }
+  function loadAnalytics() {
+    if (analyticsLoaded) return;
+    analyticsLoaded = true;
 
-  if (/^\d{5,}$/.test(ymId)) {
-    window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
-    window.ym.l = 1 * new Date();
-    loadScript('https://mc.yandex.ru/metrika/tag.js?id=' + encodeURIComponent(ymId));
-    window.ym(Number(ymId), 'init', {
-      ssr: true,
-      clickmap: true,
-      ecommerce: 'dataLayer',
-      referrer: document.referrer,
-      url: location.href,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true
-    });
-  }
-
-  function track(name, params) {
-    if (window.gtag && /^G-[A-Z0-9]+$/.test(gaId)) {
-      window.gtag('event', name, params || {});
+    if (/^G-[A-Z0-9]+$/.test(gaId)) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId), function () {
+        window.gtag('js', new Date());
+        window.gtag('config', gaId, { anonymize_ip: true });
+      });
     }
-    if (window.ym && /^\d{5,}$/.test(ymId)) {
-      window.ym(Number(ymId), 'reachGoal', name, params || {});
+
+    if (/^\d{5,}$/.test(ymId)) {
+      window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+      window.ym.l = 1 * new Date();
+      loadScript('https://mc.yandex.ru/metrika/tag.js?id=' + encodeURIComponent(ymId));
+      window.ym(Number(ymId), 'init', {
+        ssr: true,
+        clickmap: true,
+        ecommerce: 'dataLayer',
+        referrer: document.referrer,
+        url: location.href,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+      });
     }
   }
 
-  document.addEventListener('click', function (event) {
-    const link = event.target.closest('a[href]');
-    if (!link) return;
-    const href = link.href;
-    if (link.closest('.mobile-bottom-nav') || link.closest('.site-path-grid')) {
-      track('internal_nav_click', { link_url: href, link_text: link.textContent.trim().slice(0, 80) });
-    }
-    if (href.includes('t.me/')) track('telegram_click', { link_url: href });
-    if (href.includes('docs.google.com/forms')) track('lead_form_click', { link_url: href });
-    if (href.includes('marketing_check_up_quiz_bot')) track('quiz_bot_click', { link_url: href });
-  });
+  function getChoice() {
+    try { return window.localStorage.getItem(CONSENT_KEY); } catch (error) { return null; }
+  }
 
-  function showAnalyticsNotice() {
-    try {
-      if (window.localStorage && window.localStorage.getItem('analytics_notice_ack') === '1') return;
-    } catch (error) {
-      return;
-    }
+  function saveChoice(value) {
+    try { window.localStorage.setItem(CONSENT_KEY, value); } catch (error) { /* выбор действует до закрытия страницы */ }
+  }
 
-    const hasMobileNav = document.querySelector('.mobile-bottom-nav') && window.matchMedia('(max-width: 640px)').matches;
-    const bottomOffset = hasMobileNav ? '5rem' : '1rem';
-    const notice = document.createElement('div');
-    notice.setAttribute('role', 'status');
+  function closeNotice() {
+    var notice = document.getElementById('analytics-consent');
+    if (notice) notice.remove();
+  }
+
+  function choose(value) {
+    saveChoice(value);
+    closeNotice();
+    if (value === 'accepted') loadAnalytics();
+  }
+
+  function showNotice(force) {
+    if (!force && getChoice()) return;
+    closeNotice();
+
+    var hasMobileNav = document.querySelector('.mobile-bottom-nav') && window.matchMedia('(max-width: 640px)').matches;
+    var bottomOffset = hasMobileNav ? '5rem' : '1rem';
+    var notice = document.createElement('section');
+    notice.id = 'analytics-consent';
+    notice.setAttribute('role', 'dialog');
+    notice.setAttribute('aria-modal', 'false');
+    notice.setAttribute('aria-labelledby', 'analytics-consent-title');
     notice.style.cssText = [
-      'position:fixed',
-      'left:1rem',
-      'right:1rem',
-      'bottom:' + bottomOffset,
-      'z-index:300',
-      'max-width:44rem',
-      'margin-inline:auto',
-      'display:flex',
-      'gap:.85rem',
-      'align-items:center',
-      'justify-content:space-between',
-      'padding:.85rem 1rem',
-      'background:#1a1a1a',
-      'color:#f5f0e6',
-      'border:1px solid rgba(245,240,230,.18)',
-      'font:400 13px/1.45 system-ui,sans-serif',
-      'box-shadow:0 16px 45px rgba(0,0,0,.24)'
+      'position:fixed', 'left:1rem', 'right:1rem', 'bottom:' + bottomOffset, 'z-index:10000',
+      'max-width:48rem', 'margin-inline:auto', 'padding:1rem', 'background:#1a1a1a',
+      'color:#f5f0e6', 'border:1px solid rgba(245,240,230,.24)',
+      'font:400 14px/1.5 system-ui,sans-serif', 'box-shadow:0 16px 45px rgba(0,0,0,.3)'
     ].join(';');
-    notice.innerHTML = '<span>Сайт использует аналитику и cookies, чтобы видеть посещения, клики и заявки. <a href="/privacy.html" style="color:#d4a574">Подробнее</a></span><button type="button" style="border:0;background:#c83232;color:#f5f0e6;padding:.55rem .8rem;font-weight:700;cursor:pointer">OK</button>';
-    notice.querySelector('button').addEventListener('click', function () {
-      try {
-        window.localStorage.setItem('analytics_notice_ack', '1');
-      } catch (error) {
-        // Ignore storage failures.
-      }
-      notice.remove();
+    notice.innerHTML =
+      '<strong id="analytics-consent-title" style="display:block;margin-bottom:.35rem">Настройки аналитики</strong>' +
+      '<p style="margin:0 0 .85rem">С вашего согласия сайт подключит Google Analytics и Яндекс.Метрику. Без согласия аналитические скрипты не загружаются. <a href="' + POLICY_URL + '" style="color:#e4b06f">Подробнее</a></p>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:.65rem">' +
+      '<button type="button" data-consent="accepted" style="border:0;background:#c83232;color:#fff;padding:.7rem 1rem;font-weight:700;cursor:pointer">Принять</button>' +
+      '<button type="button" data-consent="declined" style="border:1px solid rgba(245,240,230,.55);background:transparent;color:#f5f0e6;padding:.65rem 1rem;font-weight:700;cursor:pointer">Отклонить</button>' +
+      '</div>';
+    notice.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-consent]');
+      if (button) choose(button.getAttribute('data-consent'));
     });
     document.body.appendChild(notice);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', showAnalyticsNotice);
-  } else {
-    showAnalyticsNotice();
+  function track(name, params) {
+    if (getChoice() !== 'accepted') return;
+    if (window.gtag && /^G-[A-Z0-9]+$/.test(gaId)) window.gtag('event', name, params || {});
+    if (window.ym && /^\d{5,}$/.test(ymId)) window.ym(Number(ymId), 'reachGoal', name, params || {});
   }
+
+  document.addEventListener('click', function (event) {
+    var settings = event.target.closest('[data-analytics-settings]');
+    if (settings) {
+      event.preventDefault();
+      showNotice(true);
+      return;
+    }
+
+    var link = event.target.closest('a[href]');
+    if (!link) return;
+    var href = link.href;
+    if (link.closest('.mobile-bottom-nav') || link.closest('.site-path-grid')) {
+      track('internal_nav_click', { link_url: href, link_text: link.textContent.trim().slice(0, 80) });
+    }
+    if (href.indexOf('t.me/') !== -1) track('telegram_click', { link_url: href });
+    if (href.indexOf('docs.google.com/forms') !== -1) track('lead_form_click', { link_url: href });
+    if (href.indexOf('marketing_check_up_quiz_bot') !== -1) track('quiz_bot_click', { link_url: href });
+  });
+
+  window.showAnalyticsPreferences = function () { showNotice(true); };
+
+  function start() {
+    var choice = getChoice();
+    if (choice === 'accepted') loadAnalytics();
+    else if (!choice) showNotice(false);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 })();

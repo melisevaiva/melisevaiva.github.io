@@ -95,10 +95,14 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
 .last p{margin:0}
 .last a{text-decoration-color:var(--red);text-decoration-thickness:2px}
 .consent{margin:0 0 1.5rem;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.consent-box{display:flex;align-items:flex-start;gap:.75rem;margin:0 0 .75rem;padding:1rem;background:var(--paper);border:1px solid var(--line);font-size:.9375rem;line-height:1.5;color:var(--concrete);cursor:pointer}
+.consent-box input{flex:none;width:1.25rem;height:1.25rem;margin:.15rem 0 0;accent-color:var(--red)}
+.consent-note{margin:0 0 1.5rem;font-size:.8125rem;line-height:1.5;color:var(--muted)}
+.draft-delete{margin-left:.5rem;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:1rem 2.9rem 1rem 2.1rem;border:0;background:var(--red);color:var(--cream);font:700 .9375rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:background .15s}
 .btn:hover{background:var(--red-dark)}
 .btn:focus-visible{outline:3px solid var(--concrete);outline-offset:4px}
-.btn[disabled]{cursor:progress;background:var(--red-dark)}
+.btn[disabled]{cursor:not-allowed;background:#807b75}
 @media (max-width:40rem){.btn{width:100%}}
 .status{min-height:1.5rem;margin:1rem 0 0;font:500 .875rem/1.5 var(--mono);color:var(--red)}
 .status a{color:var(--red)}
@@ -117,8 +121,6 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
 </style>
 </head>
 <body>
-<noscript><div><img src="https://mc.yandex.ru/watch/110118083" style="position:absolute;left:-9999px" alt=""></div></noscript>
-
 <main id="page">
   <header class="hero">
     <div class="wrap">
@@ -134,7 +136,7 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
       </div>
       <div class="facts">
         <p>// дедлайн: за 24 часа до сессии</p>
-        <p class="note" id="save-note" hidden>Ответы сохраняются в этом браузере: можно закрыть вкладку и вернуться позже.</p>
+        <p class="note" id="save-note" hidden>Ответы сохраняются только в этом браузере на 30 дней: можно закрыть вкладку и вернуться позже. Не используйте эту функцию на общем компьютере.<button class="draft-delete" type="button" id="delete-draft">Удалить черновик</button></p>
       </div>
     </div>
   </header>
@@ -147,7 +149,7 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
   </div>
 
   <noscript>
-    <div class="wrap"><p class="restored">Для отправки анкеты нужен включённый JavaScript. Можно заполнить её <a href="https://docs.google.com/forms/d/e/1FAIpQLSc6ZQ6F9ziewZDZ_VJSnfymdwTwdqHT489Nlzg35TRKgw_TRQ/viewform">в Google Форме</a>, ответы придут туда же.</p></div>
+    <div class="wrap"><p class="restored">Для заполнения и отправки анкеты нужен включённый JavaScript. Если он недоступен, напишите <a href="https://t.me/melisevaiva">Юлиане в Telegram</a>.</p></div>
   </noscript>
 
   <form class="wrap" id="anketa" novalidate hidden>
@@ -159,13 +161,17 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
       <p>После отправки анкеты пришлите мне в Telegram <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">@melisevaiva</a> скриншоты статистики за последние 30 дней: охват или просмотры, посещения профиля, клики по ссылке и новые подписки. Если вспомните что-то ещё важное, напишите туда же.</p>
     </div>
 
-    <p class="consent">Нажимая кнопку, вы отправляете ответы Юлиане Логиновой и соглашаетесь с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
-    <button class="btn" type="submit" id="submit">Отправить анкету</button>
+    <label class="consent-box" for="pd-consent">
+      <input type="checkbox" id="pd-consent" aria-describedby="consent-note">
+      <span>Я даю согласие Логиновой Юлиане Леонидовне на обработку моих персональных данных для подготовки и проведения маркетинговой диагностики на условиях <a href="/consent-personal-data.html" target="_blank" rel="noopener">отдельного согласия</a>.</span>
+    </label>
+    <p class="consent-note" id="consent-note">Ответы передаются и хранятся в Google Forms. Google может обрабатывать их за пределами России. Подробнее о составе данных, получателях, сроках хранения и порядке отзыва — в <a href="/privacy.html" target="_blank" rel="noopener">Политике обработки персональных данных</a>.</p>
+    <button class="btn" type="submit" id="submit" disabled>Отправить анкету</button>
     <p class="status" id="status" role="status" aria-live="polite"></p>
   </form>
 
   <footer class="foot">
-    <div class="wrap"><a href="/">juliana-loginova.ru</a></div>
+    <div class="wrap"><a href="/">juliana-loginova.ru</a> · <a href="/privacy.html">политика</a> · <a href="/consent-personal-data.html">согласие</a> · <a href="/legal-info.html">реквизиты</a> · <a href="#" data-analytics-settings>настройки аналитики</a></div>
   </footer>
 </main>
 
@@ -188,7 +194,6 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
 (function () {
   var FORM_ID = '1FAIpQLSc6ZQ6F9ziewZDZ_VJSnfymdwTwdqHT489Nlzg35TRKgw_TRQ';
   var SUBMIT_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
-  var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/viewform';
   var STORE_KEY = 'checkup-anketa-v1';
   var OTHER = '__other_option__';
   // Номера страниц Google Формы: 6 разделов, отправляем всё сразу
@@ -244,6 +249,8 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
   var sectionsEl = document.getElementById('sections');
   var statusEl = document.getElementById('status');
   var submitBtn = document.getElementById('submit');
+  var consentInput = document.getElementById('pd-consent');
+  var deleteDraftBtn = document.getElementById('delete-draft');
   var fillEl = document.getElementById('progress-fill');
   var countEl = document.getElementById('progress-count');
   var questions = [];
@@ -402,7 +409,7 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
     if (!storage) return;
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function () {
-      try { storage.setItem(STORE_KEY, JSON.stringify(collect())); } catch (e) { /* место закончилось или запрещено */ }
+      try { storage.setItem(STORE_KEY, JSON.stringify({ savedAt: Date.now(), data: collect() })); } catch (e) { /* место закончилось или запрещено */ }
     }, 300);
   }
 
@@ -420,8 +427,13 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
     var raw;
     try { raw = storage.getItem(STORE_KEY); } catch (e) { return; }
     if (!raw) return;
-    var data;
-    try { data = JSON.parse(raw); } catch (e) { return; }
+    var saved;
+    try { saved = JSON.parse(raw); } catch (e) { return; }
+    var data = saved && saved.data ? saved.data : saved;
+    if (saved && saved.savedAt && Date.now() - saved.savedAt > 30 * 24 * 60 * 60 * 1000) {
+      try { storage.removeItem(STORE_KEY); } catch (e) { /* ничего страшного */ }
+      return;
+    }
     var restoredAny = false;
     var els = form.elements;
     for (var i = 0; i < els.length; i++) {
@@ -446,6 +458,19 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
   restore();
   form.querySelectorAll('textarea').forEach(autosize);
   updateProgress();
+
+  consentInput.addEventListener('change', function () {
+    submitBtn.disabled = !consentInput.checked;
+    statusEl.textContent = '';
+  });
+
+  if (deleteDraftBtn) {
+    deleteDraftBtn.addEventListener('click', function () {
+      try { if (storage) storage.removeItem(STORE_KEY); } catch (e) { /* ничего страшного */ }
+      document.getElementById('restored').hidden = true;
+      statusEl.textContent = 'Сохранённый черновик удалён из этого браузера.';
+    });
+  }
 
   form.addEventListener('input', function (event) {
     var target = event.target;
@@ -494,6 +519,9 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
     }
     params.append('pageHistory', PAGE_HISTORY);
     params.append('fvv', '1');
+    var evidenceField = 'entry.711542936';
+    var evidence = '[Техническая отметка сайта: согласие на обработку персональных данных, редакция 11.09.2026, принято ' + new Date().toISOString() + ']';
+    params.set(evidenceField, ((params.get(evidenceField) || '') + '\n\n' + evidence).trim());
     return params;
   }
 
@@ -502,6 +530,12 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
     event.preventDefault();
     if (sending) return;
     statusEl.textContent = '';
+
+    if (!consentInput.checked) {
+      statusEl.textContent = 'Чтобы отправить анкету, подтвердите согласие на обработку персональных данных.';
+      consentInput.focus();
+      return;
+    }
 
     var bad = validate();
     if (bad.length) {
@@ -533,10 +567,10 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
       .catch(function () {
         clearTimeout(timer);
         sending = false;
-        submitBtn.disabled = false;
+        submitBtn.disabled = !consentInput.checked;
         submitBtn.textContent = 'Отправить анкету';
         statusEl.innerHTML = 'Не получилось отправить, похоже, пропал интернет. Ответы сохранены в этом браузере, нажмите кнопку ещё раз. ' +
-          'Если снова не выйдет, заполните анкету <a href="' + GOOGLE_FORM_URL + '" target="_blank" rel="noopener">в Google Форме</a>.';
+          'Если снова не выйдет, напишите <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">Юлиане в Telegram</a>.';
       });
   });
 })();
