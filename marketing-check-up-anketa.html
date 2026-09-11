@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Анкета перед маркетинговой диагностикой — Юлиана Логинова</title>
-<meta name="description" content="Анкета перед сессией маркетинговой диагностики Marketing Check-up.">
+<title>Анкета перед встречей — Юлиана Логинова</title>
+<meta name="description" content="Анкета перед маркетинговой консультацией или диагностикой.">
 <meta name="author" content="Юлиана Логинова">
 <meta name="robots" content="noindex, nofollow">
 <meta name="format-detection" content="telephone=no">
@@ -128,13 +128,14 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
         <span class="brand__mark" aria-hidden="true">Ю</span>
         <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
       </a>
-      <p class="eyebrow">// маркетинговая диагностика</p>
-      <h1>Анкета перед сессией</h1>
+      <p class="eyebrow" id="service-eyebrow">// маркетинговая диагностика</p>
+      <h1 id="service-title">Анкета перед сессией</h1>
       <div class="lead">
         <p>Эта анкета поможет мне подготовиться к нашей сессии.</p>
         <p>Заполнение займёт около 25 минут. Не переживайте о «правильности» ответов — мне важно понять вашу реальную ситуацию, а не идеальную картинку.</p>
       </div>
       <div class="facts">
+        <p id="service-format">// формат: Marketing Check-up · 90 минут</p>
         <p>// дедлайн: за 24 часа до сессии</p>
         <p class="note" id="save-note" hidden>Ответы сохраняются только в этом браузере на 30 дней: можно закрыть вкладку и вернуться позже. Не используйте эту функцию на общем компьютере.<button class="draft-delete" type="button" id="delete-draft">Удалить черновик</button></p>
       </div>
@@ -163,7 +164,7 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
 
     <label class="consent-box" for="pd-consent">
       <input type="checkbox" id="pd-consent" aria-describedby="consent-note">
-      <span>Я даю согласие на обработку персональных данных для подготовки и проведения маркетинговой диагностики. <a href="/consent-personal-data.html" target="_blank" rel="noopener">Подробнее об условиях</a>.</span>
+      <span>Я даю согласие на обработку персональных данных для подготовки и проведения консультации или диагностики. <a href="/consent-personal-data.html" target="_blank" rel="noopener">Подробнее об условиях</a>.</span>
     </label>
     <p class="consent-note" id="consent-note">Ответы передаются и хранятся в Google Forms. Google может обрабатывать их за пределами России. Подробнее о составе данных, получателях, сроках хранения и порядке отзыва — в <a href="/privacy.html" target="_blank" rel="noopener">Политике обработки персональных данных</a>.</p>
     <button class="btn" type="submit" id="submit" disabled>Отправить анкету</button>
@@ -198,6 +199,29 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
   var OTHER = '__other_option__';
   // Номера страниц Google Формы: 6 разделов, отправляем всё сразу
   var PAGE_HISTORY = '0,1,2,3,4,5';
+
+  var SERVICES = {
+    checkup: {
+      eyebrow: '// маркетинговая диагностика',
+      title: 'Анкета перед сессией',
+      pageTitle: 'Анкета перед Marketing Check-up — Юлиана Логинова',
+      format: '// формат: Marketing Check-up · 90 минут',
+      record: 'Marketing Check-up · 25 000 ₽'
+    },
+    consultation: {
+      eyebrow: '// маркетинговая консультация',
+      title: 'Анкета перед консультацией',
+      pageTitle: 'Анкета перед часовой консультацией — Юлиана Логинова',
+      format: '// формат: часовая консультация · 60 минут',
+      record: 'Часовая консультация · 18 900 ₽'
+    }
+  };
+  var serviceKey = new URLSearchParams(window.location.search).get('service') === 'consultation' ? 'consultation' : 'checkup';
+  var currentService = SERVICES[serviceKey];
+  document.title = currentService.pageTitle;
+  document.getElementById('service-eyebrow').textContent = currentService.eyebrow;
+  document.getElementById('service-title').textContent = currentService.title;
+  document.getElementById('service-format').textContent = currentService.format;
 
   // Вопросы один в один с Google Формой 1HFY45… (версия 11.09.2026). name = поле formResponse.
   var SECTIONS = [
@@ -520,7 +544,7 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
     params.append('pageHistory', PAGE_HISTORY);
     params.append('fvv', '1');
     var evidenceField = 'entry.711542936';
-    var evidence = '[Техническая отметка сайта: согласие на обработку персональных данных, редакция 11.09.2026, принято ' + new Date().toISOString() + ']';
+    var evidence = '[Услуга: ' + currentService.record + ']\n[Техническая отметка сайта: согласие на обработку персональных данных, редакция 11.09.2026, принято ' + new Date().toISOString() + ']';
     params.set(evidenceField, ((params.get(evidenceField) || '') + '\n\n' + evidence).trim());
     return params;
   }
