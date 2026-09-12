@@ -23,7 +23,7 @@ Last updated: 2026-09-07
 - https://juliana-loginova.ru/data/profile.json — структурированный профиль Юлианы Логиновой.
 
 ## Service pages
-- https://juliana-loginova.ru/marketing-check-up.html — Marketing Check-up: 90-минутная диагностика маркетинга для экспертов, поиск точки поломки и ближайшего шага.
+- https://juliana-loginova.ru/marketing-check-up.html — Маркетинговая диагностика Marketing Check-up: до встречи изучаю аккаунт и цифры, за 90 минут находим место, где уходят клиенты, после встречи письменный план на 4–6 недель. 25 000 ₽.
 - https://juliana-loginova.ru/marketing-support.html — маркетинговое сопровождение экспертов на 3 месяца: стратегия, приоритеты, контент, продажи и запуск.
 - https://juliana-loginova.ru/production.html — продюсирование личного бренда под ключ: продукты, запуски, команда, экономика и рост выручки за процент с результата.
 - https://juliana-loginova.ru/content-strategy.html — контент-стратегия для экспертов: Telegram, Instagram, email, прогревы и тексты на ключевые действия.

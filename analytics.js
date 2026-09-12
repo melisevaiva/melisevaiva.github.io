@@ -114,12 +114,14 @@
     var link = event.target.closest('a[href]');
     if (!link) return;
     var href = link.href;
+    var params = { link_url: href };
+    if (link.dataset && link.dataset.cta) params.cta = link.dataset.cta;
     if (link.closest('.mobile-bottom-nav') || link.closest('.site-path-grid')) {
       track('internal_nav_click', { link_url: href, link_text: link.textContent.trim().slice(0, 80) });
     }
-    if (href.indexOf('t.me/') !== -1) track('telegram_click', { link_url: href });
-    if (href.indexOf('docs.google.com/forms') !== -1) track('lead_form_click', { link_url: href });
-    if (href.indexOf('marketing_check_up_quiz_bot') !== -1) track('quiz_bot_click', { link_url: href });
+    if (href.indexOf('t.me/') !== -1) track('telegram_click', params);
+    if (href.indexOf('docs.google.com/forms') !== -1) track('lead_form_click', params);
+    if (href.indexOf('marketing_check_up_quiz_bot') !== -1) track('quiz_bot_click', params);
   });
 
   window.showAnalyticsPreferences = function () { showNotice(true); };
