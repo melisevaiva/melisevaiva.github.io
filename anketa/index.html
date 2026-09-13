@@ -51,11 +51,11 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
 .facts p{margin:0}
 
 /* Вопросы */
-.form{padding:2.75rem 0 0}
+.form{padding-top:2.75rem}
 .q{margin:0 0 2.25rem;padding:0;border:0;min-width:0}
 .q__title{display:block;float:none;width:100%;padding:0;margin:0 0 .4rem;font-weight:500;font-size:1.125rem;line-height:1.4}
 .q__num{font:500 .75rem/1 var(--mono);color:var(--grey);margin-right:.55rem;vertical-align:.12em;font-variant-numeric:tabular-nums}
-.q__req{color:var(--red);margin-left:.2rem}
+.q__opt{font:500 .75rem/1 var(--mono);color:var(--grey);margin-left:.55rem;white-space:nowrap}
 .q__hint{margin:0 0 .8rem;font-size:.9375rem;line-height:1.5;color:var(--muted)}
 .field{display:block;width:100%;margin:0;padding:.75rem .9rem;min-height:3.1rem;font:400 1.0625rem/1.5 var(--body);color:var(--concrete);background:var(--paper);border:1.5px solid var(--field-line);border-radius:0;-webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s}
 .field::placeholder{color:#8a857d}
@@ -79,7 +79,7 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:1rem 2.9rem 1rem 2.1rem;border:0;background:var(--red);color:var(--cream);font:700 .9375rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:background .15s}
 .btn:hover{background:var(--red-dark)}
 .btn:focus-visible{outline:3px solid var(--concrete);outline-offset:4px}
-.btn[disabled]{cursor:not-allowed;background:#807b75}
+.btn[disabled]{cursor:progress;background:#807b75}
 @media (max-width:40rem){.btn{width:100%}}
 .status{min-height:1.5rem;margin:1rem 0 0;font:500 .875rem/1.5 var(--mono);color:var(--red)}
 .status a{color:var(--red)}
@@ -106,9 +106,9 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
         <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
       </a>
       <p class="eyebrow">// анкета на работу</p>
-      <h1>Работать со мной</h1>
+      <h1>Работать со&nbsp;мной</h1>
       <div class="lead">
-        <p>Оставьте контакты. Я посмотрю ваш блог и напишу в Telegram, с чего вам стоит начать и какой формат работы со мной подойдёт.</p>
+        <p>Оставьте контакты. Я посмотрю ваш блог и напишу в Telegram, с чего вам стоит начать и какой формат работы подойдёт.</p>
       </div>
       <div class="facts">
         <p>// 5 вопросов · около 2 минут</p>
@@ -133,7 +133,7 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
       <span>Можно писать мне о новых материалах, эфирах и продуктах Юлианы. Отписаться можно в любой момент.</span>
     </label>
     <p class="consent-note" id="consent-note">Ответы передаются и хранятся в Google Forms. Google может обрабатывать их за пределами России. Подробнее о составе данных, сроках хранения и порядке отзыва в <a href="/privacy.html" target="_blank" rel="noopener">Политике обработки персональных данных</a>.</p>
-    <button class="btn" type="submit" id="submit" disabled>Отправить анкету</button>
+    <button class="btn" type="submit" id="submit">Отправить анкету</button>
     <p class="status" id="status" role="status" aria-live="polite"></p>
   </form>
 
@@ -150,7 +150,7 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
     </a>
     <p class="eyebrow">// анкета отправлена</p>
     <h2 class="done__title">Спасибо!</h2>
-    <p>Посмотрю ваш блог и напишу в Telegram с аккаунта <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">@melisevaiva</a> в течение двух рабочих дней.</p>
+    <p>Посмотрю ваш блог и напишу в Telegram с аккаунта <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">@melisevaiva</a> за два рабочих дня.</p>
     <p>Если ждать не хочется, напишите мне первой. Двух слов «я из анкеты» хватит.</p>
     <a class="btn" href="https://t.me/melisevaiva" target="_blank" rel="noopener">Написать в Telegram</a>
   </div>
@@ -206,7 +206,8 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
     var errId = id + '-err';
     var described = (q.hint ? hintId + ' ' : '') + errId;
     var numHtml = '<span class="q__num" aria-hidden="true">' + pad(i + 1) + '</span>';
-    var reqHtml = q.req ? '<span class="q__req" aria-hidden="true">*</span>' : '';
+    // Обязательных четыре из пяти, поэтому помечаем единственное необязательное, а не звёздочки
+    var reqHtml = q.req ? '' : '<span class="q__opt">необязательно</span>';
     var hintHtml = q.hint ? '<p class="q__hint" id="' + hintId + '">' + esc(q.hint) + '</p>' : '';
     var errHtml = '<p class="q__error" id="' + errId + '"></p>';
 
@@ -285,7 +286,6 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
   }
 
   pdConsent.addEventListener('change', function () {
-    submitBtn.disabled = !pdConsent.checked;
     statusEl.textContent = '';
   });
 
@@ -378,7 +378,7 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
       .catch(function () {
         clearTimeout(timer);
         sending = false;
-        submitBtn.disabled = !pdConsent.checked;
+        submitBtn.disabled = false;
         submitBtn.textContent = 'Отправить анкету';
         statusEl.innerHTML = 'Не получилось отправить, похоже, пропал интернет. Нажмите кнопку ещё раз. ' +
           'Если снова не выйдет, напишите <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">Юлиане в Telegram</a>.';
