@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анкета на работу с Юлианой — Юлиана Логинова</title>
+<meta name="description" content="Оставьте контакты: Юлиана посмотрит ваш блог и напишет в Telegram, какой формат работы подойдёт.">
+<meta name="author" content="Юлиана Логинова">
+<meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
+<meta name="ga4-measurement-id" content="G-DFFPDDRSBR">
+<meta name="yandex-metrika-id" content="110118083">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer src="/analytics.js"></script>
+<style>
+:root{
+  --red:#c83232;--red-dark:#a92a2a;--concrete:#1a1a1a;--cream:#f5f0e6;--paper:#fbf8f1;
+  --grey:#4a4a52;--muted:#5c5852;--line:rgba(26,26,26,.16);--field-line:rgba(26,26,26,.38);
+  --cream-72:rgba(245,240,230,.72);
+  --display:'Unbounded',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--concrete);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.2em}
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.25rem}
+@media (min-width:48rem){.wrap{padding:0 2rem}}
+.eyebrow{font:400 .8125rem/1.5 var(--mono);margin:0 0 .9rem}
+
+/* Шапка */
+.hero{background:var(--concrete);color:var(--cream);padding:1.25rem 0 3rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;text-decoration:none;margin-bottom:2.75rem}
+.brand__mark{width:2.6rem;height:2.6rem;display:grid;place-items:center;background:var(--red);color:var(--cream);font:900 1.3rem/1 var(--display);clip-path:polygon(0 0,100% 0,100% 78%,88% 100%,0 100%)}
+.brand__name{display:grid;line-height:1.05}
+.brand__name span{font:400 .6875rem/1.2 var(--body);letter-spacing:.15em;text-transform:uppercase;color:var(--cream-72)}
+.brand__name strong{font:900 .9375rem/1.1 var(--display);letter-spacing:-.01em}
+.hero .eyebrow{color:var(--cream-72)}
+h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 1.5rem}
+.lead p{margin:0 0 1rem;max-width:34rem;color:rgba(245,240,230,.92)}
+.facts{margin:1.6rem 0 0;padding:1rem 0 0;border-top:1px solid rgba(245,240,230,.18);font:400 .8125rem/1.8 var(--mono);color:var(--cream)}
+.facts p{margin:0}
+
+/* Вопросы */
+.form{padding:2.75rem 0 0}
+.q{margin:0 0 2.25rem;padding:0;border:0;min-width:0}
+.q__title{display:block;float:none;width:100%;padding:0;margin:0 0 .4rem;font-weight:500;font-size:1.125rem;line-height:1.4}
+.q__num{font:500 .75rem/1 var(--mono);color:var(--grey);margin-right:.55rem;vertical-align:.12em;font-variant-numeric:tabular-nums}
+.q__req{color:var(--red);margin-left:.2rem}
+.q__hint{margin:0 0 .8rem;font-size:.9375rem;line-height:1.5;color:var(--muted)}
+.field{display:block;width:100%;margin:0;padding:.75rem .9rem;min-height:3.1rem;font:400 1.0625rem/1.5 var(--body);color:var(--concrete);background:var(--paper);border:1.5px solid var(--field-line);border-radius:0;-webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s}
+.field::placeholder{color:#8a857d}
+.field:focus{outline:none;border-color:var(--concrete);box-shadow:inset 0 0 0 1px var(--concrete)}
+.q.is-error .field{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
+.q__error{display:none;margin:.5rem 0 0;font:500 .9375rem/1.4 var(--body);color:var(--red)}
+.q.is-error .q__error{display:block}
+.opts{display:grid;gap:.1rem}
+.opt{position:relative;display:flex;align-items:flex-start;gap:.8rem;min-height:2.75rem;padding:.55rem 0;cursor:pointer;line-height:1.4}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opt__box{flex:none;width:1.375rem;height:1.375rem;margin-top:.05rem;display:grid;place-items:center;background:var(--paper);border:1.5px solid var(--concrete);border-radius:50%;transition:background .15s,border-color .15s}
+.opt input:checked+.opt__box{background:var(--red);border-color:var(--red)}
+.opt input:checked+.opt__box::after{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--cream)}
+.opt input:focus-visible+.opt__box{outline:2px solid var(--concrete);outline-offset:3px}
+.q.is-error .opt__box{border-color:var(--red)}
+
+/* Согласия и кнопка */
+.consent-box{display:flex;align-items:flex-start;gap:.75rem;margin:0 0 .75rem;padding:1rem;background:var(--paper);border:1px solid var(--line);font-size:.9375rem;line-height:1.5;color:var(--concrete);cursor:pointer}
+.consent-box input{flex:none;width:1.25rem;height:1.25rem;margin:.15rem 0 0;accent-color:var(--red)}
+.consent-note{margin:0 0 1.5rem;font-size:.8125rem;line-height:1.5;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:1rem 2.9rem 1rem 2.1rem;border:0;background:var(--red);color:var(--cream);font:700 .9375rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:background .15s}
+.btn:hover{background:var(--red-dark)}
+.btn:focus-visible{outline:3px solid var(--concrete);outline-offset:4px}
+.btn[disabled]{cursor:not-allowed;background:#807b75}
+@media (max-width:40rem){.btn{width:100%}}
+.status{min-height:1.5rem;margin:1rem 0 0;font:500 .875rem/1.5 var(--mono);color:var(--red)}
+.status a{color:var(--red)}
+.foot{padding:3rem 0 4.5rem;font:400 .75rem/1.6 var(--mono);color:var(--grey)}
+.foot a{color:var(--grey)}
+
+/* Отправлено */
+.done{background:var(--concrete);color:var(--cream);min-height:100vh;padding:1.25rem 0 4rem}
+.done:focus{outline:none}
+.done .eyebrow{color:var(--cream-72)}
+.done__title{font:900 clamp(2.4rem,11vw,4.5rem)/1 var(--display);text-transform:uppercase;margin:3rem 0 1.5rem}
+.done p{max-width:32rem;margin:0 0 1rem}
+.done .btn{margin:1.25rem 0 2rem}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main id="page">
+  <header class="hero">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Юлиана Логинова, главная">
+        <span class="brand__mark" aria-hidden="true">Ю</span>
+        <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
+      </a>
+      <p class="eyebrow">// анкета на работу</p>
+      <h1>Работать со мной</h1>
+      <div class="lead">
+        <p>Оставьте контакты. Я посмотрю ваш блог и напишу в Telegram, с чего вам стоит начать и какой формат работы со мной подойдёт.</p>
+      </div>
+      <div class="facts">
+        <p>// 5 вопросов · около 2 минут</p>
+        <p>// ответ в Telegram за два рабочих дня</p>
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <div class="wrap"><p class="form">Для отправки анкеты нужен включённый JavaScript. Если он недоступен, напишите <a href="https://t.me/melisevaiva">Юлиане в Telegram</a>.</p></div>
+  </noscript>
+
+  <form class="wrap form" id="anketa" novalidate hidden>
+    <div id="fields"></div>
+
+    <label class="consent-box" for="pd-consent">
+      <input type="checkbox" id="pd-consent" aria-describedby="consent-note">
+      <span>Я даю согласие на обработку персональных данных: Юлиана посмотрит блог, подберёт формат работы и напишет мне. <a href="/consent-personal-data.html" target="_blank" rel="noopener">Подробнее об условиях</a>.</span>
+    </label>
+    <label class="consent-box" for="mail-consent">
+      <input type="checkbox" id="mail-consent">
+      <span>Можно писать мне о новых материалах, эфирах и продуктах Юлианы. Отписаться можно в любой момент.</span>
+    </label>
+    <p class="consent-note" id="consent-note">Ответы передаются и хранятся в Google Forms. Google может обрабатывать их за пределами России. Подробнее о составе данных, сроках хранения и порядке отзыва в <a href="/privacy.html" target="_blank" rel="noopener">Политике обработки персональных данных</a>.</p>
+    <button class="btn" type="submit" id="submit" disabled>Отправить анкету</button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <footer class="foot">
+    <div class="wrap"><a href="/">juliana-loginova.ru</a> · <a href="/privacy.html">политика</a> · <a href="/consent-personal-data.html">согласие</a> · <a href="/legal-info.html">реквизиты</a> · <a href="#" data-analytics-settings>настройки cookie</a></div>
+  </footer>
+</main>
+
+<section class="done" id="done" tabindex="-1" hidden>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Юлиана Логинова, главная">
+      <span class="brand__mark" aria-hidden="true">Ю</span>
+      <span class="brand__name"><span>юлиана</span><strong>ЛОГИНОВА</strong></span>
+    </a>
+    <p class="eyebrow">// анкета отправлена</p>
+    <h2 class="done__title">Спасибо!</h2>
+    <p>Посмотрю ваш блог и напишу в Telegram с аккаунта <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">@melisevaiva</a> в течение двух рабочих дней.</p>
+    <p>Если ждать не хочется, напишите мне первой. Двух слов «я из анкеты» хватит.</p>
+    <a class="btn" href="https://t.me/melisevaiva" target="_blank" rel="noopener">Написать в Telegram</a>
+  </div>
+</section>
+
+<script>
+(function () {
+  // Google Форма «Анкета на работу с Юлианой» (создана 13.09.2026, карта полей в scripts/anketa/form-map.json)
+  var SUBMIT_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSepvL33_n8TWwnm0XS4NIc7RNq6OTS58_YruydMyDeltoYwQw/formResponse';
+  var ENTRY = {
+    name: 'entry.1287751709',
+    telegram: 'entry.1434987453',
+    email: 'entry.623477631',
+    income: 'entry.316534012',
+    blog: 'entry.1843051076',
+    mailing: 'entry.677834445',
+    source: 'entry.1647052572',
+    tech: 'entry.1799521473'
+  };
+  var PAGE_VERSION = '2026-09-13';
+
+  // Метка источника из ссылки: /anketa/?src=reel-12. Без метки считаем ссылкой из профиля.
+  var rawSrc = new URLSearchParams(window.location.search).get('src') || '';
+  var SOURCE = rawSrc.replace(/[^\w.-]/g, '').slice(0, 64) || 'bio';
+
+  var FIELDS = [
+    { key: 'name', type: 'short', req: true, title: 'Как вас зовут?', autocomplete: 'name' },
+    { key: 'telegram', type: 'telegram', req: true, title: 'Ваш Telegram', hint: 'Ник вида @imya. Туда и напишу.' },
+    { key: 'email', type: 'email', req: true, title: 'Электронная почта' },
+    { key: 'income', type: 'radio', req: true, title: 'Ваш доход в месяц сейчас', hint: 'Примерно. От этого зависит, какой формат работы я предложу.',
+      options: ['До 50 000 ₽', '50 000–100 000 ₽', '100 000–300 000 ₽', 'Больше 300 000 ₽'] },
+    { key: 'blog', type: 'url', req: false, title: 'Ссылка на блог', hint: 'Instagram, Telegram или сайт. Посмотрю до того, как написать.' }
+  ];
+
+  var form = document.getElementById('anketa');
+  var fieldsEl = document.getElementById('fields');
+  var statusEl = document.getElementById('status');
+  var submitBtn = document.getElementById('submit');
+  var pdConsent = document.getElementById('pd-consent');
+  var mailConsent = document.getElementById('mail-consent');
+
+  function esc(text) {
+    return String(text).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  // Разметка
+  fieldsEl.innerHTML = FIELDS.map(function (q, i) {
+    var id = 'q-' + q.key;
+    var hintId = id + '-hint';
+    var errId = id + '-err';
+    var described = (q.hint ? hintId + ' ' : '') + errId;
+    var numHtml = '<span class="q__num" aria-hidden="true">' + pad(i + 1) + '</span>';
+    var reqHtml = q.req ? '<span class="q__req" aria-hidden="true">*</span>' : '';
+    var hintHtml = q.hint ? '<p class="q__hint" id="' + hintId + '">' + esc(q.hint) + '</p>' : '';
+    var errHtml = '<p class="q__error" id="' + errId + '"></p>';
+
+    if (q.type === 'radio') {
+      var opts = q.options.map(function (value, oi) {
+        return '<label class="opt"><input type="radio" name="' + ENTRY[q.key] + '" value="' + esc(value) + '" id="' + id + '-o' + oi + '">' +
+          '<span class="opt__box" aria-hidden="true"></span><span>' + esc(value) + '</span></label>';
+      }).join('');
+      return '<fieldset class="q" id="' + id + '" aria-describedby="' + described + '">' +
+        '<legend class="q__title">' + numHtml + esc(q.title) + reqHtml + '</legend>' + hintHtml +
+        '<div class="opts">' + opts + '</div>' + errHtml + '</fieldset>';
+    }
+
+    var attrs = ' id="' + id + '-in" name="' + ENTRY[q.key] + '" aria-describedby="' + described + '"' + (q.req ? ' aria-required="true"' : '');
+    var control;
+    if (q.type === 'email') {
+      control = '<input class="field" type="email" inputmode="email" autocomplete="email" spellcheck="false"' + attrs + '>';
+    } else if (q.type === 'url') {
+      control = '<input class="field" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://"' + attrs + '>';
+    } else if (q.type === 'telegram') {
+      control = '<input class="field" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="@"' + attrs + '>';
+    } else {
+      control = '<input class="field" type="text"' + (q.autocomplete ? ' autocomplete="' + q.autocomplete + '"' : '') + attrs + '>';
+    }
+    return '<div class="q" id="' + id + '">' +
+      '<label class="q__title" for="' + id + '-in">' + numHtml + esc(q.title) + reqHtml + '</label>' + hintHtml + control + errHtml + '</div>';
+  }).join('');
+  form.hidden = false;
+
+  // Проверка ответов
+  function block(q) { return document.getElementById('q-' + q.key); }
+  function input(q) { return document.getElementById('q-' + q.key + '-in'); }
+
+  // @imya, imya, t.me/imya, https://t.me/imya → @imya. Ник в Telegram: латиница, цифры, _, 5–32 знака.
+  function normalizeTelegram(value) {
+    var v = value.trim().replace(/^https?:\/\//i, '').replace(/^(www\.)?(t\.me|telegram\.me)\//i, '').replace(/^@/, '').replace(/[\/?#].*$/, '');
+    return /^[a-zA-Z][a-zA-Z0-9_]{4,31}$/.test(v) ? '@' + v : '';
+  }
+
+  function answerState(q) {
+    if (q.type === 'radio') {
+      return block(q).querySelector('input:checked') ? 'ok' : 'empty';
+    }
+    var value = input(q).value.trim();
+    if (!value) return 'empty';
+    if (q.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) return 'email';
+    if (q.type === 'telegram' && !normalizeTelegram(value)) return 'telegram';
+    return 'ok';
+  }
+
+  var MESSAGES = {
+    empty: 'Это обязательный вопрос',
+    email: 'Проверьте адрес почты',
+    telegram: 'Нужен ник вида @imya. Он есть в настройках Telegram, в разделе «Имя пользователя».'
+  };
+
+  function setError(q, message) {
+    var el = block(q);
+    el.classList.toggle('is-error', Boolean(message));
+    document.getElementById('q-' + q.key + '-err').textContent = message || '';
+    var inputs = el.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) {
+      if (message) inputs[i].setAttribute('aria-invalid', 'true'); else inputs[i].removeAttribute('aria-invalid');
+    }
+  }
+
+  function validate() {
+    var bad = [];
+    FIELDS.forEach(function (q) {
+      var state = answerState(q);
+      var problem = state === 'email' || state === 'telegram' || (q.req && state === 'empty');
+      setError(q, problem ? MESSAGES[state] : '');
+      if (problem) bad.push(q);
+    });
+    return bad;
+  }
+
+  pdConsent.addEventListener('change', function () {
+    submitBtn.disabled = !pdConsent.checked;
+    statusEl.textContent = '';
+  });
+
+  form.addEventListener('input', function (event) {
+    var qEl = event.target.closest('.q');
+    if (!qEl || !qEl.classList.contains('is-error')) return;
+    var q = FIELDS.filter(function (f) { return 'q-' + f.key === qEl.id; })[0];
+    if (!q) return;
+    var state = answerState(q);
+    if (state === 'ok' || (!q.req && state === 'empty')) setError(q, '');
+  });
+  form.addEventListener('change', function (event) {
+    if (event.target.type === 'radio') form.dispatchEvent(new Event('input'));
+    var qEl = event.target.closest('.q');
+    if (qEl && qEl.classList.contains('is-error')) {
+      var q = FIELDS.filter(function (f) { return 'q-' + f.key === qEl.id; })[0];
+      if (q && answerState(q) === 'ok') setError(q, '');
+    }
+  });
+
+  // Отправка в Google Форму
+  function track(name) {
+    try {
+      if (window.gtag) window.gtag('event', name, { source: SOURCE });
+      var ym = document.querySelector('meta[name="yandex-metrika-id"]');
+      if (window.ym && ym) window.ym(Number(ym.content), 'reachGoal', name);
+    } catch (e) { /* аналитика не мешает отправке */ }
+  }
+
+  function payload() {
+    var params = new URLSearchParams();
+    FIELDS.forEach(function (q) {
+      var value;
+      if (q.type === 'radio') {
+        var checked = block(q).querySelector('input:checked');
+        value = checked ? checked.value : '';
+      } else if (q.type === 'telegram') {
+        value = normalizeTelegram(input(q).value);
+      } else {
+        value = input(q).value.trim();
+      }
+      if (value) params.append(ENTRY[q.key], value);
+    });
+    params.append(ENTRY.mailing, mailConsent.checked ? 'Да' : 'Нет');
+    params.append(ENTRY.source, SOURCE);
+    params.append(ENTRY.tech, '[Согласие на обработку персональных данных, редакция ' + PAGE_VERSION + ', принято ' + new Date().toISOString() + '; страница /anketa/]');
+    params.append('pageHistory', '0');
+    params.append('fvv', '1');
+    return params;
+  }
+
+  var sending = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (sending) return;
+    statusEl.textContent = '';
+
+    if (!pdConsent.checked) {
+      statusEl.textContent = 'Чтобы отправить анкету, подтвердите согласие на обработку персональных данных.';
+      pdConsent.focus();
+      return;
+    }
+
+    var bad = validate();
+    if (bad.length) {
+      statusEl.textContent = bad.length === 1 ? 'Остался один вопрос, показываю его.' : 'Осталось ответить на ' + bad.length + ' вопроса. Показываю первый.';
+      var first = block(bad[0]);
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var focusable = first.querySelector('input');
+      if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 350);
+      return;
+    }
+
+    sending = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляю…';
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+
+    fetch(SUBMIT_URL, { method: 'POST', mode: 'no-cors', body: payload(), signal: controller ? controller.signal : undefined })
+      .then(function () {
+        clearTimeout(timer);
+        track('anketa_submit');
+        document.getElementById('page').hidden = true;
+        var done = document.getElementById('done');
+        done.hidden = false;
+        window.scrollTo(0, 0);
+        done.focus();
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        sending = false;
+        submitBtn.disabled = !pdConsent.checked;
+        submitBtn.textContent = 'Отправить анкету';
+        statusEl.innerHTML = 'Не получилось отправить, похоже, пропал интернет. Нажмите кнопку ещё раз. ' +
+          'Если снова не выйдет, напишите <a href="https://t.me/melisevaiva" target="_blank" rel="noopener">Юлиане в Telegram</a>.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
