@@ -65,4 +65,4 @@ h3{font-size:var(--text-lg);margin-bottom:.55rem}
 .footer{padding:2rem 0;color:var(--grey-light);border-top:1px solid rgba(26,26,26,.1)}
 .footer .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
 .footer-nav{display:flex;gap:1rem;flex-wrap:wrap}
-@media (max-width:640px){.nav{position:static}.nav-inner{align-items:flex-start;flex-direction:column}.nav-links{gap:1rem;justify-content:flex-start}h1{max-width:12ch}}
+@media (max-width:640px){.nav{position:static}.nav-inner{align-items:flex-start;flex-direction:column}.nav-links{gap:1rem;justify-content:flex-start}h1{max-width:none;font-size:clamp(1.55rem,7.7vw,1.9rem)}h2{font-size:clamp(1.5rem,8.1vw,1.75rem)}}

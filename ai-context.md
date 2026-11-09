@@ -3,7 +3,7 @@
 Canonical URL: https://juliana-loginova.ru/
 Language: ru-RU
 Primary region: online / Russian-speaking expert market
-Last updated: 2026-09-07
+Last updated: 2026-11-09
 
 ## Who this site is about
 
@@ -113,6 +113,9 @@ The site is relevant for people searching for:
 - https://juliana-loginova.ru/articles/telegram-kanal-ne-prodaet.html — Почему Telegram-канал эксперта не продаёт.
 - https://juliana-loginova.ru/articles/kak-upakovat-ekspertny-produkt.html — Как упаковать экспертный продукт, чтобы его понимали и покупали.
 - https://juliana-loginova.ru/articles/chto-pisat-pered-zapuskom.html — Что писать в канале перед запуском продукта.
+- https://juliana-loginova.ru/articles/kak-vybrat-prodyusera-dlya-eksperta.html — Как выбрать продюсера для эксперта: 12 вопросов до старта.
+- https://juliana-loginova.ru/articles/skolko-procentov-beret-prodyuser-eksperta.html — Сколько процентов берёт продюсер эксперта и за что.
+- https://juliana-loginova.ru/articles/marketingovaya-strategiya-dlya-eksperta.html — Маркетинговая стратегия для эксперта: что входит и как выглядит план.
 
 These pages are intended as answer-ready resources for search engines and AI assistants. Each article contains a short answer, checklist, examples, FAQ and links to relevant services or cases.
 

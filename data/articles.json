@@ -3,7 +3,7 @@
   "@type": "ItemList",
   "name": "Статьи Юлианы Логиновой о маркетинге для экспертов",
   "url": "https://juliana-loginova.ru/articles.html",
-  "dateModified": "2026-06-25",
+  "dateModified": "2026-11-09",
   "inLanguage": "ru-RU",
   "itemListElement": [
     {
@@ -124,6 +124,42 @@
         "description": "Что писать эксперту перед запуском продукта в Telegram, Instagram или email: темы, прогрев, кейсы, возражения, оффер и последовательность публикаций.",
         "datePublished": "2026-06-25",
         "dateModified": "2026-06-25"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Article",
+        "headline": "Как выбрать продюсера для эксперта: 12 вопросов до старта",
+        "url": "https://juliana-loginova.ru/articles/kak-vybrat-prodyusera-dlya-eksperta.html",
+        "description": "Как проверить роль, опыт, экономику, команду, оплату и ответственность продюсера до начала совместной работы.",
+        "datePublished": "2026-11-09",
+        "dateModified": "2026-11-09"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Article",
+        "headline": "Сколько процентов берёт продюсер эксперта и за что",
+        "url": "https://juliana-loginova.ru/articles/skolko-procentov-beret-prodyuser-eksperta.html",
+        "description": "От чего зависит процент продюсера, что входит в работу и как заранее договориться о выручке, расходах и рисках.",
+        "datePublished": "2026-11-09",
+        "dateModified": "2026-11-09"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Article",
+        "headline": "Маркетинговая стратегия для эксперта: что входит и как выглядит план",
+        "url": "https://juliana-loginova.ru/articles/marketingovaya-strategiya-dlya-eksperta.html",
+        "description": "Диагностика, позиционирование, продукт, аудитория, контент, воронка, метрики и практический план на 90 дней.",
+        "datePublished": "2026-11-09",
+        "dateModified": "2026-11-09"
       }
     }
   ]
