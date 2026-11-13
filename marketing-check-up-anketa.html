@@ -582,7 +582,6 @@ textarea.field{min-height:7.25rem;resize:vertical;overflow:hidden}
         clearTimeout(timer);
         try { if (storage) storage.removeItem(STORE_KEY); } catch (e) { /* ничего страшного */ }
         track('checkup_anketa_submit');
-        track('lead_form_click');
         document.getElementById('page').hidden = true;
         var done = document.getElementById('done');
         done.hidden = false;

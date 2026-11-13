@@ -37,6 +37,8 @@ The site is relevant for people searching for:
 
 ## Main services
 
+Для обсуждения личной работы используется короткая анкета: https://juliana-loginova.ru/work-with-me.html. Юлиана изучает ответы и отвечает лично в Telegram, если видит подходящий формат работы.
+
 1. Marketing Check-up
    - URL: https://juliana-loginova.ru/marketing-check-up.html
    - 90-минутная диагностика маркетинга.
