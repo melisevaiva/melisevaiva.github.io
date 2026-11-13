@@ -369,6 +369,7 @@ h1{font:900 clamp(2rem,8.4vw,3.75rem)/1.02 var(--display);text-transform:upperca
       .then(function () {
         clearTimeout(timer);
         track('anketa_submit');
+        track('lead_form_click');
         document.getElementById('page').hidden = true;
         var done = document.getElementById('done');
         done.hidden = false;
