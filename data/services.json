@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Услуги Юлианы Логиновой",
+  "name": "Форматы работы и услуги Юлианы Логиновой",
   "url": "https://juliana-loginova.ru/",
   "inLanguage": "ru-RU",
   "itemListElement": [
@@ -10,20 +10,20 @@
       "position": 1,
       "item": {
         "@type": "Service",
-        "name": "Marketing Check-up для экспертов",
-        "url": "https://juliana-loginova.ru/marketing-check-up.html",
-        "serviceType": "Маркетинговая диагностика",
-        "description": "90-минутная диагностика маркетинга: где ломается система, что мешает заявкам и продажам, какой ближайший шаг делать первым.",
+        "name": "«Я в прайме»",
+        "description": "Игра в Telegram, с помощью которой эксперт упаковывает свой профиль: пять эпизодов, в каждом разбор, задание и шаблон. Первый эпизод бесплатно, перед игрой бесплатный тест из 8 вопросов.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
           "url": "https://juliana-loginova.ru/"
         },
-        "areaServed": "Онлайн",
+        "url": "https://t.me/marketing_check_up_quiz_bot?start=ep1",
+        "inLanguage": "ru-RU",
         "offers": {
           "@type": "Offer",
-          "price": "25000",
-          "priceCurrency": "RUB"
+          "price": "1490",
+          "priceCurrency": "RUB",
+          "url": "https://t.me/marketing_check_up_quiz_bot?start=ep1"
         }
       }
     },
@@ -32,20 +32,24 @@
       "position": 2,
       "item": {
         "@type": "Service",
-        "name": "Маркетинговое сопровождение экспертов",
-        "url": "https://juliana-loginova.ru/marketing-support.html",
-        "serviceType": "Маркетинговое сопровождение",
-        "description": "Три месяца регулярной стратегической работы с маркетингом, контентом, продажами и запуском.",
+        "name": "Консультация · Check-up",
+        "description": "До встречи Юлиана изучает аккаунт и цифры, на встрече в Zoom собирает таблицу решений под запрос, после встречи план. 18 900–25 000 ₽ в зависимости от запроса и условий.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
           "url": "https://juliana-loginova.ru/"
         },
-        "areaServed": "Онлайн",
+        "url": "https://juliana-loginova.ru/marketing-check-up.html",
+        "inLanguage": "ru-RU",
         "offers": {
           "@type": "Offer",
-          "price": "300000",
-          "priceCurrency": "RUB"
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "18900",
+            "maxPrice": "25000",
+            "priceCurrency": "RUB"
+          },
+          "url": "https://juliana-loginova.ru/marketing-check-up.html"
         }
       }
     },
@@ -54,16 +58,21 @@
       "position": 3,
       "item": {
         "@type": "Service",
-        "name": "Продюсирование личного бренда под ключ",
-        "url": "https://juliana-loginova.ru/production.html",
-        "serviceType": "Продюсирование экспертного бизнеса",
-        "description": "Долгосрочная работа с продуктовой линейкой, запуском, командой, экономикой и ростом выручки экспертного проекта.",
+        "name": "«Запуск на вынос»",
+        "description": "Около 3 недель: запуск на бумаге — продукт, цены, расчёт, рекомендации по текстам и контенту, календарь по дням. Делает эксперт сам или с одним ассистентом.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
           "url": "https://juliana-loginova.ru/"
         },
-        "areaServed": "Онлайн"
+        "url": "https://juliana-loginova.ru/#products",
+        "inLanguage": "ru-RU",
+        "offers": {
+          "@type": "Offer",
+          "price": "100000",
+          "priceCurrency": "RUB",
+          "url": "https://juliana-loginova.ru/#products"
+        }
       }
     },
     {
@@ -71,16 +80,21 @@
       "position": 4,
       "item": {
         "@type": "Service",
-        "name": "Контент-стратегия для эксперта",
-        "url": "https://juliana-loginova.ru/content-strategy.html",
-        "serviceType": "Контент-стратегия",
-        "description": "Telegram, Instagram, email, сторис-прогревы, лидмагниты и тексты на ключевые действия: подписку, заявку, регистрацию и покупку.",
+        "name": "Сопровождение",
+        "description": "Свой продюсер на 3 месяца: созвон раз в неделю, подсказывает, что делать, анализирует каждый шаг, направляет; при необходимости рекомендует проверенных подрядчиков.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
           "url": "https://juliana-loginova.ru/"
         },
-        "areaServed": "Онлайн"
+        "url": "https://juliana-loginova.ru/marketing-support.html",
+        "inLanguage": "ru-RU",
+        "offers": {
+          "@type": "Offer",
+          "price": "300000",
+          "priceCurrency": "RUB",
+          "url": "https://juliana-loginova.ru/marketing-support.html"
+        }
       }
     },
     {
@@ -88,10 +102,50 @@
       "position": 5,
       "item": {
         "@type": "Service",
-        "name": "Email-маркетинг для экспертных запусков",
-        "url": "https://juliana-loginova.ru/email-marketing.html",
-        "serviceType": "Email-маркетинг",
-        "description": "Письма для вебинаров, клубов, дожимов, повторных покупок, реактивации базы и продаж продуктов с длинным циклом решения.",
+        "name": "Агентство",
+        "description": "Команда ведёт соцсети, делает контент (посты, сторис, рилсы, карусели, тексты для каналов и рассылок), приводит подписчиков, проводит запуски.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "url": "https://juliana-loginova.ru/#products",
+        "inLanguage": "ru-RU",
+        "offers": {
+          "@type": "Offer",
+          "description": "Условия по запросу"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Service",
+        "name": "Продюсирование под ключ",
+        "description": "Партнёрство вдолгую: Юлиана ведёт бизнес-сторону экспертного проекта за процент с результата.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "url": "https://juliana-loginova.ru/production.html",
+        "inLanguage": "ru-RU",
+        "offers": {
+          "@type": "Offer",
+          "description": "Процент с результата"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Service",
+        "name": "Контент-стратегия для эксперта",
+        "url": "https://juliana-loginova.ru/content-strategy.html",
+        "serviceType": "Контент-стратегия",
+        "description": "Telegram, Instagram, email, сторис-прогревы, лидмагниты и тексты на ключевые действия: подписку, заявку, регистрацию и покупку. Услуга агентства Юлианы Логиновой.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
@@ -102,13 +156,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 8,
+      "item": {
+        "@type": "Service",
+        "name": "Email-маркетинг для экспертных запусков",
+        "url": "https://juliana-loginova.ru/email-marketing.html",
+        "serviceType": "Email-маркетинг",
+        "description": "Письма для вебинаров, клубов, дожимов, повторных покупок, реактивации базы и продаж продуктов с длинным циклом решения. Услуга агентства Юлианы Логиновой.",
+        "provider": {
+          "@type": "Person",
+          "name": "Юлиана Логинова",
+          "url": "https://juliana-loginova.ru/"
+        },
+        "areaServed": "Онлайн"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
       "item": {
         "@type": "Service",
         "name": "Сторис-прогревы для запусков",
         "url": "https://juliana-loginova.ru/stories-warmup.html",
         "serviceType": "Сторис-прогрев",
-        "description": "Сценарии сторис перед вебинарами, запусками, листами ожидания, трипваерами и покупками.",
+        "description": "Сценарии сторис перед вебинарами, запусками, листами ожидания, трипваерами и покупками. Услуга агентства Юлианы Логиновой.",
         "provider": {
           "@type": "Person",
           "name": "Юлиана Логинова",
@@ -117,5 +188,6 @@
         "areaServed": "Онлайн"
       }
     }
-  ]
+  ],
+  "dateModified": "2026-11-17"
 }

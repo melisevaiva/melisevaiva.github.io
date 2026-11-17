@@ -6,24 +6,23 @@
   "url": "https://juliana-loginova.ru/",
   "image": "https://juliana-loginova.ru/photos/optimized/street-lean-640.jpg",
   "jobTitle": "Продюсер для экспертов с аудиторией",
-  "description": "Юлиана Логинова — продюсер для экспертов с аудиторией. Помогает найти точку поломки в маркетинге и собрать систему из позиционирования, продукта, контента, воронки, запуска и продаж.",
+  "description": "Юлиана Логинова — продюсер для экспертов с аудиторией. 9 лет на ТНТ: продюсер проектов Comedy Club Production (Comedy Club, Comedy Woman, Stand Up, «Танцы»). С 2018 года своё агентство (контент, подписчики, запуски), запусков на 500 млн ₽. Помогает экспертам получать клиентов из блога и зарабатывать на запусках.",
   "sameAs": [
-    "https://t.me/marketing_solo",
-    "https://t.me/producer_and_coffee",
     "https://t.me/melisevaiva",
     "https://www.instagram.com/juliana.loginova/"
   ],
   "knowsAbout": [
-    "продюсирование личного бренда",
+    "продюсирование экспертов и личного бренда",
     "маркетинг для экспертов",
-    "маркетинговая диагностика",
-    "личный бренд",
+    "упаковка профиля в Instagram",
     "контент-стратегия",
     "Telegram-маркетинг",
     "email-маркетинг",
     "сторис-прогревы",
     "запуски онлайн-продуктов",
-    "продюсирование экспертного бизнеса"
+    "продюсирование экспертного бизнеса",
+    "телевизионное продюсирование",
+    "публичные выступления о маркетинге"
   ],
   "alumniOf": [
     {
@@ -48,24 +47,51 @@
     "itemListElement": [
       {
         "@type": "Offer",
-        "name": "Marketing Check-up",
-        "url": "https://juliana-loginova.ru/marketing-check-up.html",
-        "price": "25000",
-        "priceCurrency": "RUB"
+        "name": "«Я в прайме»",
+        "url": "https://t.me/marketing_check_up_quiz_bot?start=ep1",
+        "price": "1490",
+        "priceCurrency": "RUB",
+        "description": "Игра в Telegram: пять эпизодов, чтобы упаковать профиль. Первый эпизод бесплатно."
       },
       {
         "@type": "Offer",
-        "name": "Маркетинговое сопровождение",
+        "name": "Консультация · Check-up",
+        "url": "https://juliana-loginova.ru/marketing-check-up.html",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "18900",
+          "maxPrice": "25000",
+          "priceCurrency": "RUB"
+        },
+        "description": "Изучение аккаунта и цифр до встречи, встреча в Zoom по таблице решений, план после."
+      },
+      {
+        "@type": "Offer",
+        "name": "«Запуск на вынос»",
+        "price": "100000",
+        "priceCurrency": "RUB",
+        "description": "За 3 недели запуск на бумаге: продукт, цены, расчёт, рекомендации по текстам и контенту, календарь."
+      },
+      {
+        "@type": "Offer",
+        "name": "Сопровождение",
         "url": "https://juliana-loginova.ru/marketing-support.html",
         "price": "300000",
-        "priceCurrency": "RUB"
+        "priceCurrency": "RUB",
+        "description": "Свой продюсер на 3 месяца: созвон раз в неделю, анализ каждого шага, направление к цели."
+      },
+      {
+        "@type": "Offer",
+        "name": "Агентство",
+        "description": "Команда ведёт соцсети, делает контент, приводит подписчиков, проводит запуски. Условия по запросу."
       },
       {
         "@type": "Offer",
         "name": "Продюсирование под ключ",
-        "url": "https://juliana-loginova.ru/production.html"
+        "url": "https://juliana-loginova.ru/production.html",
+        "description": "Партнёрство вдолгую за процент с результата."
       }
     ]
   },
-  "dateModified": "2026-09-07"
+  "dateModified": "2026-11-17"
 }
